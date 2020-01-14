@@ -750,12 +750,22 @@ input[type="button"]:hover{
 		justify-content: center;
 		flex-grow: 1;
 		padding: 0px 2rem;
-		font-family: 'Montserrat Bold';
 		text-transform: uppercase;
 	}
-		#menus .menu{
+		#menus a .menu{
 			margin: 0px 8px;
 			cursor: pointer;
+			color: white;
+			font-family: 'Montserrat Bold';
+			
+			-webkit-transition: all 0.2s ease-in-out;
+			-moz-transition: all 0.2s ease-in-out;
+			-o-transition: all 0.2s ease-in-out;
+			-ms-transition: all 0.2s ease-in-out;
+			transition: all 0.2s ease-in-out;
+		}
+		#menus a .menu:hover{
+			color: var(--colorPrincipal);
 		}
 	#dir{
 		display: flex;

@@ -17,7 +17,7 @@
 		<link rel="apple-touch-icon" href="<?php echo(base_url('assets/public/img/apple-touch-icon.png')); ?>" />
 				
 		<title><?php echo($titulo); ?></title>
-		<meta name="description" content="<?php echo($desc); ?>" />
+		<meta name="description" content="<?php echo($generalDB->desc_global); ?>" />
 	
 					
 		<meta name="dcterms.audience" content="Global" />
@@ -246,10 +246,10 @@ if(property_exists($generalDB, "youtube") && $generalDB->youtube !== ''){
 		<nav id="nav">
 			<div id="logo"><img src="<?php echo(base_url('assets/public/img/logo_ci@2x.png')); ?>"></img></div>
 			<div id="menus">
-				<div class="menu">servicios</div>
-				<div class="menu">portafolio</div>
-				<div class="menu">clientes</div>
-				<div class="menu">postulate</div>
+				<a href="<?php echo(base_url('servicio')); ?>"><div class="menu">servicios</div></a>
+				<a href="<?php echo(base_url('portafolio')); ?>"><div class="menu">portafolio</div></a>
+				<a href="<?php echo(base_url('clientes')); ?>"><div class="menu">clientes</div></a>
+				<a href="<?php echo(base_url('postulate')); ?>"><div class="menu">postulate</div></a>
 			</div>
 			<div id="dir">
 				<div class="tel">Tel:<?php echo($generalDB->telefono); ?></div>

@@ -1,6 +1,13 @@
 <?php
 
 //Datos de formualirio PORTAFOLIOS
+$data_desc_global  =  array ( 
+	'name' => 'general[desc_global]',
+	'value' => @$generalDB->desc_global,
+	'class' => 'validaciones vc form-control input-lg',
+	'autocomplete' => 'off',
+	'placeholder' => ''
+);
 $data_team_fondo =  array ( 
 	'name' => 'general0_fondo',
 	'value' => '',
@@ -181,7 +188,7 @@ $data_alianza_logo  =  array (
 	
 	
 	
-<!-- 	Seccion de nosotros -->
+<!-- 	Seccion de informacion General -->
 	<div id="nosotros" class="row"><br/>
 		<div class="card stacked-form col-md-12">
 			<div class="card-header block">
@@ -196,6 +203,14 @@ $data_alianza_logo  =  array (
 				<div class="registro">
 					<div class="row">
 						<div class="col -md-3">
+							<div class="general_desc_global">
+								<label>Descripción breve para el header general del sitio web:</label>
+								<?php
+									$data_desc_global['name'] = 'general[desc_global]';
+									$data_desc_global['value'] = @$generalDB->desc_global;
+									echo form_input( $data_desc_global );
+								?>
+							</div>
 							<div class="general_color_fondo">
 								<label>Color de fondo:</label>
 								<?php

@@ -49,7 +49,7 @@
 			}
 			?>
 		</main>
-		<a href="<?php echo( base_url('servicios') ); ?>" target="_self"><div class="servicioTextoBtn btnVerMas"><?php echo(@$serviciosDB->textoBtn); ?></div></a>
+		<a href="<?php echo( base_url('servicio') ); ?>" target="_self"><div class="servicioTextoBtn btnVerMas"><?php echo(@$serviciosDB->textoBtn); ?></div></a>
 	</div>
 </section>
 

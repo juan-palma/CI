@@ -183,6 +183,7 @@ class General extends CI_Controller {
 		if($loadBodyFondo !== false && $loadBodyFondo !== false){
 			//Datos de la seccion Nosotros.
 			$linea = '{';
+			$linea .= '"desc_global":"'.$_POST['general']['desc_global'].'",';
 			$linea .= '"mapa":"'.$_POST['general']['mapa'].'",';
 			$linea .= '"direccion":"'.$_POST['general']['direccion'].'",';
 			$linea .= '"facebook":"'.$_POST['general']['facebook'].'",';

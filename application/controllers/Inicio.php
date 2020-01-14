@@ -176,7 +176,7 @@ class Inicio extends CI_Controller {
 		
 		$data['titulo'] = "Home";
 		$data['actual'] = "home";
-		$data['desc'] = "Descripción HOME INMOTION";
+		$data['desc'] = "Descripción HOME Circulo Imagen";
 		
 		$this->load->view('public/head', $data);
 		$this->load->view('public/home', $data);
