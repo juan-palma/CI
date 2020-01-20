@@ -382,7 +382,7 @@ $data_team_puesto  =  array (
 		<?php 
 			echo form_upload( $data_portafolio_imagen );
 			$data['classAdd'] = 'conteo';
-			$data['propertyAdd'] = ' data-conteovalin="portafolio" data-conteovalfin="_icono" data-conteoval="name"';
+			$data['propertyAdd'] = ' data-conteovalin="portafolio" data-conteovalfin="_imagen" data-conteoval="name"';
 			$this->load->view('admin/plantillas/img_block', $data);
 		?>
 									
@@ -398,7 +398,7 @@ $data_team_puesto  =  array (
 				<div class="col -md-3">
 					<div class="portafolio_imagen">
 						<label>Imagen:</label>
-						<div class="cleanBox" data-clonetype="imagen">
+						<div class="cleanBox" data-clonetype="imagen" data-cloneinfo="imagen">
 							<?php echo form_upload( $data_portafolio_imagen ); ?>
 						</div>
 					</div>

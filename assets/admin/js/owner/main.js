@@ -166,7 +166,7 @@ function reconteo(seccion, extra){
 //funcion para activar botones de borrado para images u otro proceso que se requira actiar desde un inicio.
 function btnDelImg(seccion){
 	if(confirm('¿Confirma borrar la imagen?')){
-		var clone = $$('.hiden.boxClones > [data-cloneinfo="'+this.idago.cloneType+'"]');
+		var clone = $$('.hiden.boxClones [data-cloneinfo="'+this.idago.cloneType+'"]');
 		this.empty();
 		this.grab(clone[0].clone());
 		

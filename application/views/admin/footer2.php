@@ -41,7 +41,7 @@
 
 <!-- IDA -->
 <script src="<?php echo(base_url('assets/common/js/librerias/mootools-core.js')) ?>"></script>
-<!-- <script src="<?php echo(base_url('assets/common/js/librerias/mootools-more.js')) ?>"></script> -->
+<script src="<?php echo(base_url('assets/common/js/librerias/mootools-more.js')) ?>"></script>
 <script src="<?php echo(base_url('assets/admin/js/owner/main.js')) ?>"></script>
 
 <?php

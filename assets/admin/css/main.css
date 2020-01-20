@@ -643,6 +643,7 @@ a[href*="froala.com"]{
 .registro{
 	background: white;
 	margin-bottom: 2rem;
+	width: 100%;
 }
 .registro > .contenedor{
 	padding: 0px 2rem;
