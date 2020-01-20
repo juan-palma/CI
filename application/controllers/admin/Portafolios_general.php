@@ -1,12 +1,12 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 		
-class Vacantes extends CI_Controller {
+class Portafolios_general extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->library('upload');
 	}
 	
-	public $varFlash = 'flashVacantes';
+	public $varFlash = 'flashPortafoliosGeneral';
 	public $success = [];
 	public $error = [];
 	
@@ -22,27 +22,27 @@ class Vacantes extends CI_Controller {
 
 
 		
-		//Consulta - VACANTES
+		//Consulta - portafolios
 		$this->basic_modal->clean();
 		$this->basic_modal->tabla = 'contenido';
 		$this->basic_modal->campos = 'contenido_info';
-		$this->basic_modal->condicion = array( "contenido_pagina" => 'vacantes', "contenido_seccion" => 'vacantes' );
+		$this->basic_modal->condicion = array( "contenido_pagina" => 'portafolio', "contenido_seccion" => 'general' );
 		
-		$isvacante = $this->basic_modal->genericSelect('sistema');
-		$consulta = (is_array($isvacante) && count($isvacante) > 0) ? $isvacante[0] : '';
+		$isPortafolio = $this->basic_modal->genericSelect('sistema');
+		$consulta = (is_array($isPortafolio) && count($isPortafolio) > 0) ? $isPortafolio[0] : '';
 		$nuevoValor = (isset($consulta) && property_exists($consulta, 'contenido_info')) ? str_replace($encontrar, $remplazar, $consulta->contenido_info) : '';
 		$valoresDB = ( is_object(json_decode($nuevoValor)) ) ? json_decode($nuevoValor) : new stdClass();
-		$data['vacantesDB'] = $valoresDB;
+		$data['portafoliosDB'] = $valoresDB;
 		
 
 
 		
-		$data['titulo'] = "Bolsa de Trabajo";
-		$data['actual'] = "bolsa_trabajo";
+		$data['titulo'] = "Portafolios";
+		$data['actual'] = "portafolios_general";
 		$data['varFlash'] = $this->varFlash;
 		$this->load->view('admin/head2', $data);
 		$this->load->view('admin/saveControl', $data);
-		$this->load->view('admin/vacantes', $data);
+		$this->load->view('admin/portafolios_general', $data);
 		$this->load->view('admin/footer2', $data);
 	}
 	
@@ -98,63 +98,63 @@ class Vacantes extends CI_Controller {
 	public function do_upload(){
 		$this->status = 'ok';
 		
-		// vacantes
-		//::::::  Seccion para procesar informacion de vacantes :::::
-		$this->valores['vacante'] = [];
+		// portafolios
+		//::::::  Seccion para procesar informacion de portafolios :::::
+		$this->valores['portafolio'] = [];
 		
-		$config['upload_path']		= FCPATH.'assets/public/img/vacantes';
+		$config['upload_path']		= FCPATH.'assets/public/img/portafolios';
 		$config['allowed_types']	= 'gif|jpg|jpeg|png|svg';
 		$config['max_size']			= 1024;
 		$config['overwrite']		= true;
 		
-		$loadPortada = $this->loadFiles('base', 'video_portada', ['null'], $config);
+		$loadPortada = $this->loadFiles('base', 'fondo_titulo', ['null'], $config);
 		
-		if( isset($_POST['vacantes']['vacante']) ){
-			$loadSerFoto = $this->loadFiles('vacante', 'foto', $_POST['vacantes']['vacante'], $config);
+		if( isset($_POST['portafolios']['portafolio']) ){
+			$loadPortaFoto = $this->loadFiles('portafolio', 'foto', $_POST['portafolios']['portafolio'], $config);
 		} else{
-			$loadSerFoto = [];
+			$loadPortaFoto = [];
 		}
 		
 
 
-		if($loadSerFoto !== false){
-			//Datos de la seccion vacantes.
-			$linea_vacantes = '{"titulo_general":"'.$_POST['vacantes']['titulo'].'", "video_general":"'.$_POST['vacantes']['video'].'", "video_portada":"'.$loadPortada[0]['file_name'].'", "vacantes":[';
+		if($loadPortaFoto !== false){
+			//Datos de la seccion portafolios.
+			$linea_portafolios = '{"titulo_general":"'.$_POST['portafolios']['titulo'].'", "fondo_titulo":"'.$loadPortada[0]['file_name'].'", "portafolios":[';
 			
-			if( isset($_POST['vacantes']['vacante']) ){
-				foreach ($_POST['vacantes']['vacante'] as $i=>$v) {
-					if($i !== 0){ $linea_vacantes .= ', '; }
-					$linea_vacantes .= '{"foto":"'.@$loadSerFoto[$i]['file_name'].'", "titulo":"'.$v['titulo'].'", "texto":"'.$v['texto'].'", "enlace":"'.$v['enlace'].'"}';
+			if( isset($_POST['portafolios']['portafolio']) ){
+				foreach ($_POST['portafolios']['portafolio'] as $i=>$v) {
+					if($i !== 0){ $linea_portafolios .= ', '; }
+					$linea_portafolios .= '{"foto":"'.@$loadPortaFoto[$i]['file_name'].'", "titulo_home":"'.$v['titulo_home'].'", "titulo_general":"'.$v['titulo_general'].'", "enlace":"'.url_title($v['enlace']).'"}';
 				}
 			}
-			$linea_vacantes .= ']}';
+			$linea_portafolios .= ']}';
 			
-			//consultar si existe un registro con valores para VACANTES para saber si interta nuevo registro o actualizar el actual.
-			//Consulta - VACANTES
+			//consultar si existe un registro con valores para portafolios para saber si interta nuevo registro o actualizar el actual.
+			//Consulta - portafolios
 			$this->basic_modal->clean();
 			$this->basic_modal->tabla = 'contenido';
 			$this->basic_modal->campos = 'id_contenido';
-			$this->basic_modal->condicion = array( "contenido_pagina" => 'vacantes', "contenido_seccion" => 'vacantes' );
+			$this->basic_modal->condicion = array( "contenido_pagina" => 'portafolio', "contenido_seccion" => 'general' );
 			
-			$isvacante = $this->basic_modal->genericSelect('sistema');
+			$isPortafolio = $this->basic_modal->genericSelect('sistema');
 			
 			//Insertar los valores en la base de datos
 			//Consulta
 			$this->basic_modal->clean();
 			$this->basic_modal->tabla = 'contenido';
 			
-			if(count($isvacante) > 0){
-				//Consulta UPDATE vacantes
-				$this->basic_modal->condicion = array('id_contenido', $isvacante[0]->id_contenido);
-				$valores = array('contenido_info' => $linea_vacantes);
+			if(count($isPortafolio) > 0){
+				//Consulta UPDATE portafolios
+				$this->basic_modal->condicion = array('id_contenido', $isPortafolio[0]->id_contenido);
+				$valores = array('contenido_info' => $linea_portafolios);
 				$update = $this->basic_modal->genericUpdate('sistema', $valores);
 			} else{
-				//Consulta INSERT vacantes
-				$valores = array( 'contenido_info' => $linea_vacantes, 'contenido_pagina' => 'vacantes', 'contenido_seccion' => 'vacantes', 'contenido_user' => $_POST['userID']);
+				//Consulta INSERT portafolios
+				$valores = array( 'contenido_info' => $linea_portafolios, 'contenido_pagina' => 'portafolio', 'contenido_seccion' => 'general', 'contenido_user' => $_POST['userID']);
 				$insert = $this->basic_modal->genericInsert('sistema', $valores);
 			}
 		} else{
-			$this->errores[] = 'No se cargaron todas las imágenes de la sección de vacantes.';
+			$this->errores[] = 'No se cargaron todas las imágenes de la sección de portafolios.';
 		}
 		
 		

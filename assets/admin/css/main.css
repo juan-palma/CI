@@ -560,50 +560,66 @@ a[href*="froala.com"]{
 
 /* Estilos de elemento plantilla */
 /* :::::  Plantilla IMG para imagenes cargadas en el panel  :::::: */
-.box_main{
-	padding-bottom: 32px;
+.boxRepeat{
+	
 }
-	.box_main .contenedor{
+	.boxDrag{
 		display: flex;
+	    flex-wrap: wrap;
+	    flex-grow: 1;
+	    justify-content: flex-start;
+	    align-items: flex-start;
 	}
-		.box_main .contenedor .imagen{
-			flex: 0 0 60%;
-			max-width: 60%;
-			background-color: #eee;
-			padding: 8px 13px;
+		.box_main{
+			padding-bottom: 32px;
 		}
-			.box_main .contenedor .imagen img{
-				width: 100%;
-				height: auto;
+			.box_main .contenedor{
+				display: flex;
+				justify-content: center;
+				align-items: flex-start;
 			}
-			.box_main .contenedor .imagen .boxControl{
-				width: auto;
-				display: inline-block;
-				padding-top: 6px;
-			}
-				.box_main .contenedor .imagen .boxControl .imgDel{
-					font-size: 126%;
-					cursor: pointer;
-					
-					-webkit-transition: color 0.1s ease;
-					-moz-transition: color 0.1s ease;
-					-o-transition: color 0.1s ease;
-					-ms-transition: color 0.1s ease;
-					transition: color 0.1s ease;
+				.box_main .contenedor .imagen{
+					flex: 0 0 60%;
+					max-width: 60%;
+					background-color: #eee;
+					padding: 8px 13px;
+					display: flex;
+					flex-direction: column;
+					align-items: flex-start;
 				}
-				.box_main .contenedor .imagen .boxControl .imgDel:hover{
-					color: red;
+					.box_main .contenedor .imagen img{
+						width: auto;
+						max-width: 100%;
+						height: auto;
+					}
+					.box_main .contenedor .imagen .boxControl{
+						width: auto;
+						display: inline-block;
+						padding-top: 6px;
+					}
+						.box_main .contenedor .imagen .boxControl .imgDel{
+							font-size: 126%;
+							cursor: pointer;
+							
+							-webkit-transition: color 0.1s ease;
+							-moz-transition: color 0.1s ease;
+							-o-transition: color 0.1s ease;
+							-ms-transition: color 0.1s ease;
+							transition: color 0.1s ease;
+						}
+						.box_main .contenedor .imagen .boxControl .imgDel:hover{
+							color: red;
+						}
+				.box_main .contenedor .info{
+					flex: 0 0 40%;
+					max-width: 40%;
+					padding: 8px 0px 8px 13px;
+					font-size: 90%;
+					font-family: 'Abel';
 				}
-		.box_main .contenedor .info{
-			flex: 0 0 40%;
-			max-width: 40%;
-			padding: 8px 0px 8px 13px;
-			font-size: 90%;
-			font-family: 'Abel';
-		}
-			.box_main .contenedor .info span{
-				font-family: 'Fjalla One';
-			}
+					.box_main .contenedor .info span{
+						font-family: 'Fjalla One';
+					}
 
 
 
@@ -626,6 +642,7 @@ a[href*="froala.com"]{
 /* Secciones Generales */
 .registro{
 	background: white;
+	margin-bottom: 2rem;
 }
 .registro > .contenedor{
 	padding: 0px 2rem;

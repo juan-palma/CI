@@ -157,7 +157,6 @@ body, p, .navbar, .brand, .alert, a, .td-name, td, button.close {
 #primaryContainer{
 	width: 100%;
 /* 	height: 100%; */
-	min-height: 100%;
 /* 	min-height: calc(100vh); */
 	display: block;
 	position: relative;
@@ -565,17 +564,17 @@ input[type="button"]:hover{
 }
 */
 .iframe-container{
-  position: relative;
-  width: 100%;
-  padding-bottom: 56.25%; 
-  height: 0;
+	position: relative;
+	width: 100%;
+	padding-bottom: 56.25%; 
+	height: 0;
 }
 	.iframe-container iframe{
-	  position: absolute;
-	  top:0;
-	  left: 0;
-	  width: 100%;
-	  height: 100%;
+		position: absolute;
+		top:0;
+		left: 0;
+		width: 100%;
+		height: 100%;
 	}
 .videoPortada{
 	height: calc(80vh);
@@ -787,7 +786,7 @@ input[type="button"]:hover{
 			transition: all 0.2s ease-in-out;
 		}
 		#dir .mail a:hover{
-			color: white !important;
+			color: var(--colorPrincipal);
 		}
 		.redes{
 			display: flex;
@@ -802,7 +801,7 @@ input[type="button"]:hover{
 				width: 17px;
 			}
 				.redes .red svg{
-					fill: var(--colorPrincipal);
+					fill: #fff;
 					
 					-webkit-transition: all 0.2s ease-in-out;
 					-moz-transition: all 0.2s ease-in-out;
@@ -811,7 +810,7 @@ input[type="button"]:hover{
 					transition: all 0.2s ease-in-out;
 				}
 				.redes .red svg:hover{
-					fill: #fff;
+					fill: var(--colorPrincipal);
 				}
 			
 					
@@ -820,8 +819,11 @@ input[type="button"]:hover{
 
 .mainbox{
 	width: 100%;
-	height: 100vh;
-	box-sizing: border-box;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 a .btnVerMas{
 	width: auto;
@@ -845,7 +847,6 @@ a .btnVerMas:hover{
 #primaryContainer{
 	width: 100%;
 	max-width: 100%;
-	min-height: 100vh;
 }
 
 /* --- HOME -- */
@@ -856,13 +857,14 @@ body#home{
 	body#home #dir a{
 		color: #AE9A69;
 	}
-	body#home .mainbox{
-		width: 100%;
-	    height: 100vh;
-	    display: flex;
-	    flex-direction: column;
-	    justify-content: center;
-	    align-items: center;
+	body#home #dir .mail a:hover{
+		color: var(--colorPrincipal);
+	}
+	body#home .redes .red svg{
+		fill: var(--colorPrincipal);
+	}
+	body#home .redes .red svg:hover{
+		fill: #fff;
 	}
 	body#home .mainbox.bl1{
 		background-size: cover;
@@ -1138,7 +1140,7 @@ body#home{
 					
 					
 /* 	Footer */
-	body #footer.mainbox{
+	#footer.mainbox{
 		text-align: center;
 		padding: 0px;
 		height: auto;
@@ -1160,13 +1162,13 @@ body#home{
 				grid-template-columns: 1fr 1fr 1fr 1fr;
 				grid-gap: 17px 22px;
 			}
-				body footer input,
-				body footer input[type="text"],
-				body footer input[type="button"],
-				body footer input[type="mail"],
-				body footer input[type="tel"],
-				body footer select,
-				body footer textarea.validaciones{
+				footer input,
+				footer input[type="text"],
+				footer input[type="button"],
+				footer input[type="mail"],
+				footer input[type="tel"],
+				footer select,
+				footer textarea.validaciones{
 					font-family: 'Montserrat Regular';
 					font-size: 86%;
 					letter-spacing: 3px;
@@ -1178,14 +1180,14 @@ body#home{
 					height: 55px;
 					max-height: 55px;
 				}
-				body footer select{
+				footer select{
 					appearance: inherit;
 					-webkit-appearance: inherit;
 				}
-				body footer textarea.validaciones{
+				footer textarea.validaciones{
 					grid-column: span 4;
 				}
-				body footer #footerBtnEnviar{
+				footer #footerBtnEnviar{
 					grid-column: span 2 / 4;
 					grid-row: span 1;
 					background-color: var(--colorPrincipal);
@@ -1201,7 +1203,7 @@ body#home{
 					-ms-transition: all 0.2s ease-in-out;
 					transition: all 0.2s ease-in-out;
 				}
-				body footer #footerBtnEnviar:hover{
+				footer #footerBtnEnviar:hover{
 					background-color: black;
 				}
 				input[type="text"]::placeholder, textarea.validaciones::placeholder{ /* Chrome, Firefox, Opera, Safari 10.1+  */
@@ -1286,28 +1288,28 @@ body#home{
 				background-size: cover;
 			}
 
-	body section#alianzas.mainbox{
+	section#alianzas.mainbox{
 		text-align: center;
 		padding: 0px;
 		height: auto;
 		background-color: #212121;
 	}
-		body section#alianzas.mainbox .slideMain{
+		section#alianzas.mainbox .slideMain{
 			width: 90%;
 			height: 100%;
 			position: relative;
 		}
-			body section#alianzas.mainbox .slideMain .tns-controls,
-			body section#alianzas.mainbox .slideMain .tns-nav{
+			section#alianzas.mainbox .slideMain .tns-controls,
+			section#alianzas.mainbox .slideMain .tns-nav{
 				display: none;
 			}
-			body section#alianzas.mainbox .slideMain .alianzaTitulos{
+			section#alianzas.mainbox .slideMain .alianzaTitulos{
 				font-family: 'Montserrat ExtraBold';
 				letter-spacing: 15px;
 				color: white;
 				margin-bottom: 0px;
 			}
-			body section#alianzas.mainbox .slideMain .slideItems{
+			section#alianzas.mainbox .slideMain .slideItems{
 /* 				width: 100%; */
 			    height: 100%;
 			    display: flex;
@@ -1315,38 +1317,685 @@ body#home{
 			    align-items: center;
 			    padding: 1rem 0rem;
 			}
-				body section#alianzas.mainbox .slideMain .slideItems .logo{
+				section#alianzas.mainbox .slideMain .slideItems .logo{
 /* 					width: auto; */
 				}
-					body section#alianzas.mainbox .slideMain .slideItems .logo img{
+					section#alianzas.mainbox .slideMain .slideItems .logo img{
 						max-width: 66%;
 					}
 	
-	body div#footer_box_terminos.mainbox{
+	div#footer_box_terminos.mainbox{
 		height: auto;
 		padding: 1.5rem 3rem;
 		background-color: #E8E6E1;
 		text-align: center;
 	}
-		body div#footer_box_terminos.mainbox .logoFooter{
+		div#footer_box_terminos.mainbox .logoFooter{
 			width: 120px;
 		}
-			body div#footer_box_terminos.mainbox .logoFooter img{
+			div#footer_box_terminos.mainbox .logoFooter img{
 				width: 100%;
 			}
-		body div#footer_box_terminos.mainbox .footer_terminos{
+		div#footer_box_terminos.mainbox .footer_terminos{
 			margin-top: 1.5rem;
 		}
-			body div#footer_box_terminos.mainbox .footer_terminos span.copyright {
+			div#footer_box_terminos.mainbox .footer_terminos span.copyright {
 			    font-size: 75%;
 			    padding: 0px 8px;
 			}
-			body div#footer_box_terminos.mainbox .footer_terminos span.terminos {
+			div#footer_box_terminos.mainbox .footer_terminos span.terminos {
 			    font-size: 75%;
 			    padding: 0px 8px;
 			    color: var(--colorPrincipal);
 			    cursor: pointer;
 			}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- Pagina Portafolio - General -- */
+body#portafolio_general .mainbox.bl1{
+	height: 370px;
+	background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+	body#portafolio_general .mainbox.bl1 .titulo{
+		padding: 0px;
+		margin: 92px 0px 0px;
+		text-transform: uppercase;
+		font-size: 5vw;
+		letter-spacing: 4vw;
+		color: white;
+		font-family: 'Montserrat ExtraBold';
+		text-align: center;
+	}
+
+
+
+
+/* Pagina Portafolio - Portafolios Generales */
+
+body#portafolio_general .mainbox.bl2{
+	height: auto;
+}
+	body#portafolio_general .mainbox.bl2 > .contenedor{
+		width: 100%;
+		height: 100%;
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+		body#portafolio_general .mainbox.bl2 > .contenedor > article.item{
+			display: flex;
+		    flex-direction: column;
+		    justify-content: center;
+		    align-items: center;
+		    background-position: center;
+		    background-repeat: no-repeat;
+		    background-size: cover;
+		    height: 48vh;
+			padding: 15%;
+			text-align: center;
+			cursor: pointer;
+			position: relative;
+			
+			-webkit-transition: all 0.2s ease-in-out;
+			-moz-transition: all 0.2s ease-in-out;
+			-o-transition: all 0.2s ease-in-out;
+			-ms-transition: all 0.2s ease-in-out;
+			transition: all 0.2s ease-in-out;
+		}
+			body#portafolio_general .mainbox.bl2 > .contenedor > article.item:before{
+				content: " ";
+				display: block;
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				top: 0px;
+				left: 0px;
+				background-color: rgba(0, 0, 0, 0.64);
+				opacity: 0;
+				
+				-webkit-transition: all 0.2s ease-in-out;
+				-moz-transition: all 0.2s ease-in-out;
+				-o-transition: all 0.2s ease-in-out;
+				-ms-transition: all 0.2s ease-in-out;
+				transition: all 0.2s ease-in-out;
+			}
+			body#portafolio_general .mainbox.bl2 > .contenedor > article.item h4.servicioTitulo{
+				margin: 0;
+				width: auto;
+				text-align: center;
+				font-family: 'Montserrat ExtraBold';
+				color: white;
+				position: relative;
+				opacity: 0;
+				
+				-webkit-transition: all 0.2s ease-in-out;
+				-moz-transition: all 0.2s ease-in-out;
+				-o-transition: all 0.2s ease-in-out;
+				-ms-transition: all 0.2s ease-in-out;
+				transition: all 0.2s ease-in-out;
+			}
+			body#portafolio_general .mainbox.bl2 > .contenedor > article.item .enlace{
+				position: relative;
+				opacity: 0;
+				
+				-webkit-transition: all 0.2s ease-in-out;
+				-moz-transition: all 0.2s ease-in-out;
+				-o-transition: all 0.2s ease-in-out;
+				-ms-transition: all 0.2s ease-in-out;
+				transition: all 0.2s ease-in-out;
+			}
+				body#portafolio_general .mainbox.bl2 > .contenedor > article.item .enlace input[type="button"]{
+					font-size: 32px;
+				    padding: 0px 12px;
+				    line-height: 1;
+				    margin-top: 6px;
+				    border: 2px solid var(--colorPrincipal);
+				    border-radius: 4px;
+				    background-color: transparent;
+				}
+				body#portafolio_general .mainbox.bl2 > .contenedor > article.item .enlace input[type="button"]:hover{
+					background-color: var(--colorPrincipal);
+				}
+			
+			body#portafolio_general .mainbox.bl2 > .contenedor > article.item:hover:before,
+			body#portafolio_general .mainbox.bl2 > .contenedor > article.item:hover h4.servicioTitulo,
+			body#portafolio_general .mainbox.bl2 > .contenedor > article.item:hover .enlace{
+				opacity: 1;
+			}
+				
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- Pagina Portafolio - General -- */
+body#servicio_general .mainbox.bl1{
+	height: 370px;
+	background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+	body#servicio_general .mainbox.bl1 .titulo{
+		padding: 0px;
+		margin: 92px 0px 0px;
+		text-transform: uppercase;
+		font-size: 5vw;
+		letter-spacing: 4vw;
+		color: white;
+		font-family: 'Montserrat ExtraBold';
+		text-align: center;
+	}
+
+
+
+/* Pagina Servicio - Servicios Generales */
+
+body#servicio_general .mainbox.bl2{
+	height: auto;
+}
+	body#servicio_general .mainbox.bl2 > .contenedor{
+		width: 100%;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+	}
+		body#servicio_general .mainbox.bl2 > .contenedor > article.item{
+			width: 100%;
+			height: auto;
+			display: flex;
+		    justify-content: center;
+		    align-items: stretch;
+			position: relative;
+			flex-grow: 1;
+		}
+			body#servicio_general .mainbox.bl2 > .contenedor > article.item .img,
+			body#servicio_general .mainbox.bl2 > .contenedor > article.item .info{
+				flex: 0 0 50%;
+				max-width: 50%;
+				padding: 6vw;
+			}
+			body#servicio_general .mainbox.bl2 > .contenedor > article.item .img{
+				background-color: #F8F8F8;
+			}
+				body#servicio_general .mainbox.bl2 > .contenedor > article.item .img img{
+					width: 100%;
+				}
+			body#servicio_general .mainbox.bl2 > .contenedor > article.item .info{
+				background-color: var(--colorPrincipal);
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+			}
+				body#servicio_general .mainbox.bl2 > .contenedor > article.item .info .icono{
+					width: 70px;
+				}
+					body#servicio_general .mainbox.bl2 > .contenedor > article.item .info .icono img{
+						width: 100%;
+					}
+				body#servicio_general .mainbox.bl2 > .contenedor > article.item .info h4{
+					font-family: 'Montserrat ExtraBold';
+					color: white;
+					margin: 8px 0px;
+				}
+				body#servicio_general .mainbox.bl2 > .contenedor > article.item .info .enlace input[type="button"]{
+				    margin-top: 14px;
+				    border: 2px solid white;
+				    background-color: transparent;
+				    color: black;
+				}
+				body#servicio_general .mainbox.bl2 > .contenedor > article.item .info .enlace input[type="button"]:hover{
+					background-color: white;
+				}
+		body#servicio_general .mainbox.bl2 > .contenedor > article.item:nth-child(2n){
+			flex-direction: row-reverse;
+		}
+			body#servicio_general .mainbox.bl2 > .contenedor > article.item:nth-child(2n) .info{
+				background-color: white;
+			}
+				body#servicio_general .mainbox.bl2 > .contenedor > article.item:nth-child(2n) .info h4{
+					color: var(--colorPrincipal);
+				}
+				body#servicio_general .mainbox.bl2 > .contenedor > article.item:nth-child(2n) .info .enlace input[type="button"]{
+				    border: 2px solid var(--colorPrincipal);
+				    background-color: transparent;
+				    color: black;
+				}
+				body#servicio_general .mainbox.bl2 > .contenedor > article.item:nth-child(2n) .info .enlace input[type="button"]:hover{
+					background-color: var(--colorPrincipal);
+				}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- Pagina Portafolios Interna - TITULO e INTRO -- */
+body#portafolio_in .mainbox.bl1{
+	height: 428px;
+	background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    justify-content: flex-end;
+    padding: 2rem;
+}
+	body#portafolio_in .mainbox.bl1 .titulo{
+		padding: 0px;
+		margin: 92px 0px 0px;
+		text-transform: uppercase;
+		font-size: 2vw;
+		letter-spacing: 2vw;
+		color: white;
+		font-family: 'Montserrat ExtraBold';
+		text-align: center;
+	}
+	body#portafolio_in .mainbox.bl1 .nombre{
+		padding: 0px;
+		margin: 16px 0px 0px;
+		text-transform: uppercase;
+		font-size: 5vw;
+		letter-spacing: 2vw;
+		color: white;
+		font-family: 'Montserrat ExtraBold';
+		text-align: center;
+	}
+
+body#portafolio_in .mainbox.bl2{
+	height: auto;
+    justify-content: flex-end;
+    padding: 3rem 4rem;
+}
+	body#portafolio_in .mainbox.bl2 .intro{
+		text-align: center;
+	}
+
+
+/* Pagina Portafolios Interna - BLOQUES de INFO */
+
+body#portafolio_in .mainbox.bl3{
+	height: auto;
+}
+	body#portafolio_in .mainbox.bl3 > .contenedor{
+		width: 100%;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+	}
+		body#portafolio_in .mainbox.bl3 > .contenedor > article.item{
+			width: 100%;
+			height: auto;
+			display: flex;
+		    justify-content: center;
+		    align-items: stretch;
+			position: relative;
+			flex-grow: 1;
+			height: 50vw;
+			margin: 15px 0px;
+		}
+			body#portafolio_in .mainbox.bl3 > .contenedor > article.item .img,
+			body#portafolio_in .mainbox.bl3 > .contenedor > article.item .info{
+				flex: 0 0 50%;
+				max-width: 50%;
+				padding: 6vw;
+				position: relative;
+			}
+			body#portafolio_in .mainbox.bl3 > .contenedor > article.item .img{
+				padding: 9vw;
+				background-color: #fff;
+			}
+			body#portafolio_in .mainbox.bl3 > .contenedor > article.item .img.fondo{
+				padding: 0px;
+				position: relative;
+			}
+				body#portafolio_in .mainbox.bl3 > .contenedor > article.item .img .recorte{
+					width: 100%;
+				    display: flex;
+				    justify-content: center;
+				    align-items: center;
+				    height: 100%;
+				}
+					body#portafolio_in .mainbox.bl3 > .contenedor > article.item .img img{
+						width: 100%;
+						max-width: 280px;
+					}
+				
+				body#portafolio_in .mainbox.bl3 > .contenedor > article.item .img.fondo .recorte{
+					width: calc(100% - 15px);
+					height: 100%;
+				}
+					body#portafolio_in .mainbox.bl3 > .contenedor > article.item .img.fondo .recorte img{
+						object-fit: cover;
+						height: 100%;
+						max-width: inherit;
+					}
+			body#portafolio_in .mainbox.bl3 > .contenedor > article.item .info{
+				background-color: white;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				text-align: center;
+			}
+			body#portafolio_in .mainbox.bl3 > .contenedor > article.item .info:before{
+				content: " ";
+			    width: 2px;
+			    height: 100%;
+			    background-color: #DCDCDC;
+			    position: absolute;
+			    left: -1px;
+			}
+			body#portafolio_in .mainbox.bl3 > .contenedor > article.item .info:after{
+				content: " ";
+			    width: 33px;
+			    height: 33px;
+			    position: absolute;
+			    left: 0px;
+			    top: -15px;
+				transform: translateX(-50%) translateY(-50%);
+				background-image: url(../img/icono_decoracion_cuadro.svg);
+				background-position: center center;
+				background-repeat: no-repeat;
+				background-size: contain;
+			}
+				body#portafolio_in .mainbox.bl3 > .contenedor > article.item .info h4{
+					font-family: 'Montserrat ExtraBold';
+					color: var(--colorPrincipal);
+					margin: 8px 0px 16px;
+					text-align: center;
+					text-transform: uppercase;
+					letter-spacing: 4px;
+				}
+		body#portafolio_in .mainbox.bl3 > .contenedor > article.item:nth-child(2n){
+			flex-direction: row-reverse;
+		}
+			body#portafolio_in .mainbox.bl3 > .contenedor > article.item:nth-child(2n) .img.fondo .recorte{
+				right: 0;
+				position: absolute;
+			}
+			body#portafolio_in .mainbox.bl3 > .contenedor > article.item:nth-child(2n) .info{
+				background-color: white;
+			}
+			body#portafolio_in .mainbox.bl3 > .contenedor > article.item:nth-child(2n) .info:before{
+			    left: auto;
+			    right: -1px;
+			}
+			body#portafolio_in .mainbox.bl3 > .contenedor > article.item:nth-child(2n) .info:after{
+			    left: auto;
+			    right: 0px;
+				transform: translateX(50%) translateY(-50%);
+			}
+			
+
+/* Pagina Portafolios Interna - GALERIA */
+body#portafolio_in .mainbox.bl4{
+	text-align: center;
+	padding: 0px;
+	height: 38vw;
+	min-height: 20vh;
+}
+	body#portafolio_in .mainbox.bl4 .slideMain{
+		width: 100%;
+		height: 100%;
+		position: relative;
+	}
+		body#portafolio_in .mainbox.bl4 .slideMain .slideItems{
+/* 				width: 100%; */
+			height: 100%;
+			display: flex;
+		}
+			body#portafolio_in .mainbox.bl4 .slideMain .slideItems article{
+				background-size: cover;
+/* 				    width: 100%; */
+			    height: 100%;
+			    background-position: center;
+			    display: flex;
+				flex-direction: column;
+				align-items: center;
+				padding: 10rem 5rem;
+				justify-content: center;
+			}
+				
+
+body#portafolio_in .tns-outer,
+body#portafolio_in .tns-ovh,
+body#portafolio_in .tns-inner{
+	height: 100%;
+}
+body#portafolio_in .mainbox.bl4 .tns-nav{
+	display: flex;
+    position: absolute;
+    height: 100%;
+    justify-content: center;
+    flex-direction: column;
+    padding-left: 10px;
+}
+	body#portafolio_in .mainbox.bl4 .tns-nav button {
+		display: inline-block;
+		width: 13px;
+		height: 15px;
+		position: relative;
+		border-radius: 50%;
+		border: 1px solid white;
+		margin-bottom: 4px;
+		display: none;
+		
+		-webkit-transition: all 0.2s ease-in-out;
+		-moz-transition: all 0.2s ease-in-out;
+		-o-transition: all 0.2s ease-in-out;
+		-ms-transition: all 0.2s ease-in-out;
+		transition: all 0.2s ease-in-out;
+	}
+	body#portafolio_in .mainbox.bl4 .tns-nav button.tns-nav-active{
+		background-color: white;
+	}
+	body#portafolio_in .mainbox.bl4  .tns-controls{
+		position: absolute;
+	    right: 2rem;
+	    bottom: -15px;
+	    display: block;
+	    width: auto;
+	    outline: none;
+	}
+		body#portafolio_in .mainbox.bl4 .tns-controls button{
+			position: relative;
+			visibility: hidden;
+			margin: 0px;
+			padding: 0px;
+			
+			-webkit-transition: all 0.2s ease-in-out;
+			-moz-transition: all 0.2s ease-in-out;
+			-o-transition: all 0.2s ease-in-out;
+			-ms-transition: all 0.2s ease-in-out;
+			transition: all 0.2s ease-in-out;
+		}
+		body#portafolio_in .mainbox.bl4 .tns-controls button[data-controls="prev"]:after {
+		    content: '';
+		    visibility: visible;
+		    display: block;
+		    position: relative;
+		    background-color: var(--colorPrincipal);
+		    padding: 17px 27px;
+		    top: 2px;
+		    background-image: url(../img/flecha_back.svg);
+		    height: 27px;
+		    width: 44px;
+		    background-repeat: no-repeat;
+		    background-position: center center;
+		    background-size: 23px 18px;
+		}
+		body#portafolio_in .mainbox.bl4 .tns-controls button[data-controls="next"]:after {
+		    content: '';
+		    visibility: visible;
+		    display: block;
+		    position: relative;
+		    background-color: var(--colorPrincipal);
+		    padding: 17px 27px;
+		    top: 2px;
+		    background-image: url(../img/flecha_next.svg);
+		    height: 27px;
+		    width: 44px;
+		    background-repeat: no-repeat;
+		    background-position: center center;
+		    background-size: 23px 18px;
+		}
+		body#portafolio_in .mainbox.bl4 .tns-controls button:hover[data-controls]:after{
+			-webkit-transition: all 0.2s ease-in-out;
+			-moz-transition: all 0.2s ease-in-out;
+			-o-transition: all 0.2s ease-in-out;
+			-ms-transition: all 0.2s ease-in-out;
+			transition: all 0.2s ease-in-out;
+		}
+		body#portafolio_in .mainbox.bl4 .tns-controls button:hover[data-controls]:after{
+			background-color: #000;
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- Pagina Servicios Interna - TITULO e INTRO -- */
+body#servicios_in .mainbox.bl1{
+	height: 428px;
+	background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    justify-content: flex-end;
+    padding: 2rem;
+}
+	body#servicios_in .mainbox.bl1 .titulo{
+		padding: 0px;
+		margin: 92px 0px 0px;
+		text-transform: uppercase;
+		font-size: 2vw;
+		letter-spacing: 2vw;
+		color: white;
+		font-family: 'Montserrat ExtraBold';
+		text-align: center;
+	}
+	body#servicios_in .mainbox.bl1 .nombre{
+		padding: 0px;
+		margin: 16px 0px 0px;
+		text-transform: uppercase;
+		font-size: 5vw;
+		letter-spacing: 2vw;
+		color: white;
+		font-family: 'Montserrat ExtraBold';
+		text-align: center;
+	}
+
+body#servicios_in .mainbox.bl2{
+	height: auto;
+    justify-content: flex-end;
+    padding: 3rem 4rem;
+}
+	body#servicios_in .mainbox.bl2 .intro{
+		text-align: center;
+	}
+	
+
+
+
+/* Pagina Portafolios Interna - GALERIA */
+body#servicios_in .mainbox.bl4{
+	text-align: center;
+	padding: 0px;
+	height: 38vw;
+	min-height: 20vh;
+}
+	body#servicios_in .mainbox.bl4 .slideMain{
+		width: 100%;
+		height: 100%;
+		position: relative;
+	}
+		body#servicios_in .mainbox.bl4 .slideMain .slideItems{
+/* 				width: 100%; */
+			height: 100%;
+			display: flex;
+		}
+			body#servicios_in .mainbox.bl4 .slideMain .slideItems article{
+				background-size: cover;
+/* 				    width: 100%; */
+			    height: 100%;
+			    background-position: center;
+			    display: flex;
+				flex-direction: column;
+				align-items: center;
+				padding: 10rem 5rem;
+				justify-content: center;
+			}
+				
+
+body#servicios_in .tns-outer,
+body#servicios_in .tns-ovh,
+body#servicios_in .tns-inner{
+	height: 100%;
+}
+
+
+
+
+body#servicios_in .mainbox.bl4{
+	height: auto;
+    justify-content: flex-end;
+    padding: 3rem 4rem;
+}
+	body#servicios_in .mainbox.bl4 .pie{
+		text-align: center;
+	}
+
+
+
 
 
 

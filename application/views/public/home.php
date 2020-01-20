@@ -83,7 +83,7 @@
 					?>
 					</div>
 					
-					<a href="<?php echo(base_url('portafolio/'.@$portafolioDB->enlace) ); ?>" target="_self"><div class="portafolioTextoBtn btnVerMas"><?php echo(@$portafolioDB->textoBtn); ?></div></a>
+					<a href="<?php echo(base_url('portafolio/articulo/'.url_title(@$portafolioDB->enlace))); ?>" target="_self"><div class="portafolioTextoBtn btnVerMas"><?php echo(@$portafolioDB->textoBtn); ?></div></a>
 				</article>
 				<?php
 			}

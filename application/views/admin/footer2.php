@@ -23,7 +23,6 @@
 <script src="<?php echo(base_url('assets/common/js/librerias/popper.min.js')) ?>" type="text/javascript"></script>
 <script src="<?php echo(base_url('assets/common/js/librerias/bootstrap.min.js')) ?>" type="text/javascript"></script>
 <script src="<?php echo(base_url('assets/common/js/librerias/plugins/bootstrap-switch.js')) ?>"></script>
-<!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?YOUR_KEY_HERE"></script> -->
 <script src="<?php echo(base_url('assets/common/js/librerias/plugins/chartist.min.js')) ?>"></script>
 <script src="<?php echo(base_url('assets/common/js/librerias/plugins/bootstrap-notify.js')) ?>"></script>
 <script src="<?php echo(base_url('assets/common/js/librerias/plugins/jquery-jvectormap.js')) ?>" type="text/javascript"></script>
@@ -42,7 +41,7 @@
 
 <!-- IDA -->
 <script src="<?php echo(base_url('assets/common/js/librerias/mootools-core.js')) ?>"></script>
-<script src="<?php echo(base_url('assets/common/js/librerias/mootools-more.js')) ?>"></script>
+<!-- <script src="<?php echo(base_url('assets/common/js/librerias/mootools-more.js')) ?>"></script> -->
 <script src="<?php echo(base_url('assets/admin/js/owner/main.js')) ?>"></script>
 
 <?php

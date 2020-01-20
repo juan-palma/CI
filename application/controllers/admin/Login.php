@@ -52,7 +52,8 @@ class Login extends CI_Controller {
 						$this->basic_modal->tabla = 'usuarios';
 						$this->basic_modal->campos = 'permisos.*';
 						$this->basic_modal->join = array('permisos', 'permisos.permiso_user = usuarios.id_user');
-						$this->basic_modal->condicion = array("usuarios.id_user" => $result[0]->id_user, "usuarios.fingerprint" => $result[0]->fingerprint);
+						$this->basic_modal->condicion = array("usuarios.id_user" => $result[0]->id_user, "usuarios.fingerprint" => $result[0]->fingerprint, o);
+						$this->basic_modal->order = 'permiso_orden';
 						
 						$result = $this->basic_modal->genericSelect();
 						$this->session->set_userdata('modulos', $result);

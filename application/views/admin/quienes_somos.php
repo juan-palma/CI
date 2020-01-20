@@ -1,16 +1,16 @@
 <?php
 
-//Datos de formualirio vacantes
+//Datos de formualirio portafolios
 $data  =  array ( 
-	'name' => 'vacantes[titulo]',
-	'value' => @$vacantesDB->titulo_general,
+	'name' => 'portafolios[titulo]',
+	'value' => @$portafoliosDB->titulo_general,
 	'class' => 'validaciones vc form-control input-lg',
 	'autocomplete' => 'off',
 	'placeholder' => ''
 ); 
 $data_video  =  array ( 
-	'name' => 'vacantes[video]',
-	'value' => @$vacantesDB->video_general,
+	'name' => 'portafolios[video]',
+	'value' => @$portafoliosDB->video_general,
 	'class' => 'validaciones vc form-control input-lg hl2',
 	'autocomplete' => 'off',
 	'placeholder' => ''
@@ -25,46 +25,46 @@ $data_video_portada =  array (
 ); 
 
 
-$data_vacante_foto  =  array ( 
+$data_portafolio_foto  =  array ( 
 	'name' => '',
 	'value' => '',
 	'class' => 'validaciones vc form-control input-lg conteo',
 	'autocomplete' => 'off',
 	'placeholder' => '',
 	'data-cloneinfo' => 'foto',
-	'data-conteovalin' =>"vacante",
+	'data-conteovalin' =>"portafolio",
 	'data-conteovalfin' => "_foto",
 	'data-conteoval' => "name"
 );
-$data_vacante_titulo  =  array ( 
+$data_portafolio_titulo  =  array ( 
 	'name' => '',
 	'value' => '',
 	'class' => 'validaciones vc form-control input-lg conteo',
 	'autocomplete' => 'off',
 	'placeholder' => '',
-	'data-conteovalin' =>"vacantes[vacante][",
+	'data-conteovalin' =>"portafolios[portafolio][",
 	'data-conteovalfin' => "][titulo]",
 	'data-conteoval' => "name"
 );
 
-$data_vacante_intro  =  array ( 
+$data_portafolio_intro  =  array ( 
 	'name' => '',
 	'value' => '',
 	'class' => 'validaciones vc form-control input-lg hl2 conteo',
 	'autocomplete' => 'off',
 	'placeholder' => '',
-	'data-conteovalin' =>"vacantes[vacante][",
+	'data-conteovalin' =>"portafolios[portafolio][",
 	'data-conteovalfin' => "][texto]",
 	'data-conteoval' => "name"
 );
 
-$data_vacante_link  =  array ( 
+$data_portafolio_link  =  array ( 
 	'name' => '',
 	'value' => '',
 	'class' => 'validaciones vc form-control input-lg conteo',
 	'autocomplete' => 'off',
 	'placeholder' => '',
-	'data-conteovalin' =>"vacantes[vacante][",
+	'data-conteovalin' =>"portafolios[portafolio][",
 	'data-conteovalfin' => "][enlace]",
 	'data-conteoval' => "name"
 );
@@ -83,16 +83,16 @@ $data_vacante_link  =  array (
 	<div class="hiden boxClones">
 		<?php 
 			echo form_upload( $data_video_portada );
-			echo form_upload( $data_vacante_foto );
+			echo form_upload( $data_portafolio_foto );
 			
 			$data['classAdd'] = 'conteo';
-			$data['propertyAdd'] = ' data-conteovalin="vacante" data-conteovalfin="_icono" data-conteoval="name"';
+			$data['propertyAdd'] = ' data-conteovalin="portafolio" data-conteovalfin="_icono" data-conteoval="name"';
 			$this->load->view('admin/plantillas/img_block', $data);
 		?>
 									
-		<div id="vacante_base" class="registro" data-cloneinfo="formvacante">
+		<div id="portafolio_base" class="registro" data-cloneinfo="formPortafolio">
 			<div class="valHead">
-				<h5>vacante <span class="valNum conteo" data-conteovalin="" data-conteovalfin="" data-conteoval="text">1</span></h5>
+				<h5>portafolio<span class="valNum conteo" data-conteovalin="" data-conteovalfin="" data-conteoval="text">1</span></h5>
 				<div class="controlCloneRegistro">
 					<div class="clone menos"><i class="far fa-trash-alt"></i></div>
 				</div>
@@ -100,26 +100,26 @@ $data_vacante_link  =  array (
 			
 			<div class="row">
 				<div class="col -md-3">
-					<div class="vacante_foto">
+					<div class="portafolio_foto">
 						<label>Foto:</label>
 						<div class="cleanBox" data-clonetype="foto">
-							<?php echo form_upload( $data_vacante_foto ); ?>
+							<?php echo form_upload( $data_portafolio_foto ); ?>
 						</div>
 					</div>
 				</div>
 				
 				<div class="col -md-9">
-					<div class="vacante_titulo">
-						<label>Titulo del vacante:</label>
-						<?php echo form_input( $data_vacante_titulo ); ?>
+					<div class="portafolio_titulo">
+						<label>Titulo del portafolio:</label>
+						<?php echo form_input( $data_portafolio_titulo ); ?>
 					</div>
-					<div class="vacante_texto">
+					<div class="portafolio_texto">
 						<label>Introducción:</label>
-						<?php echo form_textarea( $data_vacante_intro ); ?>
+						<?php echo form_textarea( $data_portafolio_intro ); ?>
 					</div>
-					<div class="vacante_enlace">
-						<label>Correo a donde dirigir la vacante:</label>
-						<?php echo form_input( $data_vacante_link ); ?>
+					<div class="portafolio_enlace">
+						<label>Correo a donde dirigir la portafolio:</label>
+						<?php echo form_input( $data_portafolio_link ); ?>
 					</div>
 				</div>
 			</div>
@@ -143,11 +143,11 @@ $data_vacante_link  =  array (
 	
 	
 	
-<!-- 	Seccion de vacantes -->
-	<div id="vacantes" class="row"><br/>
+<!-- 	Seccion de portafolios -->
+	<div id="portafolios" class="row"><br/>
 		<div class="card stacked-form col-md-12">
 			<div class="card-header block">
-				<h5 class="tituloBlock">Vacantes:</h5>
+				<h5 class="tituloBlock">portafolios:</h5>
 				<hr class="colorgraph">
 			</div>
 			
@@ -168,10 +168,10 @@ $data_vacante_link  =  array (
 							<label>En caso de no colocar un video suba una portada:</label>
 							<div class="video_portada cleanBox" data-clonetype="video_portada">
 							<?php
-								if(isset($vacantesDB)){
-									if(property_exists($vacantesDB, "video_portada") && $vacantesDB->video_portada !== ""){
-										$data['img'] = base_url('assets/public/img/vacantes/'.$vacantesDB->video_portada);
-										$data['name'] = $vacantesDB->video_portada;
+								if(isset($portafoliosDB)){
+									if(property_exists($portafoliosDB, "video_portada") && $portafoliosDB->video_portada !== ""){
+										$data['img'] = base_url('assets/public/img/portafolios/'.$portafoliosDB->video_portada);
+										$data['name'] = $portafoliosDB->video_portada;
 										$data['hname'] = 'base0_video_portada';
 										$this->load->view('admin/plantillas/img_block', $data);
 									} else{
@@ -189,16 +189,16 @@ $data_vacante_link  =  array (
 				</div>
 				
 				<div class="boxRepeat">
-					<div class="boxMainClone">Agregar un vacante: <div id="vacante_clonemas" class="clone mas"><i class="fas fa-plus-circle"></i></div></div>
+					<div class="boxMainClone">Agregar un portafolio: <div id="portafolio_clonemas" class="clone mas"><i class="fas fa-plus-circle"></i></div></div>
 					
 					<?php
-					if(property_exists($vacantesDB, "vacantes") && count($vacantesDB->vacantes) > 0 ){
-						foreach ($vacantesDB->vacantes as $i=>$v) {
+					if(property_exists($portafoliosDB, "portafolios") && count($portafoliosDB->portafolios) > 0 ){
+						foreach ($portafoliosDB->portafolios as $i=>$v) {
 							
 							?>
 							<div class="registro">
 								<div class="valHead">
-									<h5>vacante <span class="valNum conteo" data-conteovalin="" data-conteovalfin="" data-conteoval="text"><?php echo($i+1); ?></span></h5>
+									<h5>portafolio <span class="valNum conteo" data-conteovalin="" data-conteovalfin="" data-conteoval="text"><?php echo($i+1); ?></span></h5>
 									<div class="controlCloneRegistro">
 										<div class="clone menos"><i class="far fa-trash-alt"></i></div>
 									</div>
@@ -206,20 +206,20 @@ $data_vacante_link  =  array (
 								
 								<div class="row">
 									<div class="col -md-3">
-										<div class="vacante_foto">
+										<div class="portafolio_foto">
 											<label>Foto:</label>
 											<div class="cleanBox"  data-clonetype="foto">
 											<?php
 												if(property_exists($v, "foto") && $v->foto !== ""){
-													$data['img'] = base_url('assets/public/img/vacantes/'.$v->foto);
+													$data['img'] = base_url('assets/public/img/portafolios/'.$v->foto);
 													$data['name'] = $v->foto;
-													$data['hname'] = 'vacante'.$i.'_foto';
+													$data['hname'] = 'portafolio'.$i.'_foto';
 													$data['classAdd'] = 'conteo';
-													$data['propertyAdd'] = ' data-conteovalin="vacante" data-conteovalfin="_foto" data-conteoval="name"';
+													$data['propertyAdd'] = ' data-conteovalin="portafolio" data-conteovalfin="_foto" data-conteoval="name"';
 													$this->load->view('admin/plantillas/img_block', $data);
 												} else{
-													$data_vacante_foto['name'] = 'vacante'.$i.'_foto';
-													echo form_upload( $data_vacante_foto );
+													$data_portafolio_foto['name'] = 'portafolio'.$i.'_foto';
+													echo form_upload( $data_portafolio_foto );
 												}
 											?>
 											</div>
@@ -227,28 +227,28 @@ $data_vacante_link  =  array (
 									</div>
 									
 									<div class="col -md-9">
-										<div class="vacante_titulo">
-											<label>Titulo del vacante:</label>
+										<div class="portafolio_titulo">
+											<label>Titulo del portafolio:</label>
 											<?php
-												$data_vacante_titulo['name'] = 'vacantes[vacante]['.$i.'][titulo]';
-												$data_vacante_titulo['value'] = $v->titulo;
-												echo form_input( $data_vacante_titulo );
+												$data_portafolio_titulo['name'] = 'portafolios[portafolio]['.$i.'][titulo]';
+												$data_portafolio_titulo['value'] = $v->titulo;
+												echo form_input( $data_portafolio_titulo );
 											?>
 										</div>
-										<div class="vacante_texto">
+										<div class="portafolio_texto">
 											<label>Introducción:</label>
 											<?php
-												$data_vacante_intro['name'] = 'vacantes[vacante]['.$i.'][texto]';
-												$data_vacante_intro['value'] = $v->texto;
-												echo form_textarea( $data_vacante_intro );
+												$data_portafolio_intro['name'] = 'portafolios[portafolio]['.$i.'][texto]';
+												$data_portafolio_intro['value'] = $v->texto;
+												echo form_textarea( $data_portafolio_intro );
 											?>
 										</div>
-										<div class="vacante_enlace">
-											<label>Correo a donde dirigir la vacante:</label>
+										<div class="portafolio_enlace">
+											<label>Correo a donde dirigir la portafolio:</label>
 											<?php
-												$data_vacante_link['name'] = 'vacantes[vacante]['.$i.'][enlace]';
-												$data_vacante_link['value'] = $v->enlace;
-												echo form_input( $data_vacante_link );
+												$data_portafolio_link['name'] = 'portafolios[portafolio]['.$i.'][enlace]';
+												$data_portafolio_link['value'] = $v->enlace;
+												echo form_input( $data_portafolio_link );
 											?>
 										</div>
 									</div>

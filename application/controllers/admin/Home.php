@@ -393,8 +393,8 @@ class Home extends CI_Controller {
 		
 		
 		
-		// SERVICIOS
-		//::::::  Seccion para procesar informacion de SERVICIOS :::::
+		// PORTAFOLIOS
+		//::::::  Seccion para procesar informacion de PORTAFOLIOS :::::
 		$this->valores['portafolio'] = [];
 		
 		$config['upload_path']		= FCPATH.'assets/public/img/portafolios';

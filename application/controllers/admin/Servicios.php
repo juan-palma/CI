@@ -82,7 +82,7 @@ class Servicios extends CI_Controller {
 		$this->basic_modal->clean();
 		$this->basic_modal->tabla = 'contenido';
 		$this->basic_modal->campos = 'id_contenido, contenido_info';
-		$this->basic_modal->like = array("contenido_info" => '"enlace":"'.$peticion.'"');
+		$this->basic_modal->like = array("contenido_info" => '"url":"'.$peticion.'"');
 		$this->basic_modal->condicion = array( "contenido_pagina" => "servicios",  "contenido_seccion" => "registro");
 		
 		$respuesta2 = $this->basic_modal->genericSelect('sistema');
@@ -170,40 +170,46 @@ class Servicios extends CI_Controller {
 		$config['overwrite']		= true;
 		
 		
-		$loadPortada = $this->loadFiles('base', 'video_portada', ['null'], $config);
+		//subir fotos de imagenes globales de titulo
+		$loadPortada = $this->loadFiles('base', 'titulo_fondo', ['null'], $config);
 		
+		//subir fotos de registro
+/*
 		if( isset($_POST['registros']['bloque']) ){
-			$loadFondo = $this->loadFiles('bloque', 'fondo', $_POST['registros']['bloque'], $config);
+			$loadImagen = $this->loadFiles('bloque', 'imagen', $_POST['registros']['bloque'], $config);
 		} else{
-			$loadFondo = [];
+			$loadImagen = [];
 		}
+*/
 		
 		
-		//subir logos de clientes
-		if( isset($_POST['servicios']['galeria']) ){
-			$loadGaleriaFoto = $this->loadFiles('galeria', 'foto', $_POST['servicios']['galeria'], $config);
+		//subir logos de galeria
+		if( isset($_POST['galeria']['foto']) ){
+			$loadFoto = $this->loadFiles('galeria', 'foto', $_POST['galeria']['foto'], $config);
 		} else{
-			$loadGaleriaFoto = [];
+			$loadFoto = [];
 		}
 		
 
 
-		if($loadFondo !== false && $loadGaleriaFoto !== false){
+		if($loadFoto !== false){
 			//Datos de la seccion Nosotros.
-			$linea = '{"titulo_general":"'.$_POST['registros']['titulo'].'", "video":"'.$_POST['registros']['video'].'", "video_portada":"'.$loadPortada[0]['file_name'].'", "enlace":"'.url_title($_POST['registros']['enlace']).'", "bloques":[';
+			$linea = '{"titulo_general":"'.$_POST['registros']['titulo'].'", "nombre":"'.$_POST['registros']['nombre'].'", "url":"'.url_title($_POST['registros']['url']).'", "intro":"'.$_POST['registros']['intro'].'", "pie":"'.$_POST['registros']['pie'].'", "titulo_fondo":"'.$loadPortada[0]['file_name'].'", "bloques":[';
+			
+// 			$linea = '{"titulo_general":"'.$_POST['registros']['titulo'].'", "video":"'.$_POST['registros']['video'].'", "video_portada":"'.$loadPortada[0]['file_name'].'", "enlace":"'.url_title($_POST['registros']['enlace']).'", "bloques":[';
 			
 			if( isset($_POST['registros']['bloque']) ){
 				foreach ($_POST['registros']['bloque'] as $i=>$v) {
 					if($i !== 0){ $linea .= ', '; }
-					$linea .= '{"fondo":"'.@$loadFondo[$i]['file_name'].'", "titulo1":"'.$v['titulo1'].'", "texto1":"'.$v['texto1'].'", "titulo2":"'.$v['titulo2'].'", "texto2":"'.$v['texto2'].'"}';
+					$linea .= '{"titulo1":"'.$v['titulo1'].'", "texto1":"'.$v['texto1'].'"}';
 				}
 			}
 			
-			$linea .= '], "galeria_titulo1":"'.$_POST['galeria0_titulo1'].'", "galeria_texto1":"'.$_POST['galeria0_texto1'].'", "galeria":[';
-			if( isset($_POST['servicios']['galeria']) ){
-				foreach ($_POST['servicios']['galeria'] as $i=>$v) {
+			$linea .= '], "galeria":[';
+			if( isset($_POST['galeria']['foto']) ){
+				foreach ($_POST['galeria']['foto'] as $i=>$v) {
 					if($i !== 0){ $linea .= ', '; }
-					$linea .= '{"foto":"'.@$loadGaleriaFoto[$i]['file_name'].'"}';
+					$linea .= '{"foto":"'.@$loadFoto[$i]['file_name'].'"}';
 				}
 			}
 			

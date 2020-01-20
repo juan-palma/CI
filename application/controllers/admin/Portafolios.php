@@ -85,7 +85,7 @@ class Portafolios extends CI_Controller {
 		$this->basic_modal->clean();
 		$this->basic_modal->tabla = 'contenido';
 		$this->basic_modal->campos = 'id_contenido, contenido_info';
-		$this->basic_modal->like = array("contenido_info" => '"enlace":"'.$peticion.'"');
+		$this->basic_modal->like = array("contenido_info" => '"url":"'.$peticion.'"');
 		$this->basic_modal->condicion = array( "contenido_pagina" => "portafolios",  "contenido_seccion" => "registro");
 		
 		$respuesta2 = $this->basic_modal->genericSelect('sistema');
@@ -173,67 +173,49 @@ class Portafolios extends CI_Controller {
 		$config['overwrite']		= true;
 		
 		
-		//subir fotos de registro
-		$loadPortada = $this->loadFiles('base', 'video_portada', ['null'], $config);
-		$loadFondoGeneral = $this->loadFiles('registro', 'fondo', ['null'], $config);
+		//subir fotos de imagenes globales de titulo
+		$loadPortada = $this->loadFiles('base', 'titulo_fondo', ['null'], $config);
 		
 		//subir fotos de registro
 		if( isset($_POST['registros']['bloque']) ){
-			$loadFondo = $this->loadFiles('bloque', 'fondo', $_POST['registros']['bloque'], $config);
+			$loadImagen = $this->loadFiles('bloque', 'imagen', $_POST['registros']['bloque'], $config);
 		} else{
-			$loadFondo = [];
+			$loadImagen = [];
 		}
 		
-		//subir fotos de informes
 		
-		if( isset($_POST['informes']['informe']) ){
-			$loadInformeIcono = $this->loadFiles('informe', 'icono', $_POST['informes']['informe'], $config);
+		//subir logos de galeria
+		if( isset($_POST['galeria']['foto']) ){
+			$loadFoto = $this->loadFiles('galeria', 'foto', $_POST['galeria']['foto'], $config);
 		} else{
-			$loadInformeIcono = [];
-		}
-		
-		//subir logos de clientes
-		if( isset($_POST['clientes']['logos']) ){
-			$loadlogosIcono = $this->loadFiles('cliente', 'logo', $_POST['clientes']['logos'], $config);
-			$loadlogosFondo = $this->loadFiles('cliente', 'fondo', $_POST['clientes']['logos'], $config);
-		} else{
-			$loadlogosIcono = [];
-			$loadlogosFondo = [];
+			$loadFoto = [];
 		}
 		
 
 
-		if($loadFondo !== false && $loadInformeIcono !== false){
-			//Datos de la seccion Nosotros.
-			$linea = '{"titulo_general":"'.$_POST['registros']['titulo'].'", "video":"'.$_POST['registros']['video'].'", "enlace":"'.url_title($_POST['registros']['enlace']).'", "fondo":"'.$loadFondoGeneral[0]['file_name'].'", "video_portada":"'.$loadPortada[0]['file_name'].'", "bloques":[';
+		if($loadFoto !== false && $loadImagen !== false){
+			//Datos de la seccion Portafolio.
+			$linea = '{"titulo_general":"'.$_POST['registros']['titulo'].'", "nombre":"'.$_POST['registros']['nombre'].'", "url":"'.url_title($_POST['registros']['url']).'", "intro":"'.$_POST['registros']['intro'].'", "titulo_fondo":"'.$loadPortada[0]['file_name'].'", "bloques":[';
 			
 			if( isset($_POST['registros']['bloque']) ){
 				foreach ($_POST['registros']['bloque'] as $i=>$v) {
 					if($i !== 0){ $linea .= ', '; }
-					$linea .= '{"fondo":"'.@$loadFondo[$i]['file_name'].'", "titulo1":"'.$v['titulo1'].'", "texto1":"'.$v['texto1'].'", "titulo2":"'.$v['titulo2'].'", "texto2":"'.$v['texto2'].'"}';
+					$linea .= '{"imagen":"'.@$loadImagen[$i]['file_name'].'", "opcion":"'.$v['opcion'].'","titulo1":"'.$v['titulo1'].'", "texto1":"'.$v['texto1'].'"}';
 				}
 			}
 			
-			$linea .= '], "informes":[';
-			if( isset($_POST['informes']['informe']) ){
-				foreach ($_POST['informes']['informe'] as $i=>$v) {
+			$linea .= '], "galeria":[';
+			if( isset($_POST['galeria']['foto']) ){
+				foreach ($_POST['galeria']['foto'] as $i=>$v) {
 					if($i !== 0){ $linea .= ', '; }
-					$linea .= '{"icono":"'.@$loadInformeIcono[$i]['file_name'].'", "titulo":"'.$v['titulo'].'", "texto":"'.$v['texto'].'"}';
-				}
-			}
-			
-			$linea .= '], "logos":[';
-			if( isset($_POST['clientes']['logos']) ){
-				foreach ($_POST['clientes']['logos'] as $i=>$v) {
-					if($i !== 0){ $linea .= ', '; }
-					$linea .= '{"logo":"'.@$loadlogosIcono[$i]['file_name'].'", "fondo":"'.@$loadlogosFondo[$i]['file_name'].'"}';
+					$linea .= '{"foto":"'.@$loadFoto[$i]['file_name'].'"}';
 				}
 			}
 			
 			$linea .= ']}';
 			
-			//consultar si existe un registro con valores para HOME-SECCIONES para saber si interta nuevo registro o actualizar el actual.
-			//Consulta - HOME-SECCIONES
+			//consultar si existe un registro para saber si interta nuevo registro o actualizar el actual.
+			//Consulta
 			$this->basic_modal->clean();
 			$this->basic_modal->tabla = 'contenido';
 			$this->basic_modal->campos = 'id_contenido';
@@ -258,7 +240,7 @@ class Portafolios extends CI_Controller {
 				$this->valores['registro']['id'] = $insert;
 			}
 		} else{
-			$this->errores[] = 'No se cargaron todas las imágenes de la sección de nosotros.';
+			$this->errores[] = 'No se cargaron todas las imágenes de la sección de galeria.';
 		}
 		
 		

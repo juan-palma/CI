@@ -10,8 +10,8 @@ class Portafolio extends CI_Controller {
 		$encontrar = array("\r\n", "\n", "\r");
 		$remplazar = '';
 		
-
-
+		
+		 
 		//Consulta - GENERAL
 		$this->basic_modal->clean();
 		$this->basic_modal->tabla = 'contenido';
@@ -23,74 +23,49 @@ class Portafolio extends CI_Controller {
 		$clean = (isset($consulta) && property_exists($consulta, 'contenido_info')) ? str_replace($encontrar, $remplazar, $consulta->contenido_info) : '';
 		$cleanObjecDB = ( is_object(json_decode($clean)) ) ? json_decode($clean) : new stdClass();
 		$data['generalDB'] = $cleanObjecDB;
-
-
 		
-		//Consulta - HOME-SERVICIOS
+		
+		
+		
+		//Consulta - FOOTER-ALIANZAS
 		$this->basic_modal->clean();
 		$this->basic_modal->tabla = 'contenido';
 		$this->basic_modal->campos = 'contenido_info';
-		$this->basic_modal->condicion = array( "contenido_pagina" => 'home', "contenido_seccion" => 'servicios' );
-		
-		$isServicio = $this->basic_modal->genericSelect('sistema');
-		$consulta = (is_array($isServicio) && count($isServicio) > 0) ? $isServicio[0] : '';
-		$nuevoValor = (isset($consulta) && property_exists($consulta, 'contenido_info')) ? str_replace($encontrar, $remplazar, $consulta->contenido_info) : '';
-		$valoresDB = ( is_object(json_decode($nuevoValor)) ) ? json_decode($nuevoValor) : new stdClass();
-		$data['serviciosDB'] = $valoresDB;
-		
-		
-
-/*
-		//Consulta - HOME-PORTAFOLIOS
-		$this->basic_modal->clean();
-		$this->basic_modal->tabla = 'contenido';
-		$this->basic_modal->campos = 'contenido_info';
-		$this->basic_modal->condicion = array( "contenido_pagina" => 'home', "contenido_seccion" => 'portafolios' );
+		$this->basic_modal->condicion = array( "contenido_pagina" => 'footer', "contenido_seccion" => 'alianzas' );
 		
 		$respuesta = $this->basic_modal->genericSelect('sistema');
 		$consulta = (is_array($respuesta) && count($respuesta) > 0) ? $respuesta[0] : '';
 		$clean = (isset($consulta) && property_exists($consulta, 'contenido_info')) ? str_replace($encontrar, $remplazar, $consulta->contenido_info) : '';
-		$cleanObjecDB = ( is_object(json_decode($clean)) ) ? json_decode($clean) : new stdClass();
-		$data['portafoliosDB'] = $cleanObjecDB;
-*/
+		$cleanAlianzasDB = ( is_object(json_decode($clean)) ) ? json_decode($clean) : new stdClass();
+		$data['alianzasDB'] = $cleanAlianzasDB;
 		
 		
 		
 		
-		$encontrar = array("\r\n", "\n", "\r");
-		$remplazar = '';		
-		
-		
-		//Consulta - Registro - Portafolios
+		//Consulta - portafolios general
 		$this->basic_modal->clean();
 		$this->basic_modal->tabla = 'contenido';
-		$this->basic_modal->campos = 'id_contenido, contenido_info';
-		$this->basic_modal->condicion = array( "contenido_pagina" => 'portafolios', "contenido_seccion" => 'registro' );
+		$this->basic_modal->campos = 'contenido_info';
+		$this->basic_modal->condicion = array( "contenido_pagina" => 'portafolio', "contenido_seccion" => 'general' );
 		
-		$respuesta = $this->basic_modal->genericSelect('sistema');
-		$union = [];
-		if(is_array($respuesta) && count($respuesta) > 0){
-			foreach($respuesta as $i=>$r){
-				$clean = (isset($r) && property_exists($r, 'contenido_info')) ? str_replace($encontrar, $remplazar, $r->contenido_info) : '';
-				$cleanObjecDB = ( is_object(json_decode($clean)) ) ? json_decode($clean) : new stdClass();
-				$cleanObjecDB->id = $r->id_contenido;
-				$union[$i] = $cleanObjecDB;
-			}
-		}
-		$data['registroDB'] = $union;
+		$isPortafolio = $this->basic_modal->genericSelect('sistema');
+		$consulta = (is_array($isPortafolio) && count($isPortafolio) > 0) ? $isPortafolio[0] : '';
+		$nuevoValor = (isset($consulta) && property_exists($consulta, 'contenido_info')) ? str_replace($encontrar, $remplazar, $consulta->contenido_info) : '';
+		$valoresDB = ( is_object(json_decode($nuevoValor)) ) ? json_decode($nuevoValor) : new stdClass();
+		$data['portafoliosDB'] = $valoresDB;
 		
 		
 		
 		
-		
-		$data['titulo'] = "Portafolio";
-		$data['actual'] = "portafolio";
-		$data['desc'] = "Descripción Portafolio INMOTION";
-		
+		$data['titulo'] = "Portafolios | CI";
+		$data['actual'] = "portafolio_general";
+		$data['desc'] = "Nuestro portafolios de trabajo | CI";
 		
 		$this->load->view('public/head', $data);
-		$this->load->view('public/portafolio', $data);
+		$this->load->view('public/portafolio_general', $data);
 		$this->load->view('public/footer', $data);
+		
+		
 	}
 	
 	
@@ -114,28 +89,31 @@ class Portafolio extends CI_Controller {
 		$clean = (isset($consulta) && property_exists($consulta, 'contenido_info')) ? str_replace($encontrar, $remplazar, $consulta->contenido_info) : '';
 		$cleanObjecDB = ( is_object(json_decode($clean)) ) ? json_decode($clean) : new stdClass();
 		$data['generalDB'] = $cleanObjecDB;
-
-
 		
-		//Consulta - HOME-SERVICIOS
+		
+		
+		
+		//Consulta - FOOTER-ALIANZAS
 		$this->basic_modal->clean();
 		$this->basic_modal->tabla = 'contenido';
 		$this->basic_modal->campos = 'contenido_info';
-		$this->basic_modal->condicion = array( "contenido_pagina" => 'home', "contenido_seccion" => 'servicios' );
+		$this->basic_modal->condicion = array( "contenido_pagina" => 'footer', "contenido_seccion" => 'alianzas' );
 		
-		$isServicio = $this->basic_modal->genericSelect('sistema');
-		$consulta = (is_array($isServicio) && count($isServicio) > 0) ? $isServicio[0] : '';
-		$nuevoValor = (isset($consulta) && property_exists($consulta, 'contenido_info')) ? str_replace($encontrar, $remplazar, $consulta->contenido_info) : '';
-		$valoresDB = ( is_object(json_decode($nuevoValor)) ) ? json_decode($nuevoValor) : new stdClass();
-		$data['serviciosDB'] = $valoresDB;
-		
-		
+		$respuesta = $this->basic_modal->genericSelect('sistema');
+		$consulta = (is_array($respuesta) && count($respuesta) > 0) ? $respuesta[0] : '';
+		$clean = (isset($consulta) && property_exists($consulta, 'contenido_info')) ? str_replace($encontrar, $remplazar, $consulta->contenido_info) : '';
+		$cleanAlianzasDB = ( is_object(json_decode($clean)) ) ? json_decode($clean) : new stdClass();
+		$data['alianzasDB'] = $cleanAlianzasDB;
 		
 		
+		
+		
+				
+
 		
 		$data['titulo'] = "Portafolio Articulo";
 		$data['actual'] = "portafolio_in";
-		$data['desc'] = "Descripción Portafolio Articulo INMOTION";
+		$data['desc'] = "Nuestro portafolios de trabajo | CI";
 		
 		
 		
@@ -143,7 +121,7 @@ class Portafolio extends CI_Controller {
 		$this->basic_modal->clean();
 		$this->basic_modal->tabla = 'contenido';
 		$this->basic_modal->campos = 'id_contenido, contenido_info';
-		$this->basic_modal->like = array("contenido_info" => '"enlace":"'.$peticion.'"');
+		$this->basic_modal->like = array("contenido_info" => '"url":"'.$peticion.'"');
 		$this->basic_modal->condicion = array( "contenido_pagina" => "portafolios",  "contenido_seccion" => "registro");
 		
 		$respuesta2 = $this->basic_modal->genericSelect('sistema');

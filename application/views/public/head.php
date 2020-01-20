@@ -142,7 +142,7 @@ if(property_exists($generalDB, "youtube") && $generalDB->youtube !== ''){
 				if(property_exists($generalDB, "color_principal") && $generalDB->color_principal !== ''){
 					echo('.colDin1{color:'.$generalDB->color_principal.' !important; fill:'.$generalDB->color_principal.' !important;}');
 					echo('.colDin1-back{background-color:'.$generalDB->color_principal.' !important;}');
-					echo('#menu .red svg{color:'.$generalDB->color_principal.' !important; fill:'.$generalDB->color_principal.' !important;}');
+					//echo('#menu .red svg{color:'.$generalDB->color_principal.' !important; fill:'.$generalDB->color_principal.' !important;}');
 					echo(':root{ --colorPrincipal: '.$generalDB->color_principal.' !important; }');
 				}
 				if(property_exists($generalDB, "color_contraste") && $generalDB->color_contraste !== ''){
@@ -246,7 +246,7 @@ if(property_exists($generalDB, "youtube") && $generalDB->youtube !== ''){
 		<nav id="nav">
 			<div id="logo"><img src="<?php echo(base_url('assets/public/img/logo_ci@2x.png')); ?>"></img></div>
 			<div id="menus">
-				<a href="<?php echo(base_url('servicio')); ?>"><div class="menu">servicios</div></a>
+				<a href="<?php echo(base_url('servicios')); ?>"><div class="menu">servicios</div></a>
 				<a href="<?php echo(base_url('portafolio')); ?>"><div class="menu">portafolio</div></a>
 				<a href="<?php echo(base_url('clientes')); ?>"><div class="menu">clientes</div></a>
 				<a href="<?php echo(base_url('postulate')); ?>"><div class="menu">postulate</div></a>

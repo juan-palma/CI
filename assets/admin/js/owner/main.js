@@ -689,51 +689,31 @@ function portafolios_inicio(){
 			
 			var contenedor = $$('#portafolios .contenedor');
 			//remplazar los input por imagenes cargadas el fondo de los registros
-			if(j.valores.base.video_portada[0] !== 'nop' && j.valores.base.video_portada[0] !== ''){
-				removeInputIMG(contenedor[0], '.video_portada.cleanBox', 'imgBlock', j.valores.base.video_portada[0],  'video_portada', 'portafolios', 'base', 'portafolios/registros');
-				var hiden = $$('.video_portada.cleanBox input[type="hidden"]');
+			if(j.valores.base.titulo_fondo[0] !== 'nop' && j.valores.base.titulo_fondo[0] !== ''){
+				removeInputIMG(contenedor[0], '.titulo_fondo.cleanBox', 'imgBlock', j.valores.base.titulo_fondo[0],  'titulo_fondo', 'portafolios', 'base', 'portafolios/registros');
+				var hiden = $$('.titulo_fondo.cleanBox input[type="hidden"]');
 				hiden[0].name = hiden[0].getProperty('data-conteovalin') + '0' + hiden[0].getProperty('data-conteovalfin');
 			}
 			
-			//remplazar los input por imagenes cargadas el fondo de los registros
-			if(j.valores.registro.fondo[0] !== 'nop' && j.valores.registro.fondo[0] !== ''){
-				removeInputIMG(contenedor[0], '.registro_fondo.cleanBox', 'imgBlock', j.valores.registro.fondo[0],  'fondo', 'portafolios', 'registro', 'portafolios/registros');
-				var hiden = $$('.registro_fondo.cleanBox input[type="hidden"]');
-				hiden[0].name = hiden[0].getProperty('data-conteovalin') + '0' + hiden[0].getProperty('data-conteovalfin');
-			}
 			
 			//remplazar los input por imagenes cargadas en Registros Bloques
 			var secciones = $$('#portafolios .registro');
 			secciones.each(function(s, i){
-				if(j.valores.bloque.fondo[i] !== 'nop' && j.valores.bloque.fondo[i] !== ''){
-					removeInputIMG(s, '.bloque_fondo .cleanBox', 'imgBlock', j.valores.bloque.fondo[i],  'fondo', 'portafolios', 'bloque', 'portafolios/registros');
+				if(j.valores.bloque.imagen[i] !== 'nop' && j.valores.bloque.imagen[i] !== ''){
+					removeInputIMG(s, '.bloque_imagen .cleanBox', 'imgBlock', j.valores.bloque.imagen[i],  'imagen', 'portafolios', 'bloque', 'portafolios/registros');
 				}
 			});
 			reconteo('#portafolios .registro', []);
-			
-			
-			
-			//remplazar los input por imagenes cargadas en informes
-			var secciones = $$('#informes .registro');
-			secciones.each(function(s, i){
-				if(j.valores.informe.icono[i] !== 'nop' && j.valores.informe.icono[i] !== ''){
-					removeInputIMG(s, '.informe_icono .cleanBox', 'imgBlock', j.valores.informe.icono[i],  'icono', 'informes', 'informe', 'portafolios/registros');
-				}
-			});
-			reconteo('#informes .registro', []);
-			
+						
 			
 			//remplazar los input por imagenes cargadas en Clientes
-			var secciones = $$('#clientes .registro');
+			var secciones = $$('#galeria .registro');
 			secciones.each(function(s, i){
-				if(j.valores.cliente.logo[i] !== 'nop' && j.valores.cliente.logo[i] !== ''){
-					removeInputIMG(s, '.cliente_logo.cleanBox', 'imgBlock', j.valores.cliente.logo[i],  'logo', 'clientes', 'cliente', 'portafolios/registros');
-				}
-				if(j.valores.cliente.fondo[i] !== 'nop' && j.valores.cliente.fondo[i] !== ''){
-					removeInputIMG(s, '.cliente_fondo.cleanBox', 'imgBlock', j.valores.cliente.fondo[i],  'fondo', 'clientes', 'cliente', 'portafolios/registros');
+				if(j.valores.galeria.foto[i] !== 'nop' && j.valores.galeria.foto[i] !== ''){
+					removeInputIMG(s, '.galeria_foto.cleanBox', 'imgBlock', j.valores.galeria.foto[i],  'foto', 'galeria', 'foto', 'portafolios/registros');
 				}
 			});
-			reconteo('#clientes .registro', []);
+			reconteo('#galeria .registro', []);
 			
 			
 		}
@@ -776,35 +756,17 @@ function portafolios_inicio(){
 
 
 
-// 	Codigo para iniciar la seccion informes
-	activeImgBbox('informes');
-	document.id('informe_clonemas').addEvent('click', function(){
-		btnMas('formInforme', document.id('informes').getElement('.boxRepeat'), 'informes',  {});
-	});
-	
-	var allBTNDel = $$('#informes .registro');
-	allBTNDel.each(function(b){
-		var btn_menos = b.getElement(".menos");
-		btn_menos.addEvent('click', function(){
-			btnMenos.call(b, 'informes');
-		});
-	});
-	
-
-
-
-
 // 	Codigo para iniciar la seccion CLIENTES	
-	activeImgBbox('clientes');
-	document.id('clientes_clonemas').addEvent('click', function(){
-		btnMas('logo', document.id('clientes').getElement('.boxRepeat'), 'clientes', {});
+	activeImgBbox('galeria');
+	document.id('galeria_clonemas').addEvent('click', function(){
+		btnMas('foto', document.id('galeria').getElement('.boxRepeat'), 'galeria', {});
 	});
 	
-	var allBTNDel = $$('#clientes .registro');
+	var allBTNDel = $$('#galeria .registro');
 	allBTNDel.each(function(b){
 		var btn_menos = b.getElement(".menos");
 		btn_menos.addEvent('click', function(){
-			btnMenos.call(b, 'clientes');
+			btnMenos.call(b, 'galeria');
 		});
 	});
 
@@ -852,20 +814,32 @@ function servicios_inicio(){
 			
 			var contenedor = $$('#servicios .contenedor');
 			//remplazar los input por imagenes cargadas el fondo de los registros
+			if(j.valores.base.titulo_fondo[0] !== 'nop' && j.valores.base.titulo_fondo[0] !== ''){
+				removeInputIMG(contenedor[0], '.titulo_fondo.cleanBox', 'imgBlock', j.valores.base.titulo_fondo[0],  'titulo_fondo', 'servicios', 'base', 'servicios/registros');
+				var hiden = $$('.titulo_fondo.cleanBox input[type="hidden"]');
+				hiden[0].name = hiden[0].getProperty('data-conteovalin') + '0' + hiden[0].getProperty('data-conteovalfin');
+			}
+			
+/*
+			var contenedor = $$('#servicios .contenedor');
+			//remplazar los input por imagenes cargadas el fondo de los registros
 			if(j.valores.base.video_portada[0] !== 'nop' && j.valores.base.video_portada[0] !== ''){
 				removeInputIMG(contenedor[0], '.video_portada.cleanBox', 'imgBlock', j.valores.base.video_portada[0],  'video_portada', 'servicios', 'base', 'servicios/registros');
 				var hiden = $$('.video_portada.cleanBox input[type="hidden"]');
 				hiden[0].name = hiden[0].getProperty('data-conteovalin') + '0' + hiden[0].getProperty('data-conteovalfin');
 			}
+*/
 			
 			
 			//remplazar los input por imagenes cargadas en Registros Bloques
+/*
 			var secciones = $$('#servicios .registro');
 			secciones.each(function(s, i){
-				if(j.valores.bloque.fondo[i] !== 'nop' && j.valores.bloque.fondo[i] !== ''){
-					removeInputIMG(s, '.bloque_fondo .cleanBox', 'imgBlock', j.valores.bloque.fondo[i],  'fondo', 'servicios', 'bloque', 'servicios/registros');
+				if(j.valores.bloque.imagen[i] !== 'nop' && j.valores.bloque.imagen[i] !== ''){
+					removeInputIMG(s, '.bloque_imagen .cleanBox', 'imgBlock', j.valores.bloque.imagen[i],  'imagen', 'servicios', 'bloque', 'servicios/registros');
 				}
 			});
+*/
 			reconteo('#servicios .registro', []);
 			
 			
@@ -949,9 +923,174 @@ function servicios_inicio(){
 
 
 
+// Pagina Portafolios General
+function portafolio_general_inicio(){
+	console.info('se ejecutoa portafolio general');
+	//Desactivar el formulario para cobtrolar el envio
+	document.id('formulario').addEvent('submit', function(e){
+		e.preventDefault();
+		e.stop();
+		
+		validar();
+	});	
+	
+	
+	
+	//funciones para validar y enviar el formulario
+	//validar
+	function validar(){
+		
+		function fin(j){
+			//remplazar los input por imagenes cargadas en vacantes
+			
+			var contenedor = $$('#portafolios_g .contenedor');
+			//remplazar los input por imagenes cargadas el fondo de los registros
+			if(j.valores.base.fondo_titulo[0] !== 'nop' && j.valores.base.fondo_titulo[0] !== ''){
+				removeInputIMG(contenedor[0], '.fondo_titulo.cleanBox', 'imgBlock', j.valores.base.fondo_titulo[0],  'fondo_titulo', 'portafolio', 'base', 'portafolios');
+				var hiden = $$('.fondo_titulo.cleanBox input[type="hidden"]');
+				hiden[0].name = hiden[0].getProperty('data-conteovalin') + '0' + hiden[0].getProperty('data-conteovalfin');
+			}
+			
+			
+			var secciones = $$('#portafolios_g .registro');
+			secciones.each(function(s, i){
+				if(j.valores.portafolio.foto[i] !== 'nop' && j.valores.portafolio.foto[i] !== ''){
+					removeInputIMG(s, '.portafolio_foto .cleanBox', 'imgBlock', j.valores.portafolio.foto[i],  'foto', 'portafolios', 'portafolio', 'portafolios');
+				}
+			});
+			reconteo('#portafolios_g .registro', []);
+			
+		}
+		
+		function error(j){
+			
+		}
+		
+		var datos = new FormData(document.id('formulario'));
+		db_conect(window.location.pathname+'/do_upload', datos, fin, error);
+		
+	}
+	
+	
+	
+	
+	
+// 	Codigo para iniciar la seccion  portafolio general
+	activeImgBbox('portafolios_g');
+	document.id('portafolio_clonemas').addEvent('click', function(){
+		btnMas('formPortafolio', document.id('portafolios_g').getElement('.boxRepeat'), 'portafolios_g', {});
+	});
+	
+	var allBTNDel = $$('#portafolios_g .registro');
+	allBTNDel.each(function(b){
+		var btn_menos = b.getElement(".menos");
+		btn_menos.addEvent('click', function(){
+			btnMenos.call(b, 'portafolios');
+		});
+	});
+	
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+// Pagina servicios General
+function servicio_general_inicio(){
+	console.info('se ejecutoa servicio general');
+	//Desactivar el formulario para cobtrolar el envio
+	document.id('formulario').addEvent('submit', function(e){
+		e.preventDefault();
+		e.stop();
+		
+		validar();
+	});	
+	
+	
+	
+	//funciones para validar y enviar el formulario
+	//validar
+	function validar(){
+		
+		function fin(j){
+			//remplazar los input por imagenes cargadas en vacantes
+			
+			var contenedor = $$('#servicios_g .contenedor');
+			//remplazar los input por imagenes cargadas el fondo de los registros
+			if(j.valores.base.fondo_titulo[0] !== 'nop' && j.valores.base.fondo_titulo[0] !== ''){
+				removeInputIMG(contenedor[0], '.fondo_titulo.cleanBox', 'imgBlock', j.valores.base.fondo_titulo[0],  'fondo_titulo', 'servicio', 'base', 'servicios');
+				var hiden = $$('.fondo_titulo.cleanBox input[type="hidden"]');
+				hiden[0].name = hiden[0].getProperty('data-conteovalin') + '0' + hiden[0].getProperty('data-conteovalfin');
+			}
+			
+			
+			var secciones = $$('#servicios_g .registro');
+			secciones.each(function(s, i){
+				if(j.valores.servicio.foto[i] !== 'nop' && j.valores.servicio.foto[i] !== ''){
+					removeInputIMG(s, '.servicio_foto .cleanBox', 'imgBlock', j.valores.servicio.foto[i],  'foto', 'servicios', 'servicio', 'servicios');
+				}
+				if(j.valores.servicio.icono[i] !== 'nop' && j.valores.servicio.icono[i] !== ''){
+					removeInputIMG(s, '.servicio_icono .cleanBox', 'imgBlock', j.valores.servicio.icono[i],  'icono', 'servicios', 'servicio', 'servicios');
+				}
+			});
+			reconteo('#servicios_g .registro', []);
+			
+		}
+		
+		function error(j){
+			
+		}
+		
+		var datos = new FormData(document.id('formulario'));
+		db_conect(window.location.pathname+'/do_upload', datos, fin, error);
+		
+	}
+	
+	
+	
+	
+	
+// 	Codigo para iniciar la seccion  servicio general
+	activeImgBbox('servicios_g');
+	document.id('servicio_clonemas').addEvent('click', function(){
+		btnMas('formServicio', document.id('servicios_g').getElement('.boxRepeat'), 'servicios_g', {});
+	});
+	
+	var allBTNDel = $$('#servicios_g .registro');
+	allBTNDel.each(function(b){
+		var btn_menos = b.getElement(".menos");
+		btn_menos.addEvent('click', function(){
+			btnMenos.call(b, 'servicios');
+		});
+	});
+	
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 // Pagina Vacantes
+/*
 function vacantes_inicio(){
 	//Desactivar el formulario para cobtrolar el envio
 	document.id('formulario').addEvent('submit', function(e){
@@ -1019,6 +1158,7 @@ function vacantes_inicio(){
 
 
 }
+*/
 
 
 
@@ -1068,8 +1208,12 @@ window.addEvent('domready', function(){
 					runListaReg('servicios');
 				break;
 				
-				case 'bolsa_trabajo':
-					vacantes_inicio();
+				case 'portafolios_general':
+					portafolio_general_inicio();
+				break;
+				
+				case 'servicios_general':
+					servicio_general_inicio();
 				break;
 			}
 		}

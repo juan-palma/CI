@@ -602,6 +602,40 @@ function footer_run(){
 
 
 
+// ***** Portafolio *****//
+function portafolio_in(){	
+	
+	var sliderPortafolio = tns({
+		"container": '#portafolios .slideItems',
+		//"autoHeight": true,
+		"items": 1,
+		"swipeAngle": false,
+		"speed": 400
+	});
+	
+	
+	
+		
+/*
+	var t = setInterval(function(){
+		sliderCliente.goTo('next');
+	}, 1500);
+*/
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //::::::::::::::::::::::::
 // ***** Portafolio *****//
@@ -665,10 +699,12 @@ function portafolio_inicio(){
 
 //::::::::::::::::::::::::
 // ***** Servicios *****//
+/*
 function servicio_inicio(){
 	//videoControl("bgvid", "#servicios .btnPlay",  "#servicios .btnPlayPause");
 	//videoControl();
 }
+*/
 
 
 
@@ -980,7 +1016,7 @@ window.addEvent('domready', function(){
 				break;
 				
 				case 'portafolio_in':
-					//portafolio_in_inicio();
+					portafolio_in();
 				break;
 				
 				case 'servicios_in':

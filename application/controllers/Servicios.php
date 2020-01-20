@@ -11,7 +11,7 @@ class Servicios extends CI_Controller {
 		$remplazar = '';
 		
 		
-		
+		 
 		//Consulta - GENERAL
 		$this->basic_modal->clean();
 		$this->basic_modal->tabla = 'contenido';
@@ -24,14 +24,29 @@ class Servicios extends CI_Controller {
 		$cleanObjecDB = ( is_object(json_decode($clean)) ) ? json_decode($clean) : new stdClass();
 		$data['generalDB'] = $cleanObjecDB;
 		
-
-
 		
-		//Consulta - HOME-SECCIONES
+		
+		
+		//Consulta - FOOTER-ALIANZAS
 		$this->basic_modal->clean();
 		$this->basic_modal->tabla = 'contenido';
 		$this->basic_modal->campos = 'contenido_info';
-		$this->basic_modal->condicion = array( "contenido_pagina" => 'home', "contenido_seccion" => 'servicios' );
+		$this->basic_modal->condicion = array( "contenido_pagina" => 'footer', "contenido_seccion" => 'alianzas' );
+		
+		$respuesta = $this->basic_modal->genericSelect('sistema');
+		$consulta = (is_array($respuesta) && count($respuesta) > 0) ? $respuesta[0] : '';
+		$clean = (isset($consulta) && property_exists($consulta, 'contenido_info')) ? str_replace($encontrar, $remplazar, $consulta->contenido_info) : '';
+		$cleanAlianzasDB = ( is_object(json_decode($clean)) ) ? json_decode($clean) : new stdClass();
+		$data['alianzasDB'] = $cleanAlianzasDB;
+		
+		
+		
+		
+		//Consulta - servicios general
+		$this->basic_modal->clean();
+		$this->basic_modal->tabla = 'contenido';
+		$this->basic_modal->campos = 'contenido_info';
+		$this->basic_modal->condicion = array( "contenido_pagina" => 'servicio', "contenido_seccion" => 'general' );
 		
 		$isServicio = $this->basic_modal->genericSelect('sistema');
 		$consulta = (is_array($isServicio) && count($isServicio) > 0) ? $isServicio[0] : '';
@@ -39,16 +54,15 @@ class Servicios extends CI_Controller {
 		$valoresDB = ( is_object(json_decode($nuevoValor)) ) ? json_decode($nuevoValor) : new stdClass();
 		$data['serviciosDB'] = $valoresDB;
 		
+				
 		
 		
-		
-		
-		$data['titulo'] = "Servicios";
-		$data['actual'] = "servicios";
-		$data['desc'] = "Descripción Servicios INMOTION";
+		$data['titulo'] = "Servicios | CI";
+		$data['actual'] = "servicio_general";
+		$data['desc'] = "Nuestros servicios | CI";
 		
 		$this->load->view('public/head', $data);
-		$this->load->view('public/servicios', $data);
+		$this->load->view('public/servicio_general', $data);
 		$this->load->view('public/footer', $data);
 	}
 	
@@ -58,8 +72,9 @@ class Servicios extends CI_Controller {
 		$encontrar = array("\r\n", "\n", "\r");
 		$remplazar = '';
 		
-		
-		
+
+
+
 		//Consulta - GENERAL
 		$this->basic_modal->clean();
 		$this->basic_modal->tabla = 'contenido';
@@ -72,34 +87,34 @@ class Servicios extends CI_Controller {
 		$cleanObjecDB = ( is_object(json_decode($clean)) ) ? json_decode($clean) : new stdClass();
 		$data['generalDB'] = $cleanObjecDB;
 		
-
-
 		
-		//Consulta - HOME-SECCIONES
+		
+		
+		//Consulta - FOOTER-ALIANZAS
 		$this->basic_modal->clean();
 		$this->basic_modal->tabla = 'contenido';
 		$this->basic_modal->campos = 'contenido_info';
-		$this->basic_modal->condicion = array( "contenido_pagina" => 'home', "contenido_seccion" => 'servicios' );
+		$this->basic_modal->condicion = array( "contenido_pagina" => 'footer', "contenido_seccion" => 'alianzas' );
 		
-		$isServicio = $this->basic_modal->genericSelect('sistema');
-		$consulta = (is_array($isServicio) && count($isServicio) > 0) ? $isServicio[0] : '';
-		$nuevoValor = (isset($consulta) && property_exists($consulta, 'contenido_info')) ? str_replace($encontrar, $remplazar, $consulta->contenido_info) : '';
-		$valoresDB = ( is_object(json_decode($nuevoValor)) ) ? json_decode($nuevoValor) : new stdClass();
-		$data['serviciosDB'] = $valoresDB;
+		$respuesta = $this->basic_modal->genericSelect('sistema');
+		$consulta = (is_array($respuesta) && count($respuesta) > 0) ? $respuesta[0] : '';
+		$clean = (isset($consulta) && property_exists($consulta, 'contenido_info')) ? str_replace($encontrar, $remplazar, $consulta->contenido_info) : '';
+		$cleanAlianzasDB = ( is_object(json_decode($clean)) ) ? json_decode($clean) : new stdClass();
+		$data['alianzasDB'] = $cleanAlianzasDB;
 		
 		
 		
 		
 		$data['titulo'] = "Servicios Articulo";
 		$data['actual'] = "servicios_in";
-		$data['desc'] = "Descripción Servicios Articulo INMOTION";
+		$data['desc'] = "Nuestro servicios de trabajo | CI";
 		
 		
 		//Consulta - Valor - Servicios
 		$this->basic_modal->clean();
 		$this->basic_modal->tabla = 'contenido';
 		$this->basic_modal->campos = 'id_contenido, contenido_info';
-		$this->basic_modal->like = array("contenido_info" => '"enlace":"'.$peticion.'"');
+		$this->basic_modal->like = array("contenido_info" => '"url":"'.$peticion.'"');
 		$this->basic_modal->condicion = array( "contenido_pagina" => "servicios",  "contenido_seccion" => "registro");
 		
 		$respuesta2 = $this->basic_modal->genericSelect('sistema');
