@@ -196,7 +196,7 @@ $data_servicio_mensaje  =  array (
 			<!-- sección HOME ALIANZAS -->
 			<div id="footer_box_terminos" class="mainbox">
 				<div class="logoFooter">
-					<img src="<?php echo( base_url('assets/public/img/logo_ci_transparente@2x') ); ?>" />
+					<img src="<?php echo( base_url('assets/public/img/logo_ci_transparente@2x.png') ); ?>" />
 				</div>
 				<div class="footer_terminos">
 					<span class="copyright">© Copyright 2019 </span>
