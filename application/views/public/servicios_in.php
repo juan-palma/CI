@@ -2,7 +2,7 @@
 
 <!-- Pagina Servicios TITULO -->
 <div class="mainbox bl1" style="background-image: url(<?php echo(base_url( 'assets/public/img/servicios/registros/'.@$articuloDB->titulo_fondo )); ?> )">
-	<h2 class="titulo">&nbsp;<?php echo(@$articuloDB->titulo_general); ?></h2>
+	<h2 class="titulo">&nbsp;&nbsp;<?php echo(@$articuloDB->titulo_general); ?></h2>
 	<h1 class="nombre">&nbsp;<?php echo(@$articuloDB->nombre); ?></h1>
 </div>
 
@@ -10,7 +10,7 @@
 
 <!-- Pagina Servicios INTRO -->
 <div class="mainbox bl2">
-	<p class="intro">&nbsp;<?php echo(@$articuloDB->intro); ?></p>
+	<p class="intro"><?php echo(@$articuloDB->intro); ?></p>
 </div>
 
 
@@ -18,13 +18,13 @@
 
 <!-- Pagina Servicios INTRO -->
 <div class="mainbox bl3">
-	<div class="galeria">
+	<div id="galeria" class="galeria">
 		<div class="slideMain">
 			<main class="slideItems">
 				<?php
 				foreach ($articuloDB->galeria as $i=>$v) {
 					?>
-					<article class="slideLine" style="background-image: url(<?php echo( base_url('assets/public/img/portafolios/registros/'.$v->foto) ); ?>)">
+					<article class="slideLine" style="background-image: url(<?php echo( base_url('assets/public/img/servicios/registros/'.$v->foto) ); ?>)">
 	<!-- 					<img src="<?php echo( base_url('assets/public/img/portafolios/registros/'.$v->foto) ); ?>"></img> -->
 					</article>
 					<?php
@@ -57,5 +57,5 @@
 
 <!-- Pagina Servicios INTRO -->
 <div class="mainbox bl4">
-	<p class="intro">&nbsp;<?php echo(@$articuloDB->pie); ?></p>
+	<p class="pie">&nbsp;<?php echo(@$articuloDB->pie); ?></p>
 </div>

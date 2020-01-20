@@ -246,9 +246,10 @@ if(property_exists($generalDB, "youtube") && $generalDB->youtube !== ''){
 		<nav id="nav">
 			<div id="logo"><img src="<?php echo(base_url('assets/public/img/logo_ci@2x.png')); ?>"></img></div>
 			<div id="menus">
+				<a id="btnMenuHome" href="<?php echo(base_url()); ?>"><div class="menu">Home</div></a>
 				<a href="<?php echo(base_url('servicios')); ?>"><div class="menu">servicios</div></a>
 				<a href="<?php echo(base_url('portafolio')); ?>"><div class="menu">portafolio</div></a>
-				<a href="<?php echo(base_url('clientes')); ?>"><div class="menu">clientes</div></a>
+<!-- 				<a id="btnMenuCliente" href="javascript:void(0);"><div class="menu">clientes</div></a> -->
 				<a href="<?php echo(base_url('postulate')); ?>"><div class="menu">postulate</div></a>
 			</div>
 			<div id="dir">

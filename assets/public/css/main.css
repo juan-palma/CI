@@ -766,6 +766,9 @@ input[type="button"]:hover{
 		#menus a .menu:hover{
 			color: var(--colorPrincipal);
 		}
+		#menus a#btnMenuHome{
+			
+		}
 	#dir{
 		display: flex;
 		flex-direction: column;
@@ -778,6 +781,7 @@ input[type="button"]:hover{
 		}
 		#dir .mail a{
 			font-size: 70%;
+			color: white;
 			
 			-webkit-transition: all 0.2s ease-in-out;
 			-moz-transition: all 0.2s ease-in-out;
@@ -853,12 +857,18 @@ a .btnVerMas:hover{
 body#home{
 	
 }
+	body#home #menus a#btnMenuHome{
+		display: none
+	}
 	body#home #dir,
 	body#home #dir a{
 		color: #AE9A69;
 	}
-	body#home #dir .mail a:hover{
+	body#home #dir .mail a{
 		color: var(--colorPrincipal);
+	}
+	body#home #dir .mail a:hover{
+		color: white;
 	}
 	body#home .redes .red svg{
 		fill: var(--colorPrincipal);
@@ -1910,7 +1920,8 @@ body#servicios_in .mainbox.bl1{
 	background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-    justify-content: flex-end;
+    justify-content: center;
+    align-items: flex-start;
     padding: 2rem;
 }
 	body#servicios_in .mainbox.bl1 .titulo{
@@ -1947,33 +1958,85 @@ body#servicios_in .mainbox.bl2{
 
 
 /* Pagina Portafolios Interna - GALERIA */
-body#servicios_in .mainbox.bl4{
+body#servicios_in .mainbox.bl3{
 	text-align: center;
 	padding: 0px;
-	height: 38vw;
-	min-height: 20vh;
+	height: auto;
+	min-height: inherit;
+	flex-direction: row;
+	align-items: stretch;
 }
-	body#servicios_in .mainbox.bl4 .slideMain{
-		width: 100%;
-		height: 100%;
-		position: relative;
+	body#servicios_in .mainbox.bl3 .galeria,
+	body#servicios_in .mainbox.bl3 .bloques{
+		flex: 0 0 50%;
+		max-width: 50%;
 	}
-		body#servicios_in .mainbox.bl4 .slideMain .slideItems{
-/* 				width: 100%; */
+		body#servicios_in .mainbox.bl3 .slideMain{
+			width: 100%;
 			height: 100%;
-			display: flex;
+			position: relative;
 		}
-			body#servicios_in .mainbox.bl4 .slideMain .slideItems article{
-				background-size: cover;
-/* 				    width: 100%; */
-			    height: 100%;
-			    background-position: center;
-			    display: flex;
-				flex-direction: column;
-				align-items: center;
-				padding: 10rem 5rem;
-				justify-content: center;
+			body#servicios_in .mainbox.bl3 .slideMain .slideItems{
+	/* 				width: 100%; */
+				height: 100%;
+				display: flex;
 			}
+				body#servicios_in .mainbox.bl3 .slideMain .slideItems article{
+					background-size: cover;
+	/* 				    width: 100%; */
+				    height: 100%;
+				    background-position: center;
+				    display: flex;
+					flex-direction: column;
+					align-items: center;
+					padding: 0px;
+					justify-content: center;
+				}
+				
+	body#servicios_in .mainbox.bl3 .bloques{
+		background-color: #F8F8F8;
+		padding: 3rem 4rem;
+	}
+		body#servicios_in .mainbox.bl3 .bloques .item{
+			padding-bottom: 5rem;
+			position: relative;
+		}
+		body#servicios_in .mainbox.bl3 .bloques .item:after{
+			content: " ";
+			width: 14px;
+			height: 14px;
+			position: absolute;
+			left: 50%;
+			transform: translateX(-50%) translateY(50%);
+			top: auto;
+			bottom: 2.5rem;
+			background-color: var(--colorPrincipal);
+		}
+			body#servicios_in .mainbox.bl3 .bloques .item .info{
+				
+			}
+				body#servicios_in .mainbox.bl3 .bloques .item .info .servicioTitulo,
+				body#servicios_in .mainbox.bl3 .bloques .item .info .texto{
+					margin: 0px;
+				}
+				body#servicios_in .mainbox.bl3 .bloques .item .info .servicioTitulo{
+					margin-bottom: 8px;
+					font-family: 'Montserrat ExtraBold';
+					color: var(--colorPrincipal);
+					text-transform: uppercase;
+					letter-spacing: 4px;
+				}
+				body#servicios_in .mainbox.bl3 .bloques .item .info .texto{
+					font-size: 85%;
+				}
+		body#servicios_in .mainbox.bl3 .bloques .item:last-child{
+			padding-bottom: 0rem;
+		}
+		body#servicios_in .mainbox.bl3 .bloques .item:last-child:after{
+			display: none;
+			content: none;
+		}
+		
 				
 
 body#servicios_in .tns-outer,
@@ -1981,17 +2044,110 @@ body#servicios_in .tns-ovh,
 body#servicios_in .tns-inner{
 	height: 100%;
 }
+body#servicios_in .mainbox.bl3 .tns-nav{
+	display: flex;
+    position: absolute;
+    height: 100%;
+    justify-content: center;
+    flex-direction: column;
+    padding-left: 10px;
+}
+	body#servicios_in .mainbox.bl3 .tns-nav button {
+		display: inline-block;
+		width: 13px;
+		height: 15px;
+		position: relative;
+		border-radius: 50%;
+		border: 1px solid white;
+		margin-bottom: 4px;
+		display: none;
+		
+		-webkit-transition: all 0.2s ease-in-out;
+		-moz-transition: all 0.2s ease-in-out;
+		-o-transition: all 0.2s ease-in-out;
+		-ms-transition: all 0.2s ease-in-out;
+		transition: all 0.2s ease-in-out;
+	}
+	body#servicios_in .mainbox.bl3 .tns-nav button.tns-nav-active{
+		background-color: white;
+	}
+	body#servicios_in .mainbox.bl3  .tns-controls{
+		position: absolute;
+	    right: 2rem;
+	    bottom: -15px;
+	    display: block;
+	    width: auto;
+	    outline: none;
+	}
+		body#servicios_in .mainbox.bl3 .tns-controls button{
+			position: relative;
+			visibility: hidden;
+			margin: 0px;
+			padding: 0px;
+			
+			-webkit-transition: all 0.2s ease-in-out;
+			-moz-transition: all 0.2s ease-in-out;
+			-o-transition: all 0.2s ease-in-out;
+			-ms-transition: all 0.2s ease-in-out;
+			transition: all 0.2s ease-in-out;
+		}
+		body#servicios_in .mainbox.bl3 .tns-controls button[data-controls="prev"]:after {
+		    content: '';
+		    visibility: visible;
+		    display: block;
+		    position: relative;
+		    background-color: var(--colorPrincipal);
+		    padding: 17px 27px;
+		    top: 2px;
+		    background-image: url(../img/flecha_back.svg);
+		    height: 27px;
+		    width: 44px;
+		    background-repeat: no-repeat;
+		    background-position: center center;
+		    background-size: 23px 18px;
+		}
+		body#servicios_in .mainbox.bl3 .tns-controls button[data-controls="next"]:after {
+		    content: '';
+		    visibility: visible;
+		    display: block;
+		    position: relative;
+		    background-color: var(--colorPrincipal);
+		    padding: 17px 27px;
+		    top: 2px;
+		    background-image: url(../img/flecha_next.svg);
+		    height: 27px;
+		    width: 44px;
+		    background-repeat: no-repeat;
+		    background-position: center center;
+		    background-size: 23px 18px;
+		}
+		body#servicios_in .mainbox.bl3 .tns-controls button:hover[data-controls]:after{
+			-webkit-transition: all 0.2s ease-in-out;
+			-moz-transition: all 0.2s ease-in-out;
+			-o-transition: all 0.2s ease-in-out;
+			-ms-transition: all 0.2s ease-in-out;
+			transition: all 0.2s ease-in-out;
+		}
+		body#servicios_in .mainbox.bl3 .tns-controls button:hover[data-controls]:after{
+			background-color: #000;
+		}
 
 
 
-
+/* Pagina Portafolios Interna - Pie */ 
 body#servicios_in .mainbox.bl4{
 	height: auto;
     justify-content: flex-end;
-    padding: 3rem 4rem;
+    padding: 4rem 7rem 0rem;
 }
 	body#servicios_in .mainbox.bl4 .pie{
 		text-align: center;
+	    width: 100%;
+	    height: auto;
+	    padding: 3vw;
+	    border: 2px solid var(--colorPrincipal);
+	    font-size: 140%;
+	    max-width: 750px;
 	}
 
 

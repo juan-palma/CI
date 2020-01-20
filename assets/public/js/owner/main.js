@@ -255,6 +255,25 @@ function descargar_vcard(){
 
 
 
+function header_run(){
+	var scrollFX = new Fx.Scroll(window, {
+	    offset: {
+	        x: 0,
+	        y: 0
+	    }
+	});
+	
+	document.id('btnMenuCliente').addEvent('click', function(){
+		scrollFX.toElement(document.id('clientes'), 'y');
+	});
+}
+
+
+
+
+
+
+
 
 
 
@@ -602,6 +621,11 @@ function footer_run(){
 
 
 
+
+
+
+
+
 // ***** Portafolio *****//
 function portafolio_in(){	
 	
@@ -616,6 +640,38 @@ function portafolio_in(){
 	
 	
 		
+/*
+	var t = setInterval(function(){
+		sliderCliente.goTo('next');
+	}, 1500);
+*/
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ***** Portafolio *****//
+function servicios_in(){	
+	
+	var sliderPortafolio = tns({
+		"container": '#galeria .slideItems',
+		//"autoHeight": true,
+		"items": 1,
+		"swipeAngle": false,
+		"speed": 400
+	});
+	
 /*
 	var t = setInterval(function(){
 		sliderCliente.goTo('next');
@@ -998,6 +1054,9 @@ function footer_run(){
 
 
 
+
+
+
 //--- Eventos a ejecutar cuando el DOM este listo _____________________________________________________________________________________
 window.addEvent('domready', function(){
 	if(typeof pageActual !== 'undefined'){
@@ -1020,12 +1079,9 @@ window.addEvent('domready', function(){
 				break;
 				
 				case 'servicios_in':
-					//servicios_in_inicio();
+					servicios_in();
 				break;
 				
-				case 'vacantes':
-					//vacantes();
-				break;
 			}
 		}
 	}
