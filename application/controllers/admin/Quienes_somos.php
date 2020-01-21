@@ -1,12 +1,12 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 		
-class Portafolios_general extends CI_Controller {
+class Quienes_somos extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->library('upload');
 	}
 	
-	public $varFlash = 'flashPortafoliosGeneral';
+	public $varFlash = 'flashSomos';
 	public $success = [];
 	public $error = [];
 	
@@ -18,34 +18,36 @@ class Portafolios_general extends CI_Controller {
 		isNoLogged();
 		
 		$encontrar = array("\r\n", "\n", "\r");
-		$remplazar = '';
-
-
+		$remplazar = '';				
 		
-		//Consulta - VACANTES
+		
+		//Consulta - Quienes Somos
 		$this->basic_modal->clean();
 		$this->basic_modal->tabla = 'contenido';
 		$this->basic_modal->campos = 'contenido_info';
-		$this->basic_modal->condicion = array( "contenido_pagina" => 'portafolio', "contenido_seccion" => 'general' );
+		$this->basic_modal->condicion = array( "contenido_pagina" => 'somos', "contenido_seccion" => '' );
 		
-		$isPortafolio = $this->basic_modal->genericSelect('sistema');
-		$consulta = (is_array($isPortafolio) && count($isPortafolio) > 0) ? $isPortafolio[0] : '';
+		$isInicio = $this->basic_modal->genericSelect('sistema');
+		$consulta = (is_array($isInicio) && count($isInicio) > 0) ? $isInicio[0] : '';
 		$nuevoValor = (isset($consulta) && property_exists($consulta, 'contenido_info')) ? str_replace($encontrar, $remplazar, $consulta->contenido_info) : '';
 		$valoresDB = ( is_object(json_decode($nuevoValor)) ) ? json_decode($nuevoValor) : new stdClass();
-		$data['vacantesDB'] = $valoresDB;
+		$data['somosDB'] = $valoresDB;
 		
-
-
 		
-		$data['titulo'] = "Portafolios";
-		$data['actual'] = "portafolios_general";
+		
+		$data['titulo'] = "Quienes Somos";
+		$data['actual'] = "somos";
 		$data['varFlash'] = $this->varFlash;
 		$this->load->view('admin/head2', $data);
 		$this->load->view('admin/saveControl', $data);
-		$this->load->view('admin/portafolios_general', $data);
+		$this->load->view('admin/quienes_somos', $data);
 		$this->load->view('admin/footer2', $data);
 	}
 	
+	
+		
+		
+		
 	
 	
 	private function loadFiles($s, $it, $a, $c){
@@ -60,6 +62,7 @@ class Portafolios_general extends CI_Controller {
 			if( !isset($_POST[$s.$i.'_'.$it]) ){
 				if(isset($_FILES[$s.$i.'_'.$it])){
 					if($_FILES[$s.$i.'_'.$it]['name'] !== "" && $_FILES[$s.$i.'_'.$it]['error'] == 0){
+						
 						if ( ! $this->upload->do_upload($s.$i.'_'.$it) ){
 							$todasCargaron = false;
 							$this->status = 'error';
@@ -71,6 +74,7 @@ class Portafolios_general extends CI_Controller {
 							$rutaImagenes[] = $result;
 							$this->valores[$s][$it][$i] = $result['file_name'];
 						}
+						
 					} else{
 						$rutaImagenes[]['file_name'] = '';
 						$this->valores[$s][$it][$i] = '';
@@ -98,64 +102,141 @@ class Portafolios_general extends CI_Controller {
 	public function do_upload(){
 		$this->status = 'ok';
 		
-		// vacantes
-		//::::::  Seccion para procesar informacion de vacantes :::::
-		$this->valores['vacante'] = [];
+		//::::::  Seccion para procesar informacion de Quienes Somos :::::
+		$this->valores['registro'] = [];
 		
-		$config['upload_path']		= FCPATH.'assets/public/img/vacantes';
+		$config['upload_path']		= FCPATH.'assets/public/img/somos/';
 		$config['allowed_types']	= 'gif|jpg|jpeg|png|svg';
-		$config['max_size']			= 1024;
+		$config['max_size']			= 2048;
 		$config['overwrite']		= true;
 		
-		$loadPortada = $this->loadFiles('base', 'video_portada', ['null'], $config);
 		
-		if( isset($_POST['vacantes']['vacante']) ){
-			$loadSerFoto = $this->loadFiles('vacante', 'foto', $_POST['vacantes']['vacante'], $config);
+		//subir fotos de imagenes globales de titulo
+		$loadPortada = $this->loadFiles('base', 'titulo_fondo', ['null'], $config);
+		$loadImagen1 = $this->loadFiles('base', 'texto1_imagen', ['null'], $config);
+		$loadImagen2 = $this->loadFiles('base', 'texto2_imagen', ['null'], $config);
+		
+
+		
+		//subir logos de galeria VISION
+		if( isset($_POST['galeriav']['fotov']) ){
+			$loadVision = $this->loadFiles('galeriav', 'fotov', $_POST['galeriav']['fotov'], $config);
 		} else{
-			$loadSerFoto = [];
+			$loadVision = [];
 		}
 		
+		
+		//subir logos de galeria MISION
+		if( isset($_POST['galeriam']['fotom']) ){
+			$loadMision = $this->loadFiles('galeriam', 'fotom', $_POST['galeriam']['fotom'], $config);
+		} else{
+			$loadMision = [];
+		}
+		
+		
 
 
-		if($loadSerFoto !== false){
-			//Datos de la seccion vacantes.
-			$linea_vacantes = '{"titulo_general":"'.$_POST['vacantes']['titulo'].'", "video_general":"'.$_POST['vacantes']['video'].'", "video_portada":"'.$loadPortada[0]['file_name'].'", "vacantes":[';
+		if($loadVision !== false && $loadMision !== false){
+			//Datos de la seccion Nosotros.			
+			$linea = '{"titulo_general":"'.$_POST['registros']['titulo'].'"';
+			$linea .= ', "titulo_fondo":"'.$loadPortada[0]['file_name'].'"';
+			$linea .= ', "intro":"'.$_POST['registros']['intro'].'"';
+			$linea .= ', "vision":"'.$_POST['registros']['vision'].'"';
+			$linea .= ', "mision":"'.$_POST['registros']['mision'].'"';
 			
-			if( isset($_POST['vacantes']['vacante']) ){
-				foreach ($_POST['vacantes']['vacante'] as $i=>$v) {
-					if($i !== 0){ $linea_vacantes .= ', '; }
-					$linea_vacantes .= '{"foto":"'.@$loadSerFoto[$i]['file_name'].'", "titulo":"'.$v['titulo'].'", "texto":"'.$v['texto'].'", "enlace":"'.$v['enlace'].'"}';
+			$linea .= ', "titulo1":"'.$_POST['registros']['titulo1'].'"';
+			$linea .= ', "texto1":"'.$_POST['registros']['texto1'].'"';
+			$linea .= ', "texto1_imagen":"'.$loadImagen1[0]['file_name'].'"';
+			
+			$linea .= ', "titulo2":"'.$_POST['registros']['titulo2'].'"';
+			$linea .= ', "texto2":"'.$_POST['registros']['texto2'].'"';
+			$linea .= ', "texto2_imagen":"'.$loadImagen2[0]['file_name'].'"';
+			
+			
+
+
+			$linea .= ', "galeriav":[';
+			if( isset($_POST['galeriav']['fotov']) ){
+				foreach ($_POST['galeriav']['fotov'] as $i=>$v) {
+					if($i !== 0){ $linea .= ', '; }
+					$linea .= '{"fotov":"'.@$loadVision[$i]['file_name'].'"}';
 				}
 			}
-			$linea_vacantes .= ']}';
 			
-			//consultar si existe un registro con valores para VACANTES para saber si interta nuevo registro o actualizar el actual.
-			//Consulta - VACANTES
+			
+			$linea .= '], "galeriam":[';
+			if( isset($_POST['galeriam']['fotom']) ){
+				foreach ($_POST['galeriam']['fotom'] as $i=>$v) {
+					if($i !== 0){ $linea .= ', '; }
+					$linea .= '{"fotom":"'.@$loadMision[$i]['file_name'].'"}';
+				}
+			}
+			
+			
+			$linea .= ']}';
+			
+/*
+			//consultar si existe un registro con valores para HOME-SECCIONES para saber si interta nuevo registro o actualizar el actual.
+			//Consulta - SOMOS
 			$this->basic_modal->clean();
 			$this->basic_modal->tabla = 'contenido';
 			$this->basic_modal->campos = 'id_contenido';
-			$this->basic_modal->condicion = array( "contenido_pagina" => 'vacantes', "contenido_seccion" => 'vacantes' );
+			$this->basic_modal->condicion = array( "id_contenido" => $_POST['registros']['id'] );
 			
-			$isvacante = $this->basic_modal->genericSelect('sistema');
+			$respuesta = $this->basic_modal->genericSelect('sistema');
 			
 			//Insertar los valores en la base de datos
 			//Consulta
 			$this->basic_modal->clean();
 			$this->basic_modal->tabla = 'contenido';
 			
-			if(count($isvacante) > 0){
-				//Consulta UPDATE vacantes
-				$this->basic_modal->condicion = array('id_contenido', $isvacante[0]->id_contenido);
-				$valores = array('contenido_info' => $linea_vacantes);
+			if(count($respuesta) > 0){
+				//Consulta UPDATE servicios
+				$this->basic_modal->condicion = array('id_contenido', $_POST['registros']['id']);
+				$valores = array('contenido_info' => $linea);
 				$update = $this->basic_modal->genericUpdate('sistema', $valores);
 			} else{
-				//Consulta INSERT vacantes
-				$valores = array( 'contenido_info' => $linea_vacantes, 'contenido_pagina' => 'vacantes', 'contenido_seccion' => 'vacantes', 'contenido_user' => $_POST['userID']);
+				//Consulta INSERT servicios
+				$valores = array( 'contenido_info' => $linea, 'contenido_pagina' => 'somos', 'contenido_seccion' => '', 'contenido_user' => $_POST['userID']);
+				$insert = $this->basic_modal->genericInsert('sistema', $valores);
+				$this->valores['registro']['id'] = $insert;
+			}
+*/
+			
+			
+			
+			//consultar si existe un registro con valores para HOME-SECCIONES para saber si interta nuevo registro o actualizar el actual.
+			//Consulta - SOMOS
+			$this->basic_modal->clean();
+			$this->basic_modal->tabla = 'contenido';
+			$this->basic_modal->campos = 'id_contenido';
+			$this->basic_modal->condicion = array( "contenido_pagina" => 'somos', "contenido_seccion" => '' );
+			
+			$isInicio = $this->basic_modal->genericSelect('sistema');
+			
+			//Insertar los valores en la base de datos
+			//Consulta
+			$this->basic_modal->clean();
+			$this->basic_modal->tabla = 'contenido';
+			
+			if(count($isInicio) > 0){
+				//Consulta UPDATE servicios
+				$this->basic_modal->condicion = array('id_contenido', $isInicio[0]->id_contenido);
+				$valores = array('contenido_info' => $linea);
+				$update = $this->basic_modal->genericUpdate('sistema', $valores);
+			} else{
+				//Consulta INSERT servicios
+				$valores = array( 'contenido_info' => $linea, 'contenido_pagina' => 'somos', 'contenido_seccion' => '', 'contenido_user' => $_POST['userID']);
 				$insert = $this->basic_modal->genericInsert('sistema', $valores);
 			}
+			
+			
+			
 		} else{
-			$this->errores[] = 'No se cargaron todas las imágenes de la sección de vacantes.';
+			$this->errores[] = 'No se cargaron todas las imágenes de la sección de nosotros.';
 		}
+		
+		
 		
 		
 		
@@ -185,6 +266,20 @@ class Portafolios_general extends CI_Controller {
 		$this->status = [];
 		$this->valores = [];
 		$this->errores = [];
+	}
+	
+	
+	public function delReg($id = ''){
+		isNoLogged();
+		
+		if($id !== ''){
+			$this->basic_modal->clean();
+			$this->basic_modal->tabla = 'contenido';
+			$valores = array('id_contenido' => $id);
+			$insert = $this->basic_modal->genericDelete('sistema', $valores);
+			
+			header('Location: '. base_url('admin/servicios'));
+		}
 	}
 	
 }

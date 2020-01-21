@@ -463,6 +463,7 @@ form .form-check input:checked + label::after, .form .form-check input:checked +
 .area_scroll{
 	height: calc(100vh - 218px);
 	overflow: auto;
+	height: auto;
 }
 
 /* Navegador de control de guardado general para cada modulo */

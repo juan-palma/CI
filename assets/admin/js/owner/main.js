@@ -228,6 +228,7 @@ function activar(copia, seccion, padre,  a){
 }
 
 function btnMas(name, box, seccion, callBack){
+	console.info(name);
 	var clone = $$('.hiden.boxClones > [data-cloneinfo="'+name+'"]');
 	clone = clone[0].clone();
 	box.adopt([clone]);
@@ -919,6 +920,90 @@ function servicios_inicio(){
 
 
 
+// Pagina SOMOS
+function somos(){
+	console.info('se ejecutoa servicio general');
+	//Desactivar el formulario para cobtrolar el envio
+	document.id('formulario').addEvent('submit', function(e){
+		e.preventDefault();
+		e.stop();
+		
+		validar();
+	});	
+	
+	
+	
+	//funciones para validar y enviar el formulario
+	//validar
+	function validar(){
+		
+		function fin(j){
+			//remplazar los input por imagenes cargadas en vacantes
+			
+			var contenedor = $$('#somos .contenedor');
+			//remplazar los input por imagenes cargadas el fondo de los registros
+			if(j.valores.base.fondo_titulo[0] !== 'nop' && j.valores.base.fondo_titulo[0] !== ''){
+				removeInputIMG(contenedor[0], '.fondo_titulo.cleanBox', 'imgBlock', j.valores.base.fondo_titulo[0],  'fondo_titulo', 'servicio', 'base', 'servicios');
+				var hiden = $$('.fondo_titulo.cleanBox input[type="hidden"]');
+				hiden[0].name = hiden[0].getProperty('data-conteovalin') + '0' + hiden[0].getProperty('data-conteovalfin');
+			}
+			
+			
+/*
+			var secciones = $$('#servicios_g .registro');
+			secciones.each(function(s, i){
+				if(j.valores.servicio.foto[i] !== 'nop' && j.valores.servicio.foto[i] !== ''){
+					removeInputIMG(s, '.servicio_foto .cleanBox', 'imgBlock', j.valores.servicio.foto[i],  'foto', 'servicios', 'servicio', 'servicios');
+				}
+				if(j.valores.servicio.icono[i] !== 'nop' && j.valores.servicio.icono[i] !== ''){
+					removeInputIMG(s, '.servicio_icono .cleanBox', 'imgBlock', j.valores.servicio.icono[i],  'icono', 'servicios', 'servicio', 'servicios');
+				}
+			});
+			reconteo('#servicios_g .registro', []);
+*/
+			
+		}
+		
+		function error(j){
+			
+		}
+		
+		var datos = new FormData(document.id('formulario'));
+		db_conect(window.location.pathname+'/do_upload', datos, fin, error);
+		
+	}
+	
+	
+	
+	
+	
+// 	Codigo para iniciar la seccion  servicio general
+	activeImgBbox('galeriav');
+	document.id('galeriav_clonemas').addEvent('click', function(){
+		btnMas('fotov', document.id('galeriav').getElement('.boxRepeat'), 'galeriav', {});
+	});
+	document.id('galeriam_clonemas').addEvent('click', function(){
+		btnMas('fotom', document.id('galeriam').getElement('.boxRepeat'), 'galeriam', {});
+	});
+	
+	var allBTNDel = $$('#somos .registro');
+	allBTNDel.each(function(b){
+		var btn_menos = b.getElement(".menos");
+		btn_menos.addEvent('click', function(){
+			btnMenos.call(b, 'somos');
+		});
+	});
+	
+
+
+}
+
+
+
+
+
+
+
 
 
 
@@ -1196,6 +1281,10 @@ window.addEvent('domready', function(){
 				
 				case 'general':
 					general_inicio();
+				break;
+				
+				case 'somos':
+					somos();
 				break;
 				
 				case 'registro_portafolios':

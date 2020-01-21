@@ -690,6 +690,44 @@ function servicios_in(){
 
 
 
+// ***** Portafolio *****//
+function somos(){	
+	
+	var galeriav = tns({
+		"container": '#galeriav .slideItems',
+		//"autoHeight": true,
+		"items": 1,
+		"swipeAngle": false,
+		"speed": 400
+	});
+	
+	
+	var galeriam = tns({
+		"container": '#galeriam .slideItems',
+		//"autoHeight": true,
+		"items": 1,
+		"swipeAngle": false,
+		"speed": 400
+	});
+	
+/*
+	var t = setInterval(function(){
+		sliderCliente.goTo('next');
+	}, 1500);
+*/
+
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1064,6 +1102,10 @@ window.addEvent('domready', function(){
 			switch(pageActual){
 				case 'home':
 					home_inicio();
+				break;
+				
+				case 'somos':
+					somos();
 				break;
 				
 				case 'portafolio':

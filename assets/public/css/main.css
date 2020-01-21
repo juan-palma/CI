@@ -2158,6 +2158,291 @@ body#servicios_in .mainbox.bl4{
 
 
 
+
+
+
+
+
+
+/* --- Pagina Servicios Interna - TITULO e INTRO -- */
+body#somos .mainbox.bl1{
+	height: 361px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+	body#somos .mainbox.bl1 .titulo{
+		padding: 0px;
+		margin: 92px 0px 0px;
+		text-transform: uppercase;
+		font-size: 4.5vw;
+		letter-spacing: 2vw;
+		color: white;
+		font-family: 'Montserrat ExtraBold';
+		text-align: center;
+	}
+	body#somos .mainbox.bl1 .nombre{
+		padding: 0px;
+		margin: 16px 0px 0px;
+		text-transform: uppercase;
+		font-size: 5vw;
+		letter-spacing: 2vw;
+		color: white;
+		font-family: 'Montserrat ExtraBold';
+		text-align: center;
+	}
+
+body#somos .mainbox.bl2{
+	height: auto;
+    justify-content: flex-end;
+    padding: 5rem 7rem;
+}
+	body#somos .mainbox.bl2 .intro{
+		text-align: center;
+		max-width: 700px;
+	}
+	
+
+
+
+/* Pagina Portafolios Interna - GALERIA */
+body#somos .mainbox.bl3{
+	text-align: center;
+	padding: 0px;
+	height: auto;
+	min-height: inherit;
+	flex-direction: column;
+	align-items: stretch;
+}
+	body#somos .mainbox.bl3 .linea{
+		height: 40vw;
+		display: flex;
+		margin-bottom: 7rem;
+	}
+		body#somos .mainbox.bl3 .galeria,
+		body#somos .mainbox.bl3 .bloques{
+			flex: 0 0 50%;
+			max-width: 50%;
+		}
+			body#somos .mainbox.bl3 .slideMain{
+				width: 100%;
+				height: 100%;
+				position: relative;
+			}
+				body#somos .mainbox.bl3 .slideMain .slideItems{
+		/* 				width: 100%; */
+					height: 100%;
+					display: flex;
+				}
+					body#somos .mainbox.bl3 .slideMain .slideItems article{
+						background-size: cover;
+		/* 				    width: 100%; */
+					    height: 100%;
+					    background-position: center;
+					    display: flex;
+						flex-direction: column;
+						align-items: center;
+						padding: 0px;
+						justify-content: center;
+					}
+				
+	body#somos .mainbox.bl3 .galeria{
+		z-index: 10;
+	}
+	body#somos .mainbox.bl3 .bloques{
+		background-color: #fff;
+		z-index: 0;
+	}
+		body#somos .mainbox.bl3 .bloques .item{
+			width: 100%;
+		    height: 100%;
+		    box-sizing: border-box;
+		    display: flex;
+		    justify-content: center;
+		    align-items: center;
+		    padding: 4rem;
+		    border: 2px solid var(--colorPrincipal);
+		    position: relative;
+		    left: -2rem;
+		    top: -2rem;
+		    z-index: 0;
+		}
+		body#somos .mainbox.bl3 .linea:nth-child(2n) .bloques .item{
+			right: -2rem;
+			left: auto;
+		}
+			body#somos .mainbox.bl3 .bloques .item .info{
+				
+			}
+				body#somos .mainbox.bl3 .bloques .item .info .servicioTitulo,
+				body#somos .mainbox.bl3 .bloques .item .info .texto{
+					margin: 0px;
+				}
+				body#somos .mainbox.bl3 .bloques .item .info .servicioTitulo{
+					margin-bottom: 8px;
+					font-family: 'Montserrat ExtraBold';
+					color: var(--colorPrincipal);
+					text-transform: uppercase;
+					letter-spacing: 4px;
+				}
+				body#somos .mainbox.bl3 .bloques .item .info .texto{
+					font-size: 110%;
+				}
+		
+				
+
+body#somos .tns-outer,
+body#somos .tns-ovh,
+body#somos .tns-inner{
+	height: 100%;
+}
+body#somos .mainbox.bl3 .tns-nav{
+	display: flex;
+    position: absolute;
+    height: 100%;
+    justify-content: center;
+    flex-direction: column;
+    padding-left: 10px;
+}
+	body#somos .mainbox.bl3 .tns-nav button {
+		display: inline-block;
+		width: 13px;
+		height: 15px;
+		position: relative;
+		border-radius: 50%;
+		border: 1px solid white;
+		margin-bottom: 4px;
+		display: none;
+		
+		-webkit-transition: all 0.2s ease-in-out;
+		-moz-transition: all 0.2s ease-in-out;
+		-o-transition: all 0.2s ease-in-out;
+		-ms-transition: all 0.2s ease-in-out;
+		transition: all 0.2s ease-in-out;
+	}
+	body#somos .mainbox.bl3 .tns-nav button.tns-nav-active{
+		background-color: white;
+	}
+	body#somos .mainbox.bl3  .tns-controls{
+		position: absolute;
+	    right: 2rem;
+	    bottom: -15px;
+	    display: block;
+	    width: auto;
+	    outline: none;
+	}
+		body#somos .mainbox.bl3 .tns-controls button{
+			position: relative;
+			visibility: hidden;
+			margin: 0px;
+			padding: 0px;
+			
+			-webkit-transition: all 0.2s ease-in-out;
+			-moz-transition: all 0.2s ease-in-out;
+			-o-transition: all 0.2s ease-in-out;
+			-ms-transition: all 0.2s ease-in-out;
+			transition: all 0.2s ease-in-out;
+		}
+		body#somos .mainbox.bl3 .tns-controls button[data-controls="prev"]:after {
+		    content: '';
+		    visibility: visible;
+		    display: block;
+		    position: relative;
+		    background-color: var(--colorPrincipal);
+		    padding: 17px 27px;
+		    top: 2px;
+		    background-image: url(../img/flecha_back.svg);
+		    height: 27px;
+		    width: 44px;
+		    background-repeat: no-repeat;
+		    background-position: center center;
+		    background-size: 23px 18px;
+		}
+		body#somos .mainbox.bl3 .tns-controls button[data-controls="next"]:after {
+		    content: '';
+		    visibility: visible;
+		    display: block;
+		    position: relative;
+		    background-color: var(--colorPrincipal);
+		    padding: 17px 27px;
+		    top: 2px;
+		    background-image: url(../img/flecha_next.svg);
+		    height: 27px;
+		    width: 44px;
+		    background-repeat: no-repeat;
+		    background-position: center center;
+		    background-size: 23px 18px;
+		}
+		body#somos .mainbox.bl3 .tns-controls button:hover[data-controls]:after{
+			-webkit-transition: all 0.2s ease-in-out;
+			-moz-transition: all 0.2s ease-in-out;
+			-o-transition: all 0.2s ease-in-out;
+			-ms-transition: all 0.2s ease-in-out;
+			transition: all 0.2s ease-in-out;
+		}
+		body#somos .mainbox.bl3 .tns-controls button:hover[data-controls]:after{
+			background-color: #000;
+		}
+
+
+/* Pagina Portafolios Interna - GALERIA */
+body#somos .mainbox.bl4{
+	text-align: center;
+	padding: 0px;
+	height: 270px;
+	min-height: inherit;
+	flex-direction: row;
+	align-items: stretch;
+}
+	body#somos .mainbox.bl4 > div{
+		display: flex;
+		justify-content: flex-start;
+		align-items: stretch;
+	}
+		body#somos .mainbox.bl4 > div article.slideLine{
+			height: 100%;
+			flex: 0 0 50%;
+			max-width: 260px;
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: cover;
+		}
+		body#somos .mainbox.bl4 > div article.item{
+			height: 100%;
+		    background-color: var(--colorPrincipal);
+		    display: flex;
+		    flex-direction: column;
+		    align-items: center;
+		    justify-content: center;
+		    padding: 2rem;
+		}
+			body#somos .mainbox.bl4 > div article.item .info{
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-content: center;
+			}
+				body#somos .mainbox.bl4 > div article.item .info .servicioTitulo{
+					font-family: 'Montserrat ExtraBold';
+					color: white;
+				}
+				body#somos .mainbox.bl4 > div article.item .info .texto{
+					color: white;
+				}
+
+
+
+
+
+
+
+
+
+
+
 /* --- Portafolio - General -- */
 /*
 body#portafolio{
