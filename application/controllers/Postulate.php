@@ -354,7 +354,7 @@ class Postulate extends CI_Controller {
 					$fotos = '';
 					if( count($nameFotos) > 0 ){
 						foreach ($nameFotos as $i=>$f) {
-							$fotos .='<div style="width: 25%; display: inline-block; float:left;"><img src="'.$f['file_name'].'" style="width: 100%;"></div>'
+							$fotos .='<div style="width: 25%; display: inline-block; float:left;"><img src="'.$f['file_name'].'" style="width: 100%;"></div>';
 						}
 					}
 					$info['fotos'] = $fotos;
