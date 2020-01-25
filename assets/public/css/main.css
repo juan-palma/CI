@@ -2480,6 +2480,10 @@ body#page_postulate .mainbox.bl2{
 	flex-direction: row;
 	background-color: black;
 }
+	body#page_postulate .mainbox.bl2 a{
+		flex-grow: 1;
+		height: 100%;
+	}
 	body#page_postulate .mainbox.bl2 .area{
 		flex-grow: 1;
 	    text-align: center;

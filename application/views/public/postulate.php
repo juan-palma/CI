@@ -13,8 +13,8 @@
 
 
 <div class="mainbox bl2">
-	<div id="modelo" class="area <?php if($area === "modelo"){echo('activo');} ?>">MODELO</div>
-	<div id="alianza" class="area <?php if($area === "alianza"){echo('activo');} ?>">ALIANZA</div>
+	<a href="<?php echo(base_url('postulate/modelo')); ?>"><div id="modelo" class="area <?php if($area === "modelo"){echo('activo');} ?>">MODELO</div></a>
+	<a href="<?php echo(base_url('postulate/alianza')); ?>"><div id="alianza" class="area <?php if($area === "alianza"){echo('activo');} ?>">ALIANZA</div></a>
 </div>
 
 
@@ -25,7 +25,7 @@
 	?>
 		<h2>¿ERES MODELO?</h2>
 		
-		<form id="formularioUpload" class="ev" role="form" enctype="multipart/form-data" method="post" accept-charset="utf-8" data-send="<?php echo(base_url('postulate').'/do_upload'); ?>">
+		<form id="formularioUpload" class="ev" role="form" enctype="multipart/form-data" method="post" accept-charset="utf-8" data-send="<?php echo(base_url('postulate/do_upload')); ?>">
 			<input type="hidden" name="pagina" value="<?php echo($area); ?>"></input>
 			<input type="hidden" id="fotosTotal" name="fotosTotal" value=""></input>
 			

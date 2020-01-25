@@ -915,7 +915,7 @@ function idaUploadFileFormActive(){
 				return item.file.size <= 1024000;
 			});
 			if(temporal === false){ status = false; idagl.seguros.msnManual += 'Cada imagen no debe de pesar mas de 1Mb revise el peso de sus imagenes.\r\n\r\n'; }
-			if(multiUploadFortos.length < 10){ status = false; idagl.seguros.msnManual += 'Debes de subir un minimo de 10 imagenes en la seccino de compartirnos.\r\n\r\n'; }
+			if(multiUploadFortos.length < 10){ status = false; idagl.seguros.msnManual += 'Debes de subir un minimo de 10 imagenes en la seccion "COMPARTIRNOS".\r\n\r\n'; }
 			
 			if(idagl.recaptcha !== "valido"){
 				status = false;

@@ -184,6 +184,26 @@ class Postulate extends CI_Controller {
 	
 	
 	public function do_upload(){
+		if($_POST['g-recaptcha-response'] === "" || $_POST['g-recaptcha-response'] !== " "){
+			$this->status = 'personal';
+			$this->errores[] = 'No valido correctamente el reCaptcha, intente de nuevo.';
+			echo( json_encode(['status' => $this->status, 'valores' => "", 'errores' => $this->errores]) );
+			$this->cleanVar();
+			return false;
+		}
+		
+		
+		if($_POST['nombre'] === "" || $_POST['apellido'] === "" || $_POST['correo'] === "" || $_POST['telefono'] === "" || $_POST['compartir'] === ""){
+			$this->status = 'personal';
+			$this->errores[] = 'Todos los campos deben de estar llenos.';
+			echo( json_encode(['status' => $this->status, 'valores' => "", 'errores' => $this->errores]) );
+			$this->cleanVar();
+			return false;
+		}
+		
+		
+		
+		
 		$this->status = 'ok';
 		
 		//::::::  Seccion para procesar informacion de Quienes Somos :::::
@@ -197,8 +217,15 @@ class Postulate extends CI_Controller {
 			
 			
 		if($_POST['pagina'] == "modelo"){
-			$rutaImagenes = [];
+			$micarpeta = url_title($_POST['nombre'].'-'.$_POST['apellido'].'-'.date("Y-m-d-His"));
+			if (!file_exists(FCPATH.'assets/public/postulantes/modelo/'.$micarpeta)) {
+			    mkdir(FCPATH.'assets/public/postulantes/modelo/'.$micarpeta, 0777, true);
+			}
+			$config['upload_path'] = FCPATH.'assets/public/postulantes/modelo/'.$micarpeta;
 			$this->upload->initialize($config);
+		
+			$rutaImagenes = [];
+			
 			$loadCredencial = false;
 			if ( ! $this->upload->do_upload('credencial') ){
 				$loadCredencial = false;
