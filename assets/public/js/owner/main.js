@@ -73,10 +73,14 @@ function db_conect(url, datos, f, e){
 		
 		if (xhr.status === 200) {
 			if(j.status != 'ok'){
-				console.info('Ocurrio un error al procesar tu informacion.');
-				console.info(j);
-				swal('', 'Ocurrio un error al procesar tu informacion, intentelo más tarde o póngase en contacto con su área de sistemas.', 'warning');
-				e(j);
+				if(j.status != 'personal'){
+					e(j);
+				} else{
+					console.info('Ocurrio un error al procesar tu informacion.');
+					console.info(j);
+					swal('', 'Ocurrio un error al procesar tu informacion, intentelo más tarde o póngase en contacto con su área de sistemas.', 'warning');
+					e(j);
+				}
 			} else{
 				swal('', 'Se envio su mensaje con exito', 'success');
 				f(j);
@@ -731,6 +735,342 @@ function somos(){
 
 
 
+
+
+//::::::::::::::::::::::::
+// ***** Codigos para la carga de archivos *****//
+function funDelBtnImgPrev(p){
+	p.destroy();
+}
+
+function handleFiles(f){	
+	var parent = this.getParent();
+	if(!parent.hasClass('ida_boxInputContent')){
+		parent = parent.getParent();
+	}
+	if(!parent.hasClass('ida_boxInputContent')){
+		parent = parent.getParent();
+	}
+	if(!parent.hasClass('ida_boxInputContent')){
+		parent = parent.getParent();
+	}
+	var preview = parent.getElement('.ida_areaDropUploadPreview');
+	
+	if(preview !== null){
+		for (var i = 0; i < f.length; i++) {
+			var file = f[i];
+			var imageType = /image.*/;
+			
+			if (!file.type.match(imageType)) {
+				continue;
+			}
+			
+			var img = document.createElement("img");
+			img.classList.add("obj");
+			img.file = file;
+			preview.appendChild(img);
+			
+			var boxPrev = new Element('div', {"class":"ida_boxPrevImg"});
+				var btnDel = new Element('div', {"class":"ida_boxPrevImgDel"});
+				btnDel.addEvent('click', function(){
+					funDelBtnImgPrev(this.getParent());
+				});
+				var boxInfo = new Element('div', {"class":"ida_boxPrevImgInfoBox"});
+					//var iNombre = new Element('div', {"class":"ida_boxPrevImgInfoName", "html":'Nombre: '+file.name});
+					var iType = new Element('div', {"class":"ida_boxPrevImgInfoType", "html":'Tipo: '+file.type});
+					var isize = new Element('div', {"class":"ida_boxPrevImgInfoName", "html":'Tamaño: '+((file.size / 1024) / 1000).toFixed(2)+'MB'});
+				boxInfo.adopt([iType, isize]);
+				
+				boxPrev.adopt([img, btnDel, boxInfo]);
+			preview.grab(boxPrev);
+			
+			var reader = new FileReader();
+			reader.onload = (function(aImg) { return function(e) { aImg.src = e.target.result; }; })(img);
+			reader.readAsDataURL(file);
+		}
+	} else{
+		var parent = this.getParent();
+		if(!parent.hasClass('ida_boxInputContent')){
+			parent = parent.getParent();
+		}
+		
+		var preview = parent.getElement('.idaUnArchivoInfo');
+		if(preview !== null){
+			var boxInfo = new Element('div', {"class":"ida_boxPrevImgInfoBox"});
+				//var iNombre = new Element('div', {"class":"ida_boxPrevImgInfoName", "html":'Nombre: '+file.name});
+				var iType = new Element('div', {"class":"ida_boxPrevImgInfoType", "html":'Tipo: '+f[0].type});
+				var isize = new Element('div', {"class":"ida_boxPrevImgInfoName", "html":'Tamaño: '+((f[0].size / 1024) / 1000).toFixed(2)+'MB'});
+			boxInfo.adopt([iType, isize]);
+			preview.grab(boxInfo);
+		}
+	}
+	
+	
+}
+
+
+function dragenter(e) {
+	e.stopPropagation();
+	e.preventDefault();
+	this.addClass('dentro');
+}
+
+function dragleave(e){
+	e.stopPropagation();
+	e.preventDefault();
+	this.removeClass('dentro');
+}
+
+function dragend(){
+	e.stopPropagation();
+	e.preventDefault();
+	this.removeClass('dentro');
+}
+
+function dragover(e) {
+	e.stopPropagation();
+	e.preventDefault();
+}
+
+function drop(e) {
+	e.stopPropagation();
+	e.preventDefault();
+	this.removeClass('dentro');
+	
+	var dt = e.dataTransfer;
+	var files = dt.files;
+	
+	handleFiles.call(this, files);
+}
+
+
+function idaDoClickActive(){
+	var allBtn = $$('.idaInputLoadFileA');
+	allBtn.each(function(b){
+		b.addEvent('click', function(){
+			var padre = this.getParent();
+			var el = padre.getElement('input[type="file"]');
+			if (el) {
+				el.click();
+			}
+		});
+	});
+}
+
+
+function idaDoClickActive(){
+	var allBtn = $$('.idaInputLoadFileA');
+	allBtn.each(function(b){
+		b.addEvent('click', function(){
+			var padre = this.getParent();
+			var el = padre.getElement('input[type="file"]');
+			if (el) {
+				el.click();
+			}
+		});
+	});
+}
+
+
+function idaDoDropActive(){
+	var allDrop = $$('.ida_areaDropUpload');
+	allDrop.each(function(b){
+		b.addEventListener("dragenter", dragenter, false);
+		b.addEventListener("dragleave", dragleave, false);
+		b.addEventListener("dragend", dragend, false);
+		b.addEventListener("dragover", dragover, false);
+		b.addEventListener("drop", drop, false);
+	});
+}
+
+
+function idaUploadFileFormActive(){
+	//Funcion que se ejecuta antes de enviar los datos.
+	idagl.ocupado = false;
+	idagl.seguros = {};
+	function sendAll(){
+		idagl.seguros.msnManual = '';
+		var datos = {};
+		
+		function condicion_siguiente(){
+			var status = true;
+			var temporal = true;
+			
+			idagl.seguros.arrayAll = $$('#formularioUpload *[data-validar]');
+			idagl.seguros.arrayAll.each(function(v){
+				if(v.value === '' || v.value === ' '){ status = false; console.info('esta vacio'); }
+			});
+			if(status === false){ idagl.seguros.msnManual += 'Todos los campos son obligatorios. Hay campos vacios, por favor llene toda la información.\r\n\r\n'; }
+			
+			temporal = true;
+			temporal = idagl.seguros.arrayAll.every(function(item){
+				return item.idago.validado === true;
+			});
+			if(temporal === false){ status = false; idagl.seguros.msnManual += 'Todos los campos tiene que tener un contenido valido y no etsar vacios.\r\n\r\n'; }
+			
+			var multiUpload = $$('.ida_areaDropUploadPreview');
+			var multiUploadFortos = multiUpload[0].getElements('img.obj');
+			temporal = true;
+			temporal = multiUploadFortos.every(function(item){
+				return item.file.size <= 1024000;
+			});
+			if(temporal === false){ status = false; idagl.seguros.msnManual += 'Cada imagen no debe de pesar mas de 1Mb revise el peso de sus imagenes.\r\n\r\n'; }
+			if(multiUploadFortos.length < 10){ status = false; idagl.seguros.msnManual += 'Debes de subir un minimo de 10 imagenes en la seccino de compartirnos.\r\n\r\n'; }
+			
+			return status;
+		}	
+		
+		
+		
+		
+		if(condicion_siguiente()){
+			idagl.ocupado = true;
+			
+			var datos = new FormData(document.id('formularioUpload'));
+						
+			function fin(j){
+				if(j.status == "ok"){
+					//swal('', 'Se envio su mensaje con exito', 'success');
+					idagl.ocupado = false;
+					document.id('formularioUpload').reset();
+					var fileUno = $$('.idaUnArchivoInfo');
+					fileUno.each(function(b){
+						b.empty();
+					});
+					var fileMulti = $$('.ida_areaDropUploadPreview');
+					fileMulti.each(function(b){
+						b.empty();
+					});
+				} else{
+					
+				}
+			}
+			
+			function error(j){
+				var elError = j.errores.length;
+				elError--;
+				swal('', j.errores[elError], 'warning');
+				
+				console.info(j.errores);
+				idagl.ocupado = false;
+			}
+			
+			
+			var multiUpload = $$('.ida_areaDropUploadPreview');
+			var multiUploadFortos = multiUpload[0].getElements('img.obj');
+			document.id('fotosTotal').value = multiUploadFortos.length;
+			var datos = new FormData(document.id('formularioUpload'));
+			multiUploadFortos.each(function(i, index){
+				datos.append('fotos_'+index, i.file, i.file.name);
+			});
+			
+			
+			var ruta = document.id('formularioUpload').getProperty('data-send');
+			db_conect(ruta, datos, fin, error);
+		
+			
+		} else{
+			idagl.ocupado = false;
+			alert(idagl.seguros.msnManual);
+		}
+	}
+	
+	
+	function sendIntervencion(){
+		if(idagl.ocupado == true){ return false; }
+		sendAll();
+		return false;
+	}
+	
+	
+	//Validacion de formulario:
+	idaglGV_def.msn.validar.send.novalid = "Alguno de los campos tiene un error o está incompleto.\n\nFavor de verificar su información.";
+	idaglGV_def.msn.validar.nulo = 'Este campo es obligatorio y debe contener datos, por favor capture la información correspondiente.\n\nverifique por favor.';
+	
+	var ml1 = [];
+	
+	ml1[0] = {
+		objeto: 'texto',
+		validar: {
+			parametro: 'texto'
+		},
+			funciones: {
+// 			nombre: 'mayusculas'
+		},
+	
+		nulo: {
+			status: false,
+			valores: {
+				//adicionales_c: true
+			}
+		}
+	};
+	
+	ml1[2] = {
+		objeto: 'correo',
+		validar: {
+			parametro: 'correo',
+			error: 'El Correo Electrónico que ingresó no es válido. \n\nFavor de verificarlo.'
+		},
+		nulo: {
+			status: false
+		}
+	};
+	
+	ml1[3] = {
+		objeto: 'telefono',
+		validar: {
+			parametro: 'limite',
+			valor: {
+				unico: 10,
+				invertir: true
+			},
+			error: 'El Número de Teléfono que ingresó está incompleto. \nFavor de ingresar los 10 dígitos de su número incluyendo lada'
+		},
+		funciones: [{
+			nombre: 'solonumerico'
+		}/*
+, {
+			nombre: 'autotexto',
+			valor: '10 digitos con Lada...'
+		}
+*/
+	]
+	};
+	
+	
+	document.id('formularioUpload').addEvent('submit', function(e){
+		e.stopPropagation();
+		e.preventDefault();
+	});
+	
+	idaV_inicio({
+		formulario: 'formularioUpload',
+		lista: ml1,
+		intervencion: sendIntervencion
+	});
+	
+	var contactBtn = document.id('ida_boxformBtnSend');
+	contactBtn.addEvent('click', function(e){
+		e.stopPropagation();
+		e.preventDefault();
+		sendIntervencion();
+		//document.getElementById("footerContactoForm").submit();
+	});
+}
+
+
+
+
+function bienRecaptcha(){
+	console.info('respondiste bien el recaptcha');
+}
+
+
+
+
+
+
 //::::::::::::::::::::::::
 // ***** Portafolio *****//
 /*
@@ -1124,12 +1464,19 @@ window.addEvent('domready', function(){
 					servicios_in();
 				break;
 				
+				case 'page_postulate':
+					idaDoClickActive();
+					idaDoDropActive();
+					idaUploadFileFormActive();
+				break;
+				
 			}
 		}
 	}
 	
 	//header_run();
 	footer_run();
+	
 });
 
 

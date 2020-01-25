@@ -396,6 +396,7 @@ body{
 
 :root{
 	--colorPrincipal: #AE9A69;
+	--colorBaseBlack: #212529;
 }
 
 
@@ -726,6 +727,8 @@ input[type="button"]:hover{
 	border-bottom: 1px solid white;
     z-index: 9999;
     color: white;
+    top: 0px;
+    left: 0px;
 }
 	#nav > div{
 		
@@ -1352,6 +1355,7 @@ body#home{
 			div#footer_box_terminos.mainbox .footer_terminos span.copyright {
 			    font-size: 75%;
 			    padding: 0px 8px;
+			    color: black;
 			}
 			div#footer_box_terminos.mainbox .footer_terminos span.terminos {
 			    font-size: 75%;
@@ -2435,6 +2439,293 @@ body#somos .mainbox.bl4{
 
 
 
+
+
+
+
+
+
+
+
+
+/* --- Pagina Servicios Interna - TITULO e INTRO -- */
+body#page_postulate .cotizacion,
+body#page_postulate #postulate{
+	display: none;
+}
+
+body#page_postulate .mainbox.bl1{
+	height: 361px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+	body#page_postulate .mainbox.bl1 .titulo{
+		padding: 0px;
+		margin: 92px 0px 0px;
+		text-transform: uppercase;
+		font-size: 5vw;
+		letter-spacing: 4vw;
+		color: white;
+		font-family: 'Montserrat ExtraBold';
+		text-align: center;
+	}
+	
+	
+body#page_postulate .mainbox.bl2{
+	height: 175px;
+	flex-direction: row;
+	background-color: black;
+}
+	body#page_postulate .mainbox.bl2 .area{
+		flex-grow: 1;
+	    text-align: center;
+	    font-size: 5vw;
+	    font-family: 'Montserrat ExtraBold';
+	    letter-spacing: 12px;
+	    color: white;
+	    height: 100%;
+	    display: flex;
+	    justify-content: center;
+	    align-items: center;
+	    position: relative;
+	    cursor: pointer;
+	}
+	body#page_postulate .mainbox.bl2 .area.activo,
+	body#page_postulate .mainbox.bl2 .area:hover{
+		background-color: var(--colorPrincipal);
+	}
+	body#page_postulate .mainbox.bl2 .area.activo:before,
+	body#page_postulate .mainbox.bl2 .area:hover:before{
+		content: " ";
+		width: calc(100% - 4rem);
+		height: calc(100% - 4rem);
+		border: 3px solid white;
+		position: absolute;
+		top: 2rem;
+		left: 2rem;
+	}
+	
+
+body#page_postulate .mainbox.bl3 a{
+	color: var(--colorBaseBlack);
+}
+body#page_postulate .mainbox.bl3{
+	height: auto;
+    justify-content: center;
+    align-items: stretch;
+    padding: 2rem 10vw 7rem;
+}
+	body#page_postulate .mainbox.bl3 h2{
+		font-family: 'Montserrat ExtraBold';
+		color: var(--colorPrincipal);
+		margin-bottom: 2rem;
+		letter-spacing: 7px;
+		text-align: center;
+	}
+		body#page_postulate .mainbox.bl3 form{
+			width: 100%;
+		    display: grid;
+		    grid-template-columns: repeat(6, 1fr);
+		    grid-gap: 3vw 1.5vw;
+		}
+			body#page_postulate .mainbox.bl3 form label{
+				font-size: 72%;
+				letter-spacing: 2px;
+			}
+			body#page_postulate .mainbox.bl3 form input[type="text"],
+			body#page_postulate .mainbox.bl3 form input[type="email"],
+			body#page_postulate .mainbox.bl3 form input[type="tel"],
+			body#page_postulate .mainbox.bl3 form input[type="url"]{
+				border: 1px solid var(--colorPrincipal);
+				height: 54px;
+			}
+			body#page_postulate .mainbox.bl3 form .boxInput{
+				grid-column-start: span 3;
+				position: relative;
+			}
+			body#page_postulate .mainbox.bl3 form .boxInput.span6{
+				grid-column-start: span 6;
+			}
+			
+				body#page_postulate .mainbox.bl3 form .ida_areaDropUpload{
+					width: 100%;
+					height: 190px;
+					border: 2px dashed var(--colorPrincipal);
+					position: relative;
+				}
+				.ida_areaDropUpload:after{
+					content: "Arrastra y suelta tus archivos aquí";
+					width: 100%;
+					height: 100%;
+					position: absolute;
+					top: 0px;
+					left: 0px;
+					background-color: #fff;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					color: #bbb;
+					padding-bottom: 54px;
+					
+					-webkit-transition: all 0.2s ease-in-out;
+					-moz-transition: all 0.2s ease-in-out;
+					-o-transition: all 0.2s ease-in-out;
+					-ms-transition: all 0.2s ease-in-out;
+					transition: all 0.2s ease-in-out;
+				}
+				.ida_areaDropUpload.dentro:after{
+					content: "Suelte su archvo";
+					background-color: #e9ffec;
+					color:#000;
+				}
+					.ida_boxInputContent .ida_areaDropUploadPreview{
+						display: grid;
+						grid-template-columns: repeat(5, 1fr);
+						grid-gap: 3rem 1vw;
+						margin-top: 1rem;
+					}
+						.ida_boxInputContent .ida_areaDropUploadPreview .ida_boxPrevImg{
+							position: relative;
+							height: calc(14vw);
+						}
+							.ida_boxInputContent .ida_areaDropUploadPreview img{
+								object-fit: cover;
+							    height: 100%;
+							    width: 100%;
+							}
+							.ida_boxInputContent .ida_areaDropUploadPreview .ida_boxPrevImgDel{
+								width: 29px;
+							    height: 26px;
+							    background-color: black;
+							    color: white;
+							    position: absolute;
+							    top: 3px;
+							    left: 3px;
+							    opacity: 0.5;
+							    cursor: pointer;
+							    
+							    -webkit-transition: all 0.2s ease-in-out;
+								-moz-transition: all 0.2s ease-in-out;
+								-o-transition: all 0.2s ease-in-out;
+								-ms-transition: all 0.2s ease-in-out;
+								transition: all 0.2s ease-in-out;
+							}
+							.ida_boxInputContent .ida_areaDropUploadPreview .ida_boxPrevImgDel:hover{
+								opacity: 1;
+							}
+								.ida_boxInputContent .ida_areaDropUploadPreview .ida_boxPrevImgDel:after{
+									content: "x";
+									width: 100%;
+									height: 100%;
+									display: flex;
+									justify-content: center;
+									align-items: center;
+									font-family: 'Montserrat ExtraBold';
+								}
+							.ida_boxInputContent .ida_areaDropUploadPreview .ida_boxPrevImgInfoBox{
+							    font-size: 64%;
+							    padding-top: 3px;
+							}
+						.ida_boxInputContent .idaUnArchivoInfo{
+							height: 54px;
+						    flex-grow: 1;
+						    margin-right: 1rem;
+						    display: flex;
+						    flex-direction: column;
+						    justify-content: center;
+						    align-items: flex-start;
+						    border: 1px solid var(--colorPrincipal);
+						    border-radius: 4px;
+						    padding: 1px;
+						}
+							.ida_boxInputContent .idaUnArchivoInfo .ida_boxPrevImgInfoBox{
+								font-size: 85%;
+								padding: 0px 0px 0px 14px;
+							}
+					
+				body#page_postulate .mainbox.bl3 form .idaInputLoadFileA,
+				body#page_postulate .mainbox.bl3 form input[type="button"],
+				body#page_postulate .mainbox.bl3 form input[type="submit"]{
+					width: auto;
+					height: 54px;
+					color: white;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					background-color: var(--colorPrincipal);
+					padding: 0 1rem;
+					flex-wrap: wrap;
+					text-align: center;
+					line-height: 1.1;
+					border-radius: 5px;
+					font-family: 'Montserrat Bold';
+					
+					-webkit-transition: all 0.2s ease-in-out;
+					-moz-transition: all 0.2s ease-in-out;
+					-o-transition: all 0.2s ease-in-out;
+					-ms-transition: all 0.2s ease-in-out;
+					transition: all 0.2s ease-in-out;
+				}
+				body#page_postulate .mainbox.bl3 form .idaInputLoadFileA:hover,
+				body#page_postulate .mainbox.bl3 form input[type="button"]:hover,
+				body#page_postulate .mainbox.bl3 form input[type="submit"]:hover{
+					background-color: black;				}
+
+				
+				
+			body#page_postulate .mainbox.bl3 form .boxInput.unArchivo{
+				
+			}
+				body#page_postulate .mainbox.bl3 form .boxInput.unArchivo .ida_boxInput{
+					display: flex;
+					flex-wrap: wrap;
+					align-items: flex-end;
+					height: 100%;
+				}
+					body#page_postulate .mainbox.bl3 form .boxInput.unArchivo .ida_boxInput label{
+						flex: 0 0 100%;
+					}
+					body#page_postulate .mainbox.bl3 form .boxInput.unArchivo .ida_boxInput a{
+						flex-basis: 130px;
+					}
+			body#page_postulate .mainbox.bl3 form .boxInput.DropSistem{
+				padding-bottom: 2rem;
+			}
+				body#page_postulate .mainbox.bl3 form .boxInput.DropSistem a{
+					position: absolute;
+				    z-index: 8888;
+				    left: 50%;
+				    transform: translateX(-50%);
+				    top: 144px;
+				}
+			
+			body#page_postulate .mainbox.bl3 form .boxInput input[type="submit"]{
+				width: 40%;
+				margin: 0 auto;
+			}
+			body#page_postulate .mainbox.bl3 form .recaptcha{
+				justify-content: center;
+			    align-items: center;
+			    display: flex;
+			}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 
 

@@ -285,7 +285,7 @@ if(property_exists($generalDB, "youtube") && $generalDB->youtube !== ''){
 					?>
 						<div class="red">
 							<a target="_blank" href="<?php echo($v->liga); ?>">
-								<?php echo( $v->icono); ?>
+								//<?php echo( $v->icono); ?>
 							</a>
 						</div>
 					<?php
@@ -298,11 +298,11 @@ if(property_exists($generalDB, "youtube") && $generalDB->youtube !== ''){
 				<div class="boxCentrado">
 					<div class="menuHi"><a href="<?php echo(base_url('servicios') ); ?>">SERVICIOS</a></div><br />
 					<?php
-					foreach ($serviciosDB->servicios as $i=>$v) {
+					/* foreach ($serviciosDB->servicios as $i=>$v) {
 						?>
 						<div class="menuLow"><a href="<?php echo(base_url('servicios/articulo/'.url_title($v->enlace) )); ?>"><?php echo($v->titulo); ?></a></div><br />
 						<?php
-					}
+					} */
 					?>
 					<div id="menuPortafolio" class="menuHi"><a href="<?php echo(base_url('portafolio') ); ?>">PORTAFOLIO</a></div><br />
 				</div>
@@ -313,52 +313,4 @@ if(property_exists($generalDB, "youtube") && $generalDB->youtube !== ''){
 		
 		<!-- Add your site or application content here -->
         <div id="primaryContainer">
-	        
-	        
-	        
-	        
-	        
-	        
-	        
-	        
-	        
-<!--
-	        <div id="deskMenu">
-		        
-	        </div>
-	        
-	        
-			<div id="logo" class="mboxI">
-				<a href="<?php echo(base_url()); ?>"><img src="<?php echo(base_url('assets/public/img/logo_inmotion.jpg')); ?>" /></a>
-			</div>
-			<div id="menu" class="mboxD">
-				<div id="btnMenu" class="colDin1-back"><i class="fas fa-bars colDin1-op"></i></div>
-				<div class="redes">
-					<?php
-						foreach ($headerDB->redes as $i=>$v) {
-							if($v->liga !== ''){
-						?>
-							<div class="red">
-								<a target="_blank" href="<?php echo($v->liga); ?>">
-									<object type="image/svg+xml" data="<?php echo( base_url('assets/public/img/'.$v->icono) ); ?>">SVG</object>
-									<img src="<?php echo( base_url('assets/public/img/'.$v->icono) ); ?>" />
-										<?php echo( $v->icono); ?>
-								</a>
-							</div>
-						<?php
-							}
-						}
-					?>
-				</div>
-			</div>
--->
-
-
-
-
-
-
-
-
-
 

@@ -168,7 +168,7 @@ class General extends CI_Controller {
 		$this->valores['general'] = [];
 		
 		$config['upload_path']		= FCPATH.'assets/public/img/general';
-		$config['allowed_types']	= 'gif|jpg|jpeg|png';
+		$config['allowed_types']	= 'gif|jpg|jpeg|png|svg|svg+xml';
 		$config['max_size']			= 1024;
 		$config['overwrite']		= true;
 		
@@ -244,7 +244,7 @@ class General extends CI_Controller {
 		$this->valores['alianza'] = [];
 		
 		$config['upload_path']		= FCPATH.'assets/public/img/alianzas';
-		$config['allowed_types']	= 'gif|jpg|jpeg|png';
+		$config['allowed_types']	= 'gif|jpg|jpeg|png|svg|svg+xml';
 		$config['max_size']			= 1024;
 		$config['overwrite']		= true;
 		

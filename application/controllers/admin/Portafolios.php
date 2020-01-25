@@ -168,7 +168,7 @@ class Portafolios extends CI_Controller {
 		$this->valores['registro'] = [];
 		
 		$config['upload_path']		= FCPATH.'assets/public/img/portafolios/registros/';
-		$config['allowed_types']	= 'gif|jpg|jpeg|png|svg';
+		$config['allowed_types']	= 'gif|jpg|jpeg|png|svg|svg+xml';
 		$config['max_size']			= 1536;
 		$config['overwrite']		= true;
 		

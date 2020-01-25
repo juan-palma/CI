@@ -106,7 +106,7 @@ class Quienes_somos extends CI_Controller {
 		$this->valores['registro'] = [];
 		
 		$config['upload_path']		= FCPATH.'assets/public/img/somos/';
-		$config['allowed_types']	= 'gif|jpg|jpeg|png|svg';
+		$config['allowed_types']	= 'gif|jpg|jpeg|png|svg|svg+xml';
 		$config['max_size']			= 2048;
 		$config['overwrite']		= true;
 		

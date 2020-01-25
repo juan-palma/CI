@@ -173,7 +173,7 @@ class Home extends CI_Controller {
 		
 		//Seccion para procesar informacion de SERVICIOS.
 		$config['upload_path']		= FCPATH.'assets/public/img/';
-        $config['allowed_types']	= 'gif|jpg|png';
+        $config['allowed_types']	= 'gif|jpg|png|svg|svg+xml';
         $config['max_size']			= 1024;
         $config['overwrite']		= true;
 
@@ -337,7 +337,7 @@ class Home extends CI_Controller {
 		$this->valores['servicio'] = [];
 		
 		$config['upload_path']		= FCPATH.'assets/public/img/servicios';
-		$config['allowed_types']	= 'gif|jpg|jpeg|png|svg';
+		$config['allowed_types']	= 'gif|jpg|jpeg|png|svg|svg+xml';
 		$config['max_size']			= 1024;
 		$config['overwrite']		= true;
 		
@@ -398,7 +398,7 @@ class Home extends CI_Controller {
 		$this->valores['portafolio'] = [];
 		
 		$config['upload_path']		= FCPATH.'assets/public/img/portafolios';
-		$config['allowed_types']	= 'gif|jpg|jpeg|png|svg';
+		$config['allowed_types']	= 'gif|jpg|jpeg|png|svg|svg+xml';
 		$config['max_size']			= 1024;
 		$config['overwrite']		= true;
 				
@@ -462,7 +462,7 @@ class Home extends CI_Controller {
 		$this->valores['cliente'] = [];
 		
 		$config['upload_path']		= FCPATH.'assets/public/img/clientes';
-		$config['allowed_types']	= 'gif|jpg|jpeg|png';
+		$config['allowed_types']	= 'gif|jpg|jpeg|png|svg|svg+xml';
 		$config['max_size']			= 1024;
 		$config['overwrite']		= true;
 		
