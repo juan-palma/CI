@@ -200,7 +200,6 @@ class Postulate extends CI_Controller {
 		
 		
 		
-/*
 		if($_POST['g-recaptcha-response'] === "" || $_POST['g-recaptcha-response'] !== " "){
 			$this->status = 'personal';
 			$this->errores[] = 'No valido correctamente el reCaptcha, intente de nuevo.';
@@ -208,7 +207,6 @@ class Postulate extends CI_Controller {
 			$this->cleanVar();
 			return false;
 		}
-*/
 		
 		
 		

@@ -918,7 +918,7 @@ function idaUploadFileFormActive(){
 			if(multiUploadFortos.length < 10){ status = false; idagl.seguros.msnManual += 'Debes de subir un minimo de 10 imagenes en la seccion "COMPARTIRNOS".\r\n\r\n'; }
 			
 			if(idagl.recaptcha !== "valido"){
-				//status = false;
+				status = false;
 				idagl.seguros.msnManual += 'Es obligatorio que valide el cuadro reCaptcha.\r\n\r\n';
 			}
 			
