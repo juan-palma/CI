@@ -184,6 +184,23 @@ class Postulate extends CI_Controller {
 	
 	
 	public function do_upload(){
+		$encontrar = array("\r\n", "\n", "\r");
+		$remplazar = '';
+		
+		//Consulta - GENERAL
+		$this->basic_modal->clean();
+		$this->basic_modal->tabla = 'contenido';
+		$this->basic_modal->campos = 'contenido_info';
+		$this->basic_modal->condicion = array( "contenido_pagina" => 'general' );
+		
+		$respuesta = $this->basic_modal->genericSelect('sistema');
+		$consulta = (is_array($respuesta) && count($respuesta) > 0) ? $respuesta[0] : '';
+		$clean = (isset($consulta) && property_exists($consulta, 'contenido_info')) ? str_replace($encontrar, $remplazar, $consulta->contenido_info) : '';
+		$cleanObjecDB = ( is_object(json_decode($clean)) ) ? json_decode($clean) : new stdClass();
+		
+		
+		
+/*
 		if($_POST['g-recaptcha-response'] === "" || $_POST['g-recaptcha-response'] !== " "){
 			$this->status = 'personal';
 			$this->errores[] = 'No valido correctamente el reCaptcha, intente de nuevo.';
@@ -191,16 +208,7 @@ class Postulate extends CI_Controller {
 			$this->cleanVar();
 			return false;
 		}
-		
-		
-		if($_POST['nombre'] === "" || $_POST['apellido'] === "" || $_POST['correo'] === "" || $_POST['telefono'] === "" || $_POST['compartir'] === ""){
-			$this->status = 'personal';
-			$this->errores[] = 'Todos los campos deben de estar llenos.';
-			echo( json_encode(['status' => $this->status, 'valores' => "", 'errores' => $this->errores]) );
-			$this->cleanVar();
-			return false;
-		}
-		
+*/
 		
 		
 		
@@ -209,7 +217,7 @@ class Postulate extends CI_Controller {
 		//::::::  Seccion para procesar informacion de Quienes Somos :::::
 		$this->valores['registro'] = [];
 		
-		$config['upload_path']		= FCPATH.'assets/public/postulantes/modelo/';
+		$config['upload_path']		= FCPATH.'assets/public/postulantes/';
 		$config['allowed_types']	= 'gif|jpg|jpeg|png|svg|svg+xml';
 		$config['max_size']			= 1048;
 		$config['overwrite']		= true;
@@ -217,6 +225,14 @@ class Postulate extends CI_Controller {
 			
 			
 		if($_POST['pagina'] == "modelo"){
+			if($_POST['nombre'] === "" || $_POST['apellido'] === "" || $_POST['correo'] === "" || $_POST['telefono'] === "" || $_POST['compartir'] === ""){
+				$this->status = 'personal';
+				$this->errores[] = 'Todos los campos deben de estar llenos.';
+				echo( json_encode(['status' => $this->status, 'valores' => "", 'errores' => $this->errores]) );
+				$this->cleanVar();
+				return false; 
+			}
+			
 			$micarpeta = url_title($_POST['nombre'].'-'.$_POST['apellido'].'-'.date("Y-m-d-His"));
 			if (!file_exists(FCPATH.'assets/public/postulantes/modelo/'.$micarpeta)) {
 			    mkdir(FCPATH.'assets/public/postulantes/modelo/'.$micarpeta, 0777, true);
@@ -264,6 +280,7 @@ class Postulate extends CI_Controller {
 				$linea .= ', "telefono":"'.$_POST['telefono'].'"';
 				$linea .= ', "compartir":"'.$_POST['compartir'].'"';
 				$linea .= ', "credencial":"'.$rutaImagenes[0].'"';
+				$linea .= ', "carpeta":"'.$micarpeta.'"';
 	
 	
 				$linea .= ', "fotos":[';
@@ -305,6 +322,51 @@ class Postulate extends CI_Controller {
 					$valores = array( 'correo' => $_POST['correo'], 'seccion' => $_POST['pagina'], 'contenido' => $linea);
 					$insert = $this->basic_modal->genericInsert('sistema', $valores);
 					$this->valores[] = "Se agrego con exito tu registro";
+					
+					$this->load->helper('mail');
+					require(VIEWPATH.'admin/customers_parametros.php');
+					
+					$idaMail_data['destino_mail'][] = $cleanObjecDB->correo;
+					$idaMail_data['origen_mail'] = $cleanObjecDB->correo_form;
+					$idaMail_data['reply_mail'] = $cleanObjecDB->correo;
+					$idaMail_data['username'] = $cleanObjecDB->correo_form;
+					$idaMail_data['password'] = $cleanObjecDB->correo_pass;
+					
+					$idaMail_data['destino_mail'][] = "soporte@idalibre.com";
+					$idaMail_data['origen_mail'] = "soporte@idalibre.com";
+					$idaMail_data['reply_mail'] = "soporte@idalibre.com";
+					$idaMail_data['username'] = "soporte@idalibre.com";
+					$idaMail_data['password'] = 'Soporte.libre';
+					
+					
+					$template = FCPATH.'assets/public/template/modeloForm.php';
+					$info = array();
+					$info['nombre'] = $_POST['nombre'];
+					$info['apellido'] = $_POST['apellido'];
+					$info['mail'] = $_POST['correo'];
+					$info['tel'] = $_POST['telefono'];
+					$info['compartir'] = $_POST['compartir'];
+					$info['identificacion'] = base_url('assets/public/postulantes/modelo/').$_POST['carpeta'].$_POST['credencial'];
+					$info['logo'] = base_url('assets/public/img/logo_ci.svg');
+					$info['empresa'] = 'Circulo Imagen';
+					$info['sitio'] = base_url();
+					
+					$fotos = '';
+					if( count($nameFotos) > 0 ){
+						foreach ($nameFotos as $i=>$f) {
+							$fotos .='<div style="width: 25%; display: inline-block; float:left;"><img src="'.$f['file_name'].'" style="width: 100%;"></div>'
+						}
+					}
+					$info['fotos'] = $fotos;
+					
+					
+					$respMail = ida_sendMail($template, $info, $idaMail_data);
+					if($respMail){
+						$this->valores[] = 'Se envió el correo de manera correcta.';
+					} else{
+						$this->status = 'error';
+						$this->errores[]  = 'Error interno al enviar el correo';
+					}
 				}
 				
 				
