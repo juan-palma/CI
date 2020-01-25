@@ -3,7 +3,7 @@
 <!-- Pagina POSTULATE -->
 <?php
 	$postulateDB = (object)[];
-	$postulateDB->titulo_fondo = "postulate_fondo";
+	$postulateDB->titulo_fondo = "postulate_fondo.jpg";
 	$postulateDB->titulo_general = "Postúlate";
 ?>
 <div class="mainbox bl1" style="background-image: url(<?php echo(base_url( 'assets/public/img/postulate/'.@$postulateDB->titulo_fondo )); ?> )">
