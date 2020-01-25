@@ -2,7 +2,7 @@ var idagl = {};
 
 //Seccion de VARIABLES: _____________________________________________________________________________________
 idagl.elementos = {};
-
+idagl.recaptcha = "incorrecto";
 
 
 
@@ -917,6 +917,11 @@ function idaUploadFileFormActive(){
 			if(temporal === false){ status = false; idagl.seguros.msnManual += 'Cada imagen no debe de pesar mas de 1Mb revise el peso de sus imagenes.\r\n\r\n'; }
 			if(multiUploadFortos.length < 10){ status = false; idagl.seguros.msnManual += 'Debes de subir un minimo de 10 imagenes en la seccino de compartirnos.\r\n\r\n'; }
 			
+			if(idagl.recaptcha !== "valido"){
+				status = false;
+				idagl.seguros.msnManual += 'Es obligatorio que valide el cuadro reCaptcha.\r\n\r\n';
+			}
+			
 			return status;
 		}	
 		
@@ -1063,9 +1068,16 @@ function idaUploadFileFormActive(){
 
 
 function bienRecaptcha(){
-	console.info('respondiste bien el recaptcha');
+	idagl.recaptcha = "valido";
 }
 
+function viejoRecaptcha(){
+	idagl.recaptcha = "expirado";
+}
+
+function malRecaptcha(){
+	idagl.recaptcha = "incorrecto";
+}
 
 
 

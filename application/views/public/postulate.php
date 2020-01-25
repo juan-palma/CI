@@ -71,7 +71,7 @@
 			</div>
 			
 			<div class="recaptcha boxInput span6">
-				<div class="g-recaptcha" data-sitekey="6LcFVNIUAAAAAL0ktNowPVPLU3p_TeD8IWHcd4ul" data-callback="bienRecaptcha"></div>
+				<div class="g-recaptcha" data-sitekey="6LcFVNIUAAAAAL0ktNowPVPLU3p_TeD8IWHcd4ul" data-callback="bienRecaptcha" data-expired-callback="viejoRecaptcha" data-error-callback="malRecaptcha"></div>
 			</div>
 			
 			<div class="boxInput span6">
