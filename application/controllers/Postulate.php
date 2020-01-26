@@ -344,7 +344,7 @@ class Postulate extends CI_Controller {
 					$info['mail'] = $_POST['correo'];
 					$info['tel'] = $_POST['telefono'];
 					$info['compartir'] = $_POST['compartir'];
-					$info['identificacion'] = base_url('assets/public/postulantes/modelo/').$_POST['carpeta'].$_POST['credencial'];
+					$info['identificacion'] = base_url('assets/public/postulantes/modelo/').$micarpeta.'/'.$rutaImagenes[0];
 					$info['logo'] = base_url('assets/public/img/logo_ci.svg');
 					$info['empresa'] = 'Circulo Imagen';
 					$info['sitio'] = base_url('postulate/modelo');
