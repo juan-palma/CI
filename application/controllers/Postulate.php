@@ -347,12 +347,12 @@ class Postulate extends CI_Controller {
 					$info['identificacion'] = base_url('assets/public/postulantes/modelo/').$_POST['carpeta'].$_POST['credencial'];
 					$info['logo'] = base_url('assets/public/img/logo_ci.svg');
 					$info['empresa'] = 'Circulo Imagen';
-					$info['sitio'] = base_url();
+					$info['sitio'] = base_url('postulate/modelo');
 					
 					$fotos = '';
 					if( count($nameFotos) > 0 ){
 						foreach ($nameFotos as $i=>$f) {
-							$fotos .='<div style="width: 25%; display: inline-block; float:left;"><img src="'.$f['file_name'].'" style="width: 100%;"></div>';
+							$fotos .='<div style="width: 25%; display: inline-block; float:left;"><img src="'.base_url('assets/public/postulantes/modelo/').$micarpeta.$f['file_name'].'" style="width: 100%;"></div>';
 						}
 					}
 					$info['fotos'] = $fotos;

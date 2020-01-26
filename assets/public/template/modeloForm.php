@@ -5,7 +5,7 @@ $ida_mail_templateHTML = '
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Inmotion Contacto Formulario</title>
+	<title>'. $info["empresa"] .'</title>
 	<style type="text/css">
 	.blue-background{
 		background-color: #006FCF;
@@ -74,6 +74,6 @@ $ida_mail_templateHTML = '
 			<td colspan="3">&nbsp;</td>
 		</tr>
 	</table>
-</body
+</body>
 </html>';
 ?>
