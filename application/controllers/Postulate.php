@@ -450,7 +450,7 @@ class Postulate extends CI_Controller {
 				$idaMail_data['password'] = 'Soporte.libre';
 				
 				
-				$linea = '{"nombre":"'.$_POST['nombre'].'"';
+				$linea = '{"empresa":"'.$_POST['empresa'].'"';
 				$linea .= ', "razon":"'.$_POST['razon'].'"';
 				$linea .= ', "correo":"'.$_POST['correo'].'"';
 				$linea .= ', "telefono":"'.$_POST['telefono'].'"';
@@ -458,7 +458,7 @@ class Postulate extends CI_Controller {
 			
 				$template = FCPATH.'assets/public/template/alianzaForm.php';
 				$info = array();
-				$info['nombre'] = $_POST['nombre'];
+				$info['empresaAlianza'] = $_POST['empresa'];
 				$info['razon'] = $_POST['razon'];
 				$info['mail'] = $_POST['correo'];
 				$info['tel'] = $_POST['telefono'];
@@ -470,7 +470,7 @@ class Postulate extends CI_Controller {
 				$servicios = '';
 				if( count($_POST['servicios']) > 0 ){
 					foreach ($_POST['servicios'] as $i=>$f) {
-						$servicios .='<div style="width: 100%; display: block;">'.$i.'. '.$f.'</div>';
+						$servicios .='<div style="width: 100%; display: block;">'.($i + 1).'. '.$f.'</div>';
 					}
 				}
 				$info['servicios'] = $servicios;

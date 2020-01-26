@@ -38,8 +38,8 @@ $ida_mail_templateHTML = '
 				</span>
 				
 				<div style="color: #666; margin-top: 34px; margin-bottom: 34px;">
-					Empresa: <b>'. $info["empresa"].'</b>,<br />
-					Razón Social: <b>'. $info["rezon"].'</b>,<br />
+					Empresa: <b>'. $info["empresaAlianza"].'</b>,<br />
+					Razón Social: <b>'. $info["razon"].'</b>,<br />
 					Telefono: <b>'. $info["tel"] .'</b>,<br />
 					Correo: <b>'. $info["mail"] .'</b>,<br />
 					<hr />
