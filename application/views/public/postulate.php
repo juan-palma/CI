@@ -74,6 +74,10 @@
 				<div class="g-recaptcha" data-sitekey="6LcFVNIUAAAAAL0ktNowPVPLU3p_TeD8IWHcd4ul" data-callback="bienRecaptcha" data-expired-callback="viejoRecaptcha" data-error-callback="malRecaptcha"></div>
 			</div>
 			
+			<div class="boxInput span6 terminosCheck">
+				<input type="checkbox" name="terminos" class="" id="terminosChek"> He leído y acepto los <a href="<?php echo(base_url('terminos-condiciones')); ?>" target="_blank" class="terminos" id="linkTerminos">términos y condiciones</a></input>
+			</div>
+			
 			<div class="boxInput span6">
 				<input type="submit" value="ENVIAR" id="ida_boxformBtnSend" />
 			</div>

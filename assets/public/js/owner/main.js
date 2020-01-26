@@ -922,6 +922,11 @@ function idaUploadFileFormActive(){
 				idagl.seguros.msnManual += 'Es obligatorio que valide el cuadro reCaptcha.\r\n\r\n';
 			}
 			
+			if(document.id('terminosChek').checked !== true){
+				status = false;
+				idagl.seguros.msnManual += 'Debe de aceptar los terminos y condiciones.\r\n\r\n';
+			}
+			
 			return status;
 		}	
 		

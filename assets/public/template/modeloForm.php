@@ -44,9 +44,9 @@ $ida_mail_templateHTML = '
 					Liga de red social compartida: <b>'. $info["compartir"] .'</b>,<br />
 					<hr />
 					Identificación del Postulante:<br />
-					<div style="width: 100%; display: block;"><img src="'.$info["identificacion"].'" style="width: 30%;"></div>
+					<div style="width: 100%; display: block; padding: 1rem 0rem;"><img src="'.$info["identificacion"].'" style="width: 30%;"></div>
 					Fotos del Postulante:<br />
-					<div style="width: 100%; display: block;">'. $info["fotos"] .'</div>
+					<div style="width: 100%; display: block; padding: 1rem 0rem;">'. $info["fotos"] .'</div>
 				</div>
 				
 				<div style="padding: 6.6rem 0px;"></div>
