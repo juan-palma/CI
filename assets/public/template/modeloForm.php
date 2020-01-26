@@ -31,13 +31,13 @@ $ida_mail_templateHTML = '
 		</tr>
 		<tr style="text-align: center">
 			<td style="width: 70%; padding: 0px 2rem; text-align: left; display: block; margin: 0px auto;" align="center">
-				<h2 style="color: #ff6600;">Mail - Contacto</h2>
+				<h2 style="color: #ff6600;">Mail - Postulado para MODELO</h2>
 				
 				<span style="color: #666; font-size: 90%;">
 					A continuación encontrara la información que se ha dejado suministrada a travez de su sitio web <i>'. $info["sitio"] .'</i> en su formulario de contacto:
 				</span>
 				
-				<div style="color: #666; margin-top: 34px">
+				<div style="color: #666; margin-top: 34px; margin-bottom: 34px;">
 					Nombre: <b>'. $info["nombre"].' '. $info["apellido"].'</b>,<br />
 					Telefono: <b>'. $info["tel"] .'</b>,<br />
 					Correo: <b>'. $info["mail"] .'</b>,<br />
@@ -49,7 +49,6 @@ $ida_mail_templateHTML = '
 					<div style="width: 100%; display: block; padding: 1rem 0rem;">'. $info["fotos"] .'</div>
 				</div>
 				
-				<div style="padding: 6.6rem 0px;"></div>
 			</td>
 		</tr>
 		
