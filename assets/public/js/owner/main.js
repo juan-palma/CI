@@ -951,6 +951,7 @@ function idaUploadFileFormActive(){
 		
 		if(condicion_siguiente()){
 			idagl.ocupado = true;
+			swal('', 'Se esta guardando su informacion...', 'warning');
 			
 			var datos = new FormData(document.id('formularioUpload'));
 						
