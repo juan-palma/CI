@@ -934,7 +934,7 @@ function idaUploadFileFormActive(){
 			
 			
 			if(idagl.recaptcha !== "valido"){
-				status = false;
+				//status = false;
 				idagl.seguros.msnManual += 'Es obligatorio que valide el cuadro reCaptcha.\r\n\r\n';
 			}
 			
