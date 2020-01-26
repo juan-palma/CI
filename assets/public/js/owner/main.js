@@ -908,14 +908,30 @@ function idaUploadFileFormActive(){
 			});
 			if(temporal === false){ status = false; idagl.seguros.msnManual += 'Todos los campos tiene que tener un contenido valido y no etsar vacios.\r\n\r\n'; }
 			
-			var multiUpload = $$('.ida_areaDropUploadPreview');
-			var multiUploadFortos = multiUpload[0].getElements('img.obj');
-			temporal = true;
-			temporal = multiUploadFortos.every(function(item){
-				return item.file.size <= 1024000;
-			});
-			if(temporal === false){ status = false; idagl.seguros.msnManual += 'Cada imagen no debe de pesar mas de 1Mb revise el peso de sus imagenes.\r\n\r\n'; }
-			if(multiUploadFortos.length < 10){ status = false; idagl.seguros.msnManual += 'Debes de subir un minimo de 10 imagenes en la seccion "COMPARTIRNOS".\r\n\r\n'; }
+			if(document.id('pagina').value === 'modelo'){
+				var multiUpload = $$('.ida_areaDropUploadPreview');
+				var multiUploadFortos = multiUpload[0].getElements('img.obj');
+				temporal = true;
+				temporal = multiUploadFortos.every(function(item){
+					return item.file.size <= 1024000;
+				});
+				if(temporal === false){ status = false; idagl.seguros.msnManual += 'Cada imagen no debe de pesar mas de 1Mb revise el peso de sus imagenes.\r\n\r\n'; }
+				if(multiUploadFortos.length < 10){ status = false; idagl.seguros.msnManual += 'Debes de subir un minimo de 10 imagenes en la seccion "COMPARTIRNOS".\r\n\r\n'; }
+			}
+			
+			
+			var servicios = $$('.boxCheck input[type="checkbox"]');
+			if(servicios.length > 0){
+				var selectValor = false;
+				servicios.each(function(s){
+					if(s.checked === true){selectValor = true;}
+				});
+				if(selectValor === false){
+					status = false;
+					idagl.seguros.msnManual += 'No se ha seleccionado ni un servicio, eliga por lo menos un servicio de trabajo.\r\n\r\n';
+				}
+			}
+			
 			
 			if(idagl.recaptcha !== "valido"){
 				status = false;
@@ -966,13 +982,15 @@ function idaUploadFileFormActive(){
 			}
 			
 			
-			var multiUpload = $$('.ida_areaDropUploadPreview');
-			var multiUploadFortos = multiUpload[0].getElements('img.obj');
-			document.id('fotosTotal').value = multiUploadFortos.length;
-			var datos = new FormData(document.id('formularioUpload'));
-			multiUploadFortos.each(function(i, index){
-				datos.append('fotos_'+index, i.file, i.file.name);
-			});
+			if(document.id('pagina').value === 'modelo'){
+				var multiUpload = $$('.ida_areaDropUploadPreview');
+				var multiUploadFortos = multiUpload[0].getElements('img.obj');
+				document.id('fotosTotal').value = multiUploadFortos.length;
+				var datos = new FormData(document.id('formularioUpload'));
+				multiUploadFortos.each(function(i, index){
+					datos.append('fotos_'+index, i.file, i.file.name);
+				});
+			}
 			
 			
 			var ruta = document.id('formularioUpload').getProperty('data-send');

@@ -228,7 +228,7 @@ class Postulate extends CI_Controller {
 				$this->errores[] = 'Todos los campos deben de estar llenos.';
 				echo( json_encode(['status' => $this->status, 'valores' => "", 'errores' => $this->errores]) );
 				$this->cleanVar();
-				return false; 
+				return false;
 			}
 			
 			$micarpeta = url_title($_POST['nombre'].'-'.$_POST['apellido'].'-'.date("Y-m-d-His"));
@@ -376,7 +376,154 @@ class Postulate extends CI_Controller {
 				$this->errores[] = 'No se cargaron las imágenes completas para el registro.';
 			}
 		} else if($_POST['pagina'] == "alianza"){
+			if($_POST['empresa'] === "" || $_POST['razon'] === "" || $_POST['correo'] === "" || $_POST['telefono'] === "" || $_POST['direccion'] === ""){
+				$this->status = 'personal';
+				$this->errores[] = 'Todos los campos deben de estar llenos.';
+				echo( json_encode(['status' => $this->status, 'valores' => "", 'errores' => $this->errores]) );
+				$this->cleanVar();
+				return false;
+			}
 			
+/*
+			$micarpeta = url_title($_POST['nombre'].'-'.$_POST['apellido'].'-'.date("Y-m-d-His"));
+			if (!file_exists(FCPATH.'assets/public/postulantes/modelo/'.$micarpeta)) {
+			    mkdir(FCPATH.'assets/public/postulantes/modelo/'.$micarpeta, 0777, true);
+			}
+			$config['upload_path'] = FCPATH.'assets/public/postulantes/modelo/'.$micarpeta;
+			$this->upload->initialize($config);
+		
+			$rutaImagenes = [];
+			
+			$loadCredencial = false;
+			if ( ! $this->upload->do_upload('credencial') ){
+				$loadCredencial = false;
+				$this->status = 'error';
+				$this->errores[] =  $this->upload->display_errors();
+				$rutaImagenes[]['file_name'] = '';
+			} else{
+				$loadCredencial = true;
+				$result = $this->upload->data();
+				$rutaImagenes[] = $result['file_name'];
+			}
+					
+	
+			
+			//subir fotos del postulante.
+			$nameFotos = [];
+			$nameFotosError = true;
+			for ($i = 0; $i < intval($_POST['fotosTotal']); $i++) {
+				if ( ! $this->upload->do_upload('fotos_'.$i) ){
+					$this->status = 'error';
+					$this->errores[] =  $this->upload->display_errors();
+					$nameFotosError = false;
+				} else{
+					$result = $this->upload->data();
+					$nameFotos[] = $result;
+				}
+			}
+*/
+		
+		
+		
+			//Datos de la seccion Nosotros.	
+			$linea = '{"nombre":"'.$_POST['nombre'].'"';
+			$linea .= ', "razon":"'.$_POST['razon'].'"';
+			$linea .= ', "correo":"'.$_POST['correo'].'"';
+			$linea .= ', "telefono":"'.$_POST['telefono'].'"';
+			$linea .= ', "direccion":"'.$_POST['direccion'].'"';
+
+
+			$linea .= ', "servicios":[';
+			if( count($_POST['servicios']) > 0 ){
+				foreach ($_POST['servicios'] as $i=>$f) {
+					if($i !== 0){ $linea .= ', '; }
+					$linea .= '{"servicio":"'.$f.'"}';
+				}
+			}
+			$linea .= ']}';
+			
+			
+			
+			//consultar si existe un registro con valores para HOME-SECCIONES para saber si interta nuevo registro o actualizar el actual.
+			//Consulta - SOMOS
+			$this->basic_modal->clean();
+			$this->basic_modal->tabla = 'postulados';
+			$this->basic_modal->campos = 'id_postulado';
+			$this->basic_modal->condicion = array( "correo" => $_POST['correo'] );
+			
+			$isInicio = $this->basic_modal->genericSelect('sistema');
+			
+			//Insertar los valores en la base de datos
+			//Consulta
+			$this->basic_modal->clean();
+			$this->basic_modal->tabla = 'postulados';
+			
+			if(count($isInicio) > 0){
+				//Consulta UPDATE servicios
+				//$this->basic_modal->condicion = array('id_contenido', $isInicio[0]->id_contenido);
+				//$valores = array('contenido_info' => $linea);
+				//$update = $this->basic_modal->genericUpdate('sistema', $valores);
+				$this->status = 'personal';
+				$this->errores[] =  "Ya existe un registro con esta cuenta de correo";
+			} else{
+				//Consulta INSERT servicios
+				$valores = array( 'correo' => $_POST['correo'], 'seccion' => $_POST['pagina'], 'contenido' => $linea);
+				$insert = $this->basic_modal->genericInsert('sistema', $valores);
+				$this->valores[] = "Se agrego con exito tu registro";
+				
+				$this->load->helper('mail');
+				require(VIEWPATH.'admin/customers_parametros.php');
+				
+				$idaMail_data['destino_mail'][] = $cleanObjecDB->correo;
+				$idaMail_data['origen_mail'] = $cleanObjecDB->correo_form;
+				$idaMail_data['reply_mail'] = $cleanObjecDB->correo;
+				$idaMail_data['username'] = $cleanObjecDB->correo_form;
+				$idaMail_data['password'] = $cleanObjecDB->correo_pass;
+				$idaMail_data['asunto'] = 'Nuevo postulado para Alianza - sitio WEB Circulo de Imagen';
+
+				
+				$idaMail_data['destino_mail'][] = "soporte@idalibre.com";
+				$idaMail_data['origen_mail'] = "soporte@idalibre.com";
+				$idaMail_data['reply_mail'] = "soporte@idalibre.com";
+				$idaMail_data['username'] = "soporte@idalibre.com";
+				$idaMail_data['password'] = 'Soporte.libre';
+				
+				
+				$linea = '{"nombre":"'.$_POST['nombre'].'"';
+				$linea .= ', "razon":"'.$_POST['razon'].'"';
+				$linea .= ', "correo":"'.$_POST['correo'].'"';
+				$linea .= ', "telefono":"'.$_POST['telefono'].'"';
+				$linea .= ', "direccion":"'.$_POST['direccion'].'"';
+			
+				$template = FCPATH.'assets/public/template/alianzaForm.php';
+				$info = array();
+				$info['nombre'] = $_POST['nombre'];
+				$info['razon'] = $_POST['razon'];
+				$info['mail'] = $_POST['correo'];
+				$info['tel'] = $_POST['telefono'];
+				$info['direccion'] = $_POST['direccion'];
+				$info['logo'] = base_url('assets/public/img/logo_ci.svg');
+				$info['empresa'] = 'Circulo Imagen';
+				$info['sitio'] = base_url('postulate/alianza');
+				
+				$servicios = '';
+				if( count($_POST['servicios']) > 0 ){
+					foreach ($_POST['servicios'] as $i=>$f) {
+						$servicios .='<div style="width: 100%; display: block;">'.$i.'. '.$f.'</div>';
+					}
+				}
+				$info['servicios'] = $servicios;
+				
+				
+				$respMail = ida_sendMail($template, $info, $idaMail_data);
+				if($respMail){
+					$this->valores[] = 'Se envió el correo de manera correcta.';
+				} else{
+					$this->status = 'error';
+					$this->errores[]  = 'Error interno al enviar el correo';
+				}
+			}
+				
 		}
 		
 		

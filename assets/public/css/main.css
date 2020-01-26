@@ -2720,6 +2720,13 @@ body#page_postulate .mainbox.bl3{
 			    align-items: center;
 			    display: flex;
 			}
+			body#page_postulate .mainbox.bl3 form .boxCheck{
+				width: 100%;
+				display: block;
+				font-size: 74%;
+				letter-spacing: 2px;
+				padding: 4px 0px;
+			}
 	
 	
 	
