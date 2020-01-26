@@ -383,50 +383,11 @@ class Postulate extends CI_Controller {
 				$this->cleanVar();
 				return false;
 			}
-			
-/*
-			$micarpeta = url_title($_POST['nombre'].'-'.$_POST['apellido'].'-'.date("Y-m-d-His"));
-			if (!file_exists(FCPATH.'assets/public/postulantes/modelo/'.$micarpeta)) {
-			    mkdir(FCPATH.'assets/public/postulantes/modelo/'.$micarpeta, 0777, true);
-			}
-			$config['upload_path'] = FCPATH.'assets/public/postulantes/modelo/'.$micarpeta;
-			$this->upload->initialize($config);
-		
-			$rutaImagenes = [];
-			
-			$loadCredencial = false;
-			if ( ! $this->upload->do_upload('credencial') ){
-				$loadCredencial = false;
-				$this->status = 'error';
-				$this->errores[] =  $this->upload->display_errors();
-				$rutaImagenes[]['file_name'] = '';
-			} else{
-				$loadCredencial = true;
-				$result = $this->upload->data();
-				$rutaImagenes[] = $result['file_name'];
-			}
-					
-	
-			
-			//subir fotos del postulante.
-			$nameFotos = [];
-			$nameFotosError = true;
-			for ($i = 0; $i < intval($_POST['fotosTotal']); $i++) {
-				if ( ! $this->upload->do_upload('fotos_'.$i) ){
-					$this->status = 'error';
-					$this->errores[] =  $this->upload->display_errors();
-					$nameFotosError = false;
-				} else{
-					$result = $this->upload->data();
-					$nameFotos[] = $result;
-				}
-			}
-*/
 		
 		
 		
 			//Datos de la seccion Nosotros.	
-			$linea = '{"nombre":"'.$_POST['nombre'].'"';
+			$linea = '{"empresa":"'.$_POST['empresa'].'"';
 			$linea .= ', "razon":"'.$_POST['razon'].'"';
 			$linea .= ', "correo":"'.$_POST['correo'].'"';
 			$linea .= ', "telefono":"'.$_POST['telefono'].'"';

@@ -89,7 +89,6 @@
 		
 		<form id="formularioUpload" class="ev" role="form" enctype="multipart/form-data" method="post" accept-charset="utf-8" data-send="<?php echo(base_url('postulate/do_upload')); ?>">
 			<input type="hidden" id="pagina" name="pagina" value="<?php echo($area); ?>"></input>
-			<input type="hidden" id="fotosTotal" name="fotosTotal" value=""></input>
 			
 			<div class="boxInput">
 				<label>Nombre de la empresa* </label>
