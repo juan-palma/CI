@@ -131,13 +131,19 @@ class Portafolio extends CI_Controller {
 			$cleanObjecDB2->id = $respuesta2[0]->id_contenido;
 			$data['articuloDB'] = $cleanObjecDB2;
 			
-			if( (!isset($_SESSION['accesoPortafolio']) || $_SESSION['accesoPortafolio'] === '') || (!isset($_SESSION['articulo']) || $_SESSION['articulo'] !== $peticion)){
-				session_destroy();
-				$data['articulo'] = $peticion;
-				$data['ruta'] = base_url('portafolio/');
-				$this->load->view('public/head', $data);
-				$this->load->view('public/portafolio_in_login', $data);
-				$this->load->view('public/footer', $data);
+			if($cleanObjecDB2->privado === 'si'){
+				if( (!isset($_SESSION['accesoPortafolio']) || $_SESSION['accesoPortafolio'] === '') || (!isset($_SESSION['articulo']) || $_SESSION['articulo'] !== $peticion)){
+					session_destroy();
+					$data['articulo'] = $peticion;
+					$data['ruta'] = base_url('portafolio/');
+					$this->load->view('public/head', $data);
+					$this->load->view('public/portafolio_in_login', $data);
+					$this->load->view('public/footer', $data);
+				} else{
+					$this->load->view('public/head', $data);
+					$this->load->view('public/portafolio_in', $data);
+					$this->load->view('public/footer', $data);
+				}
 			} else{
 				$this->load->view('public/head', $data);
 				$this->load->view('public/portafolio_in', $data);

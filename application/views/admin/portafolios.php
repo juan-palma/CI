@@ -332,7 +332,7 @@ $data_galeria_foto  =  array (
 						<div class="col-12 col-sm-6 makePrivate">
 							<label>¿Este portafolio sera privado?:</label>
 							<?php
-								if(isset($articuloDB) && property_exists($articuloDB, "privado") && $articuloDB->privado !== '' ){
+								if(isset($articuloDB) && property_exists($articuloDB, "privado") && $articuloDB->privado === 'si' ){
 									echo form_checkbox($data_registro_privado, 'si', TRUE);
 								} else{
 									echo form_checkbox($data_registro_privado, 'si', FALSE);
