@@ -37,6 +37,20 @@ $data_titulo_fondo =  array (
 	'data-cloneinfo' => 'titulo_fondo'
 );
 
+$data_registro_privado =  array ( 
+	'name' => 'registros[privado]',
+	'value' => 'si',
+	'class' => '',
+	'autocomplete' => 'off',
+	'placeholder' => ''
+);
+$data_registro_privado_pass =  array ( 
+	'name' => 'registros[privado_pass]',
+	'value' => @$articuloDB->privado_pass,
+	'class' => 'validaciones vc form-control input-lg',
+	'autocomplete' => 'off',
+	'placeholder' => ''
+);
 
 
 /*
@@ -313,6 +327,19 @@ $data_galeria_foto  =  array (
 								}
 							?>
 							</div>
+						</div>
+						
+						<div class="col-12 col-sm-6 makePrivate">
+							<label>¿Este portafolio sera privado?:</label>
+							<?php
+								if(isset($articuloDB) && property_exists($articuloDB, "privado") && $articuloDB->privado !== '' ){
+									echo form_checkbox($data_registro_privado, 'si', TRUE);
+								} else{
+									echo form_checkbox($data_registro_privado, 'si', FALSE);
+								}
+							?>
+							<label class="col-12">Contraseña para el acceso:</label>
+							<?php echo form_input( $data_registro_privado_pass ); ?>
 						</div>
 						
 					</div>

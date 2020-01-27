@@ -131,13 +131,63 @@ class Portafolio extends CI_Controller {
 			$cleanObjecDB2->id = $respuesta2[0]->id_contenido;
 			$data['articuloDB'] = $cleanObjecDB2;
 			
-			$this->load->view('public/head', $data);
-			$this->load->view('public/portafolio_in', $data);
-			$this->load->view('public/footer', $data);
+			if( (!isset($_SESSION['accesoPortafolio']) || $_SESSION['accesoPortafolio'] === '') || (!isset($_SESSION['articulo']) || $_SESSION['articulo'] !== $peticion)){
+				session_destroy();
+				$data['articulo'] = $peticion;
+				$data['ruta'] = base_url('portafolio/');
+				$this->load->view('public/head', $data);
+				$this->load->view('public/portafolio_in_login', $data);
+				$this->load->view('public/footer', $data);
+			} else{
+				$this->load->view('public/head', $data);
+				$this->load->view('public/portafolio_in', $data);
+				$this->load->view('public/footer', $data);
+			}
+			
 		} else{
 			$data['message'] = '¡Hola!...  al parecer '.$peticion.' no se encuentra por el momento en este espacio';
 			$this->load->view('errors/html/error_404', $data);
 		}
+	}
+	
+	
+	public function login(){
+		$json = array();
+		$json['status'] = 'ok';
+		$json['valores'] = array();
+		$json['errores']  = array();
+		
+		$encontrar = array("\r\n", "\n", "\r");
+		$remplazar = '';
+		
+		$peticion = $_POST['articuloP'];
+		
+		//Consulta - Valor - Portafolios
+		$this->basic_modal->clean();
+		$this->basic_modal->tabla = 'contenido';
+		$this->basic_modal->campos = 'id_contenido, contenido_info';
+		$this->basic_modal->like = array("contenido_info" => '"url":"'.$peticion.'"');
+		$this->basic_modal->condicion = array( "contenido_pagina" => "portafolios",  "contenido_seccion" => "registro");
+		
+		$respuesta2 = $this->basic_modal->genericSelect('sistema');
+		$clean2 = ($respuesta2[0] && property_exists($respuesta2[0], 'contenido_info')) ? str_replace($encontrar, $remplazar, $respuesta2[0]->contenido_info) : '';
+		$cleanObjecDB2 = ( is_object(json_decode($clean2)) ) ? json_decode($clean2) : new stdClass();
+		$cleanObjecDB2->id = $respuesta2[0]->id_contenido;
+		$data['articuloDB'] = $cleanObjecDB2;
+		
+		if($_POST['password'] === $cleanObjecDB2->privado_pass){
+			$userData = array(
+				'accesoPortafolio' => 'yes',
+				'articulo' => $peticion,
+			);
+			$this->session->set_userdata($userData);
+						
+			$json['valores'][] = 'Se envió el correo de manera correcta.';
+		} else{
+			$json['status'] = 'error';
+			$json['errores'][]  = 'Error interno al enviar el correo';
+		}
+		echo( json_encode($json) );
 	}
 	
 

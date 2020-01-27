@@ -195,7 +195,7 @@ class Portafolios extends CI_Controller {
 
 		if($loadFoto !== false && $loadImagen !== false){
 			//Datos de la seccion Portafolio.
-			$linea = '{"titulo_general":"'.$_POST['registros']['titulo'].'", "nombre":"'.$_POST['registros']['nombre'].'", "url":"'.url_title($_POST['registros']['url']).'", "intro":"'.$_POST['registros']['intro'].'", "titulo_fondo":"'.$loadPortada[0]['file_name'].'", "bloques":[';
+			$linea = '{"titulo_general":"'.$_POST['registros']['titulo'].'", "nombre":"'.$_POST['registros']['nombre'].'", "url":"'.url_title($_POST['registros']['url']).'", "intro":"'.$_POST['registros']['intro'].'", "titulo_fondo":"'.$loadPortada[0]['file_name'].'", "privado":"'.$_POST['registros']['privado'].'", "privado_pass":"'.$_POST['registros']['privado_pass'].'", "bloques":[';
 			
 			if( isset($_POST['registros']['bloque']) ){
 				foreach ($_POST['registros']['bloque'] as $i=>$v) {

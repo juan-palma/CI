@@ -43,11 +43,7 @@ if ( ! function_exists('isNoLogged'))
 }
 
 
-
-
-
-// Funciones para validar el login del panel de leads
-if ( ! function_exists('isLeadLogged'))
+if ( ! function_exists('isNoLoggedProfile'))
 {
 	/**
 	 * Is Logged
@@ -56,30 +52,18 @@ if ( ! function_exists('isLeadLogged'))
 	 *
 	 * @return	redirect to login or redirecto to panel
 	 */
-	function isLeadLogged(){
-	    if( (isset($_SESSION['id_lead']) && $_SESSION['id_lead'] !== '') && (isset($_SESSION['lead_rfc']) && $_SESSION['lead_rfc'] !== '') ){
-			redirect(base_url('public/carga_archivos'));
-		}
-	}
-}
-
-
-if ( ! function_exists('isLeadNoLogged'))
-{
-	/**
-	 * Is Logged
-	 *
-	 * Chek if user date is set in session an login ok redirecto tu panel else redirect to login again.
-	 *
-	 * @return	redirect to login or redirecto to panel
-	 */
-	function isLeadNoLogged(){
-	    if( (!isset($_SESSION['id_lead']) || $_SESSION['id_lead'] === '') || (!isset($_SESSION['lead_rfc']) || $_SESSION['lead_rfc'] === '') ){
+	function isNoLoggedProfile(){
+	    if( (!isset($_SESSION['userIDProfile']) || $_SESSION['userIDProfile'] === '') || (!isset($_SESSION['fingerProfile']) || $_SESSION['fingerProfile'] === '') ){
 			session_destroy();
-			redirect(base_url());
+			redirect(base_url('portafolio/login'));
 		}
 	}
 }
+
+
+
+
+
 
 
 ?>

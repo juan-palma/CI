@@ -106,6 +106,51 @@ function db_conect(url, datos, f, e){
 
 
 
+function db_conect2(url, datos, f, e){
+	// Set up the request.
+	var xhr = new XMLHttpRequest();
+	
+	// Open the connection.
+	xhr.open('POST', url, true);
+	
+	// Set up a handler for when the request finishes.
+	xhr.onload = function () {
+		var j = JSON.parse(xhr.response);
+		
+		if (xhr.status === 200) {
+			if(j.status != 'ok'){
+				if(j.status != 'personal'){
+					e(j);
+				} else{
+					console.info('Ocurrio un error al procesar tu informacion.');
+					console.info(j);
+					swal('', 'Ocurrio un error al procesar tu informacion, intentelo más tarde o póngase en contacto con su área de sistemas.', 'warning');
+					e(j);
+				}
+			} else{
+				f(j);
+			}
+		} else {
+			console.info('Ocurrio un error con la coneccion.');
+			console.info(j);
+			swal('', 'Ocurrio un error con la coneccion., intentelo más tarde o póngase en contacto con su área de sistemas.', 'warning');
+			e(j);
+		}
+	};
+	
+	xhr.onerror = function(){
+		console.info('Ocurrio un error con la coneccion.');
+		console.info(j);
+		swal('', 'Ocurrio un error con la coneccion., intentelo más tarde o póngase en contacto con su área de sistemas.', 'warning');
+		e(j);
+	}
+	
+	// Send the Data.
+	var consulta = xhr.send(datos);
+}
+
+
+
 
 
 
@@ -365,10 +410,10 @@ function home_inicio(){
 				items: 5
 			},
 			1200: {
-				items: 6
+				items: 5
 			},
 			1400: {
-				items: 8
+				items: 5
 			}
 		}
 	});
@@ -439,10 +484,10 @@ function footer_run(){
 				items: 5
 			},
 			1200: {
-				items: 6
+				items: 5
 			},
 			1400: {
-				items: 8
+				items: 5
 			}
 		}
 	});
@@ -632,17 +677,44 @@ function footer_run(){
 
 // ***** Portafolio *****//
 function portafolio_in(){	
+	var formLogin = document.id('formPortaLogin');
+	if(formLogin !== null){
+		formLogin.addEvent('submit', function(e){
+			e.preventDefault();
+			e.stop();
+			
+			function error(j){
+				swal('', 'la contraseña es incorrecta', 'warning');
+			}
+			
+			function fin(j){
+				var articuloP = document.id('rutaP').value +'articulo/'+ document.id('articuloP').value;
+				window.location.replace(articuloP);
+			}
+			
+			if(document.id('form-login-password').value !== ""){
+				var datos = new FormData(document.id('formPortaLogin'));
+				var rlogin = document.id('rutaP').value + 'login';
+				db_conect2(rlogin, datos, fin, error);
+			}
+		});
+	}
+/*
+	if(){
+		
+	}
+*/
 	
-	var sliderPortafolio = tns({
-		"container": '#portafolios .slideItems',
-		//"autoHeight": true,
-		"items": 1,
-		"swipeAngle": false,
-		"speed": 400
-	});
-	
-	
-	
+	var area = $$('#portafolios .slideItems');
+	if(area.length > 0){
+		var sliderPortafolio = tns({
+			"container": '#portafolios .slideItems',
+			//"autoHeight": true,
+			"items": 1,
+			"swipeAngle": false,
+			"speed": 400
+		});
+	}
 		
 /*
 	var t = setInterval(function(){

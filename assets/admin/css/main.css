@@ -823,7 +823,9 @@ a[href*="froala.com"]{
 	#registro_portafolios .boxRepeat > .registro:nth-child(2) .bloque_texto2{
 		display: none;
 	}
-
+#registro_portafolios .makePrivate input[type=checkbox]{
+	margin-left: 6px;
+}
 
 
 
