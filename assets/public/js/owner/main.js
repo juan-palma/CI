@@ -305,6 +305,7 @@ function descargar_vcard(){
 
 
 function header_run(){
+/*
 	var scrollFX = new Fx.Scroll(window, {
 	    offset: {
 	        x: 0,
@@ -314,6 +315,22 @@ function header_run(){
 	
 	document.id('btnMenuCliente').addEvent('click', function(){
 		scrollFX.toElement(document.id('clientes'), 'y');
+	});
+*/
+	
+	
+	
+	var boxBtn = document.id('navMobileOpen');
+	var btnMovile = boxBtn.getElement('img');
+	btnMovile.addEvent('click', function(){
+		document.id('navExtend').addClass('active');
+	});
+	
+	
+	var boxBtnClose = document.id('navMobileClose');
+	var btnMovileClose = boxBtnClose.getElement('img');
+	btnMovileClose.addEvent('click', function(){
+		document.id('navExtend').removeClass('active');
 	});
 }
 
@@ -435,6 +452,7 @@ function home_inicio(){
 
 //::::::::::::::::::::::::
 // ***** header *****//
+/*
 idagl.menu = 'off';
 function header_run(){
 	var btnMenu = document.id('btnMenu');
@@ -460,6 +478,7 @@ function header_run(){
 	btnMenu.addEvent('click', menuActive);
 	btnMenuClose.addEvent('click', menuActive);
 }
+*/
 
 
 
@@ -1582,7 +1601,7 @@ window.addEvent('domready', function(){
 		}
 	}
 	
-	//header_run();
+	header_run();
 	footer_run();
 	
 });

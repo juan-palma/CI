@@ -243,7 +243,7 @@ if(property_exists($generalDB, "youtube") && $generalDB->youtube !== ''){
 		</div>
 <!-- 	FIN SVG -->
 		
-		<nav id="nav">
+		<nav id="nav" class="onlyDessktop">
 			<div id="logo"><img src="<?php echo(base_url('assets/public/img/logo_ci_fondo.svg')); ?>"></img></div>
 			<div id="menus">
 				<a id="btnMenuHome" href="<?php echo(base_url()); ?>"><div class="menu">Home</div></a>
@@ -272,6 +272,50 @@ if(property_exists($generalDB, "youtube") && $generalDB->youtube !== ''){
 				</div>
 			</div>
 		</nav>
+		
+		<nav id="navMobile" class="onlyMobile">
+			<div id="logo"><img src="<?php echo(base_url('assets/public/img/logo_ci_fondo.svg')); ?>"></img></div>
+			<div id="navMobileOpen">
+				<img src="<?php echo(base_url('assets/public/img/navMobileOpenBtn.svg')); ?>" />
+			</div>
+		</nav>
+		
+		<nav id="navExtend" class="onlyMobile extendNav">
+			<div id="menus">
+				<a id="btnMenuHome" href="<?php echo(base_url()); ?>"><div class="menu">Home</div></a>
+				<a href="<?php echo(base_url('servicios')); ?>"><div class="menu">servicios</div></a>
+				<a href="<?php echo(base_url('portafolio')); ?>"><div class="menu">portafolio</div></a>
+<!-- 				<a id="btnMenuCliente" href="javascript:void(0);"><div class="menu">clientes</div></a> -->
+				<a href="<?php echo(base_url('postulate')); ?>"><div class="menu">postulate</div></a>
+				
+				<div id="dir">
+					<div class="tel">Tel:<?php echo($generalDB->telefono); ?></div>
+					<div class="mail"><a href="mailto:<?php echo($generalDB->correo); ?>"><?php echo($generalDB->correo); ?></a></div>
+					<div class="redes">
+						<?php
+							foreach ($headerDB->redes as $i=>$v) {
+								if($v->liga !== ''){
+							?>
+								<div class="red <?php echo($v->red); ?>">
+									<a target="_blank" href="<?php echo($v->liga); ?>">
+										<?php echo( $v->icono); ?>
+									</a>
+								</div>
+							<?php
+								}
+							}
+						?>
+					</div>
+				</div>
+
+			</div>
+			
+			<div id="navMobileClose">
+				<img src="<?php echo(base_url('assets/public/img/navMobileCloseBtn.svg')); ?>" />
+			</div>
+		</nav>
+		
+		
 		
 		
 <!--
