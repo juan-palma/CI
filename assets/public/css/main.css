@@ -4018,6 +4018,10 @@ footer #certificaciones,  footer #premios{
 	.onlyMobile{
 		display: block;
 	}
+	.redes {
+	    justify-content: center;
+	    text-align: center;
+	}
 	#navMobile{
 		position: fixed;
 		top: 0px;
