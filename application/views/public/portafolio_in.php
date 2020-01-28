@@ -2,7 +2,7 @@
 
 <!-- Pagina Portafolios TITULO -->
 <div class="mainbox bl1" style="background-image: url(<?php echo(base_url( 'assets/public/img/portafolios/registros/'.@$articuloDB->titulo_fondo )); ?> )">
-	<h2 class="titulo">&nbsp;<?php echo(@$articuloDB->titulo_general); ?></h2>
+	<h2 class="titulo"><span class="onlyDesktop">&nbsp;</span><?php echo(@$articuloDB->titulo_general); ?></h2>
 	<h1 class="nombre">&nbsp;<?php echo(@$articuloDB->nombre); ?></h1>
 </div>
 
@@ -10,7 +10,7 @@
 
 <!-- Pagina Portafolios INTRO -->
 <div class="mainbox bl2">
-	<p class="intro">&nbsp;<?php echo(@$articuloDB->intro); ?></p>
+	<p class="intro"><span class="onlyDesktop">&nbsp;</span><?php echo(@$articuloDB->intro); ?></p>
 </div>
 
 

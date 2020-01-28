@@ -243,7 +243,7 @@ if(property_exists($generalDB, "youtube") && $generalDB->youtube !== ''){
 		</div>
 <!-- 	FIN SVG -->
 		
-		<nav id="nav" class="onlyDessktop">
+		<nav id="nav" class="onlyDesktop">
 			<div id="logo"><img src="<?php echo(base_url('assets/public/img/logo_ci_fondo.svg')); ?>"></img></div>
 			<div id="menus">
 				<a id="btnMenuHome" href="<?php echo(base_url()); ?>"><div class="menu">Home</div></a>

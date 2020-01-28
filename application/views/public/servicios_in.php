@@ -2,8 +2,8 @@
 
 <!-- Pagina Servicios TITULO -->
 <div class="mainbox bl1" style="background-image: url(<?php echo(base_url( 'assets/public/img/servicios/registros/'.@$articuloDB->titulo_fondo )); ?> )">
-	<h2 class="titulo">&nbsp;&nbsp;<?php echo(@$articuloDB->titulo_general); ?></h2>
-	<h1 class="nombre">&nbsp;<?php echo(@$articuloDB->nombre); ?></h1>
+	<h2 class="titulo"><span class="onlyDesktop">&nbsp;&nbsp;</span><?php echo(@$articuloDB->titulo_general); ?></h2>
+	<h1 class="nombre"><span class="onlyDesktop">&nbsp;</span><?php echo(@$articuloDB->nombre); ?></h1>
 </div>
 
 

@@ -1,6 +1,6 @@
 <!-- sección Portafolios General TITULO -->
 <div class="mainbox bl1" style="background-image: url(<?php echo(base_url( 'assets/public/img/portafolios/'.@$portafoliosDB->fondo_titulo )); ?> )">
-	<h1 class="titulo">&nbsp;<?php echo(@$portafoliosDB->titulo_general); ?></h1>
+	<h1 class="titulo"><span class="onlyDesktop">&nbsp;</span><?php echo(@$portafoliosDB->titulo_general); ?></h1>
 </div>
 
 <div class="mainbox bl2">

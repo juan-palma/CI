@@ -4012,7 +4012,7 @@ footer #certificaciones,  footer #premios{
 
 @media (max-width: 850px){
 	/* Ajustes Globales y del navegador */
-	.onlyDessktop{
+	.onlyDesktop{
 		display: none !important;
 	}
 	.onlyMobile{
@@ -4120,6 +4120,7 @@ footer #certificaciones,  footer #premios{
 	}
 	body#home .mainbox.bl2 .somosTitulo {
 	    line-height: 1;
+	    font-size: 11vw;
 	}
 	body#home .mainbox.bl2 .somosTexto {
 	    padding: 0px 1rem;
@@ -4182,12 +4183,16 @@ footer #certificaciones,  footer #premios{
 	body#servicios_in .mainbox.bl3 .galeria, body#servicios_in .mainbox.bl3 .bloques {
 	    flex: 0 0 100%;
 	    max-width: 100%;
+	    height: 100vw;
 	}
 	body#servicios_in .mainbox.bl3 .tns-controls {
 	    right: 0rem;
 	}
 	body#servicios_in .mainbox.bl4 {
 	    padding: 4rem 4rem 0rem;
+	}
+	body#servicios_in .mainbox.bl3 {
+	    flex-direction: column;
 	}
 	
 	
@@ -4429,8 +4434,40 @@ footer #certificaciones,  footer #premios{
 
 
 
-@media (max-width: 780px) and (orientation: landscape){
+@media (max-width: 850px) and (orientation: landscape){
+	#navExtend #menus {
+	    line-height: 1.5;
+	}
+	body#home .mainbox.bl1 {
+	    height: 100vh;
+	}
 	
+	body#servicio_general .mainbox.bl1 {
+	    height: 100vh;
+	}
+	body#servicios_in .mainbox.bl3 .galeria, body#servicios_in .mainbox.bl3 .bloques {
+	    height: 80vh;
+	}
+	body#portafolio_general .mainbox.bl2 > .contenedor > article.item {
+	    height: 68vh;
+	}
+	body#portafolio_in .mainbox.bl3 > .contenedor > article.item .img {
+	    padding: 3vh 32vw;
+	}
+	body#portafolio_in .mainbox.bl3 > .contenedor > article.item .img, body#portafolio_in .mainbox.bl3 > .contenedor > article.item .info {
+	    flex: 0 0 100%;
+	    max-width: 100%;
+	    padding: 9vw 9vw 0vw;
+	}
+	body#somos .mainbox.bl1 {
+	    height: 71vh;
+	}
+	body#somos .mainbox.bl1 .titulo {
+	    font-size: 5vw;
+	}
+	body#somos .mainbox.bl4 > div article.slideLine {
+	    height: 80vh;
+	}
 }
 
 

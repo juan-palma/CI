@@ -1,6 +1,6 @@
 <!-- Pagina QUIENES SOMOS -->
 <div class="mainbox bl1" style="background-image: url(<?php echo(base_url( 'assets/public/img/somos/'.@$somosDB->titulo_fondo )); ?> )">
-	<h2 class="titulo">&nbsp;&nbsp;<?php echo(@$somosDB->titulo_general); ?></h2>
+	<h2 class="titulo"><span class="onlyDesktop">&nbsp;&nbsp;</span><?php echo(@$somosDB->titulo_general); ?></h2>
 </div>
 
 

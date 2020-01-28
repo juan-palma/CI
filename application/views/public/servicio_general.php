@@ -1,6 +1,6 @@
 <!-- sección Servicios General TITULO -->
 <div class="mainbox bl1" style="background-image: url(<?php echo(base_url( 'assets/public/img/servicios/'.@$serviciosDB->fondo_titulo )); ?> )">
-	<h1 class="titulo">&nbsp;<?php echo(@$serviciosDB->titulo_general); ?></h1>
+	<h1 class="titulo"><span class="onlyDesktop">&nbsp;</span><?php echo(@$serviciosDB->titulo_general); ?></h1>
 </div>
 
 <div class="mainbox bl2">

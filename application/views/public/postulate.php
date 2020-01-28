@@ -7,7 +7,7 @@
 	$postulateDB->titulo_general = "Postúlate";
 ?>
 <div class="mainbox bl1" style="background-image: url(<?php echo(base_url( 'assets/public/img/postulate/'.@$postulateDB->titulo_fondo )); ?> )">
-	<h2 class="titulo">&nbsp;<?php echo(@$postulateDB->titulo_general); ?></h2>
+	<h2 class="titulo"><span class="onlyDesktop">&nbsp;</span><?php echo(@$postulateDB->titulo_general); ?></h2>
 </div>
 
 
