@@ -396,6 +396,7 @@ body{
 
 :root{
 	--colorPrincipal: #AE9A69;
+	--colorPrincipal15: rgba(174, 154, 104, 0.15);
 	--colorBaseBlack: #212529;
 }
 
@@ -736,6 +737,7 @@ input[type="button"]:hover{
     color: white;
     top: 0px;
     left: 0px;
+    background-color: var(--colorPrincipal15);
 }
 	#nav > div{
 		
@@ -744,9 +746,9 @@ input[type="button"]:hover{
 	#logo{
 		display: flex;
 		align-self: flex-start;
-		justify-content: center;
+		justify-content: flex-start;
 		align-items: flex-start;
-		flex-basis: 127px;
+		flex-basis:78px;
 	}
 		#logo img{
 			width: 100%;
@@ -778,6 +780,9 @@ input[type="button"]:hover{
 		}
 		#menus a#btnMenuHome{
 			
+		}
+		#menus a#btnMenuCliente{
+			display: none;
 		}
 	#dir{
 		display: flex;
@@ -869,6 +874,9 @@ body#home{
 }
 	body#home #menus a#btnMenuHome{
 		display: none
+	}
+	body#home #menus a#btnMenuCliente{
+		display: block;
 	}
 	body#home #dir,
 	body#home #dir a{
@@ -1135,7 +1143,7 @@ body#home{
 			}
 			body#home .mainbox.bl5 .slideMain .clienteTitulos{
 				font-family: 'Montserrat ExtraBold';
-				letter-spacing: 15px;
+				letter-spacing: 24px;
 			}
 			body#home .mainbox.bl5 .slideMain .slideItems{
 /* 				width: 100%; */
@@ -1325,9 +1333,10 @@ body#home{
 			}
 			section#alianzas.mainbox .slideMain .alianzaTitulos{
 				font-family: 'Montserrat ExtraBold';
-				letter-spacing: 15px;
+				letter-spacing: 23px;
 				color: white;
 				margin-bottom: 0px;
+				padding: 2rem 0px;
 			}
 			section#alianzas.mainbox .slideMain .slideItems{
 /* 				width: 100%; */
@@ -1368,6 +1377,7 @@ body#home{
 			    font-size: 75%;
 			    padding: 0px 8px;
 			    color: var(--colorPrincipal);
+			    
 			    cursor: pointer;
 			}
 
@@ -2229,7 +2239,7 @@ body#somos .mainbox.bl3{
 	align-items: stretch;
 }
 	body#somos .mainbox.bl3 .linea{
-		height: 40vw;
+		height: 32vw;
 		display: flex;
 		margin-bottom: 7rem;
 	}
@@ -2277,8 +2287,8 @@ body#somos .mainbox.bl3{
 		    padding: 4rem;
 		    border: 2px solid var(--colorPrincipal);
 		    position: relative;
-		    left: -2rem;
-		    top: -2rem;
+		    left: -8%;
+		    top: -8%;
 		    z-index: 0;
 		}
 		body#somos .mainbox.bl3 .linea:nth-child(2n) .bloques .item{
@@ -4183,7 +4193,7 @@ footer #certificaciones,  footer #premios{
 	body#servicios_in .mainbox.bl3 .galeria, body#servicios_in .mainbox.bl3 .bloques {
 	    flex: 0 0 100%;
 	    max-width: 100%;
-	    height: 100vw;
+	    height: auto;
 	}
 	body#servicios_in .mainbox.bl3 .tns-controls {
 	    right: 0rem;
@@ -4273,6 +4283,13 @@ footer #certificaciones,  footer #premios{
 	    right: auto;
 	    transform: translateX(-50%) translateY(-50%);
 	}
+	body#portafolio_in .mainbox.bl4{
+		height: 60vw;
+	}
+	
+	
+	
+	
 	
 	
 	/* quienes somos */

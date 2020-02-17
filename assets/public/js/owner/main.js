@@ -305,20 +305,6 @@ function descargar_vcard(){
 
 
 function header_run(){
-/*
-	var scrollFX = new Fx.Scroll(window, {
-	    offset: {
-	        x: 0,
-	        y: 0
-	    }
-	});
-	
-	document.id('btnMenuCliente').addEvent('click', function(){
-		scrollFX.toElement(document.id('clientes'), 'y');
-	});
-*/
-	
-	
 	
 	var boxBtn = document.id('navMobileOpen');
 	var btnMovile = boxBtn.getElement('img');
@@ -331,6 +317,18 @@ function header_run(){
 	var btnMovileClose = boxBtnClose.getElement('img');
 	btnMovileClose.addEvent('click', function(){
 		document.id('navExtend').removeClass('active');
+	});
+	
+	
+	var scrollFX = new Fx.Scroll(window, {
+	    offset: {
+	        x: 0,
+	        y: 0
+	    }
+	});
+	
+	document.id('btnMenuCliente').addEvent('click', function(){
+		scrollFX.toElement(document.id('clientes'), 'y');
 	});
 }
 

@@ -244,16 +244,17 @@ if(property_exists($generalDB, "youtube") && $generalDB->youtube !== ''){
 <!-- 	FIN SVG -->
 		
 		<nav id="nav" class="onlyDesktop">
-			<div id="logo"><img src="<?php echo(base_url('assets/public/img/logo_ci_fondo.svg')); ?>"></img></div>
+			<div id="logo"><a href="<?php echo(base_url()); ?>"><img src="<?php echo(base_url('assets/public/img/logo_ci_fondo.svg')); ?>"></img></a></div>
 			<div id="menus">
 				<a id="btnMenuHome" href="<?php echo(base_url()); ?>"><div class="menu">Home</div></a>
 				<a href="<?php echo(base_url('servicios')); ?>"><div class="menu">servicios</div></a>
 				<a href="<?php echo(base_url('portafolio')); ?>"><div class="menu">portafolio</div></a>
-<!-- 				<a id="btnMenuCliente" href="javascript:void(0);"><div class="menu">clientes</div></a> -->
+				<a id="btnMenuCliente" href="javascript:void(0);"><div class="menu">clientes</div></a>
+				<a href="<?php echo(base_url('quienes_somos')); ?>"><div class="menu">quienes somos</div></a>
 				<a href="<?php echo(base_url('postulate')); ?>"><div class="menu">postulate</div></a>
 			</div>
 			<div id="dir">
-				<div class="tel">Tel:<?php echo($generalDB->telefono); ?></div>
+				<div class="tel"><a href="tel:<?php echo($generalDB->telefono); ?>">Tel:<?php echo($generalDB->telefono); ?></a></div>
 				<div class="mail"><a href="mailto:<?php echo($generalDB->correo); ?>"><?php echo($generalDB->correo); ?></a></div>
 				<div class="redes">
 					<?php
@@ -274,7 +275,7 @@ if(property_exists($generalDB, "youtube") && $generalDB->youtube !== ''){
 		</nav>
 		
 		<nav id="navMobile" class="onlyMobile">
-			<div id="logo"><img src="<?php echo(base_url('assets/public/img/logo_ci_fondo.svg')); ?>"></img></div>
+			<div id="logo"><a href="<?php echo(base_url()); ?>"><img src="<?php echo(base_url('assets/public/img/logo_ci_fondo.svg')); ?>"></img></a></div>
 			<div id="navMobileOpen">
 				<img src="<?php echo(base_url('assets/public/img/navMobileOpenBtn.svg')); ?>" />
 			</div>
@@ -286,10 +287,11 @@ if(property_exists($generalDB, "youtube") && $generalDB->youtube !== ''){
 				<a href="<?php echo(base_url('servicios')); ?>"><div class="menu">servicios</div></a>
 				<a href="<?php echo(base_url('portafolio')); ?>"><div class="menu">portafolio</div></a>
 <!-- 				<a id="btnMenuCliente" href="javascript:void(0);"><div class="menu">clientes</div></a> -->
+				<a href="<?php echo(base_url('quienes_somos')); ?>"><div class="menu">quienes somos</div></a>
 				<a href="<?php echo(base_url('postulate')); ?>"><div class="menu">postulate</div></a>
 				
 				<div id="dir">
-					<div class="tel">Tel:<?php echo($generalDB->telefono); ?></div>
+					<div class="tel"><a href="tel:<?php echo($generalDB->telefono); ?>">Tel:<?php echo($generalDB->telefono); ?></a></div>
 					<div class="mail"><a href="mailto:<?php echo($generalDB->correo); ?>"><?php echo($generalDB->correo); ?></a></div>
 					<div class="redes">
 						<?php
