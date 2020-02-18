@@ -320,6 +320,13 @@ function header_run(){
 	});
 	
 	
+	//desplegable del menu mobile para postulate
+	var myAccordion = new Fx.Accordion($$('.postulateAcordeon'), $$('.postulateInfo'), {
+		display: 2,
+		alwaysHide: true
+	});
+	
+	
 	var scrollFX = new Fx.Scroll(window, {
 	    offset: {
 	        x: 0,

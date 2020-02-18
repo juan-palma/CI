@@ -784,6 +784,14 @@ input[type="button"]:hover{
 		#menus a#btnMenuCliente{
 			display: none;
 		}
+		#menus .postulateAcordeon{
+			font-family: 'Montserrat Bold';
+		}
+		#menus .postulateInfo a .menu{
+			font-family: 'Montserrat Regular';
+			width: 100%;
+			border-top: 1px solid #fff;
+		}
 	#dir{
 		display: flex;
 		flex-direction: column;
