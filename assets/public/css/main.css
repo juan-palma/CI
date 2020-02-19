@@ -4239,6 +4239,7 @@ footer #certificaciones,  footer #premios{
 		    font-size: 160%;
 		    line-height: 2;
 		    letter-spacing: 5px;
+		    text-align: center;
 		}
 		body #navExtend #dir, body#home #navExtend #dir a{
 			color: white;
