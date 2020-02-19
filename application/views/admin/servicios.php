@@ -116,6 +116,24 @@ $data_bloque_texto1  =  array (
 
 
 
+//Datos de formualirio GALERIA TITULO
+$data_galeriaT_fotoT  =  array (
+	'name' => '',
+	'value' => '',
+	'class' => 'validaciones vc form-control input-lg conteo',
+	'autocomplete' => 'off',
+	'placeholder' => '',
+	'data-cloneinfo' => 'galeriaTFotoT',
+	'data-conteovalin' =>"galeriaT",
+	'data-conteovalfin' => "_fotoT",
+	'data-conteoval' => "name"
+);
+
+
+
+
+
+
 //Datos de formualirio GALERIA
 $data_galeria_foto  =  array (
 	'name' => '',
@@ -222,6 +240,26 @@ $data_galeria_foto  =  array (
 		
 		
 		
+<!-- 	Clones para la seccion GALERIA Titulo -->
+		<?php
+			echo form_upload( $data_galeriaT_fotoT );
+		?>
+		
+		<div class="registro" data-cloneinfo="fotoT">
+			<input type="hidden" name="" class="conteo" data-conteovalin="galeriaT[fotoT][" data-conteovalfin="]" data-conteoval="name"></input>
+			<label>Foto: <span class="valNum conteo"  data-conteovalin="" data-conteovalfin="" data-conteoval="text">1</span></label>
+			<div class="controlCloneRegistro">
+				<div class="clone menos"><i class="far fa-trash-alt"></i></div>
+			</div>
+			<div class="galeriaT_fotoT cleanBox" data-clonetype="galeriaTFotoT">
+				<label>Foto:</label>
+				<?php echo form_upload( $data_galeriaT_fotoT ); ?>
+			</div>
+		</div>
+		
+		
+		
+		
 <!-- 	Clones para la seccion GALERIA -->
 		<?php
 			echo form_upload( $data_galeria_foto );
@@ -290,6 +328,7 @@ $data_galeria_foto  =  array (
 							<?php echo form_textarea( $data_registro_pie ); ?>
 						</div>
 						
+<!--
 						<div class="col-12 col-sm-6">
 							<label>Imagen de fondo del titulo:</label>
 							<div class="titulo_fondo cleanBox" data-clonetype="titulo_fondo">
@@ -311,6 +350,7 @@ $data_galeria_foto  =  array (
 							?>
 							</div>
 						</div>
+-->
 						
 					</div>
 					<hr class="colorgraph">
@@ -378,6 +418,66 @@ $data_galeria_foto  =  array (
 
 
 
+<!-- 	Seccion de Galeria Titulo -->
+	<div id="galeriaT" class="row"><br/>
+		<div class="card stacked-form col-md-12">
+			<div class="card-header block">
+				<h5 class="tituloBlock">Galeria del Titulo:</h5>
+				<hr class="colorgraph">
+			</div>
+			
+			<div class="valueBox">
+				<div class="boxRepeat">
+					<div class="boxMainClone">Agregar un foto a la galeria del titulo: <div id="galeriaT_clonemas" class="clone mas"><i class="fas fa-plus-circle"></i></div></div>
+					
+					<?php
+					if(isset($articuloDB) && property_exists($articuloDB, "galeriaT") && count($articuloDB->galeriaT) > 0 ){
+						foreach ($articuloDB->galeriaT as $i=>$v) {
+							
+							?>
+							<div class="registro">
+								<input type="hidden" name="galeriaT[fotoT][<?php echo($i); ?>]" class="conteo" data-conteovalin="galeriaT[fotoT][" data-conteovalfin="]" data-conteoval="name"></input>
+								<label>Foto: <span class="valNum conteo"  data-conteovalin="" data-conteovalfin="" data-conteoval="text"><?php echo($i+1); ?></span></label>
+								<div class="controlCloneRegistro">
+									<div class="clone menos"><i class="far fa-trash-alt"></i></div>
+								</div>
+								
+								<div class="galeriaT_fotoT cleanBox" data-clonetype="galeriaTFotoT">
+								<label>Foto:</label>
+								<?php
+										if($v->fotoT !== ''){
+											$data['img'] = base_url('assets/public/img/servicios/registros/'.$v->fotoT);
+											$data['name'] = $v->fotoT;
+											$data['hname'] = 'galeriaT'.$i.'_fotoT';
+											$data['classAdd'] = 'conteo';
+											$data['propertyAdd'] = ' data-conteovalin="galeriaT" data-conteovalfin="_fotoT" data-conteoval="name"';
+											$this->load->view('admin/plantillas/img_block', $data);
+										} else{
+											$data_galeriaT_fotoT['name'] = 'galeriaT'.$i.'_fotoT';
+											echo form_upload( $data_galeriaT_fotoT );
+										}
+								?>
+								</div>
+							</div>
+							<?php
+						}
+					}
+					?>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
 <!-- 	Seccion de Galeria -->
 	<div id="galeria" class="row"><br/>
 		<div class="card stacked-form col-md-12">
@@ -397,7 +497,7 @@ $data_galeria_foto  =  array (
 							?>
 							<div class="registro">
 								<input type="hidden" name="galeria[foto][<?php echo($i); ?>]" class="conteo" data-conteovalin="galeria[foto][" data-conteovalfin="]" data-conteoval="name"></input>
-								<label>Marca: <span class="valNum conteo"  data-conteovalin="" data-conteovalfin="" data-conteoval="text"><?php echo($i+1); ?></span></label>
+								<label>Foto: <span class="valNum conteo"  data-conteovalin="" data-conteovalfin="" data-conteoval="text"><?php echo($i+1); ?></span></label>
 								<div class="controlCloneRegistro">
 									<div class="clone menos"><i class="far fa-trash-alt"></i></div>
 								</div>

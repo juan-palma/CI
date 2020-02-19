@@ -764,7 +764,15 @@ function portafolio_in(){
 // ***** Portafolio *****//
 function servicios_in(){	
 	
-	var sliderPortafolio = tns({
+	var sliderTitulo = tns({
+		"container": '.mainbox.bl1 .slideItems',
+		//"autoHeight": true,
+		"items": 1,
+		"swipeAngle": false,
+		"speed": 400
+	});
+	
+	var sliderServicio = tns({
 		"container": '#galeria .slideItems',
 		//"autoHeight": true,
 		"items": 1,

@@ -190,11 +190,21 @@ class Servicios extends CI_Controller {
 			$loadFoto = [];
 		}
 		
+		
+		
+		//subir logos de galeria titulo
+		if( isset($_POST['galeriaT']['fotoT']) ){
+			$loadFotoT = $this->loadFiles('galeriaT', 'fotoT', $_POST['galeriaT']['fotoT'], $config);
+		} else{
+			$loadFotoT = [];
+		}
+		
 
 
 		if($loadFoto !== false){
 			//Datos de la seccion Nosotros.
-			$linea = '{"titulo_general":"'.$_POST['registros']['titulo'].'", "nombre":"'.$_POST['registros']['nombre'].'", "url":"'.url_title($_POST['registros']['url']).'", "intro":"'.$_POST['registros']['intro'].'", "pie":"'.$_POST['registros']['pie'].'", "titulo_fondo":"'.$loadPortada[0]['file_name'].'", "bloques":[';
+// 			$linea = '{"titulo_general":"'.$_POST['registros']['titulo'].'", "nombre":"'.$_POST['registros']['nombre'].'", "url":"'.url_title($_POST['registros']['url']).'", "intro":"'.$_POST['registros']['intro'].'", "pie":"'.$_POST['registros']['pie'].'", "titulo_fondo":"'.$loadPortada[0]['file_name'].'", "bloques":[';
+			$linea = '{"titulo_general":"'.$_POST['registros']['titulo'].'", "nombre":"'.$_POST['registros']['nombre'].'", "url":"'.url_title($_POST['registros']['url']).'", "intro":"'.$_POST['registros']['intro'].'", "pie":"'.$_POST['registros']['pie'].'", "bloques":[';
 			
 // 			$linea = '{"titulo_general":"'.$_POST['registros']['titulo'].'", "video":"'.$_POST['registros']['video'].'", "video_portada":"'.$loadPortada[0]['file_name'].'", "enlace":"'.url_title($_POST['registros']['enlace']).'", "bloques":[';
 			
@@ -211,9 +221,18 @@ class Servicios extends CI_Controller {
 					if($i !== 0){ $linea .= ', '; }
 					$linea .= '{"foto":"'.@$loadFoto[$i]['file_name'].'"}';
 				}
+			}			
+			
+			$linea .= '], "galeriaT":[';
+			if( isset($_POST['galeriaT']['fotoT']) ){
+				foreach ($_POST['galeriaT']['fotoT'] as $i=>$v) {
+					if($i !== 0){ $linea .= ', '; }
+					$linea .= '{"fotoT":"'.@$loadFotoT[$i]['file_name'].'"}';
+				}
 			}
 			
 			$linea .= ']}';
+			
 			
 			//consultar si existe un registro con valores para HOME-SECCIONES para saber si interta nuevo registro o actualizar el actual.
 			//Consulta - HOME-SECCIONES

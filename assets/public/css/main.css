@@ -787,11 +787,20 @@ input[type="button"]:hover{
 		#menus .postulateAcordeon{
 			font-family: 'Montserrat Bold';
 		}
+		#menus .menu.postulateAcordeon:after {
+		    content: ">";
+		    position: absolute;
+		    margin-left: 1rem;
+		    transform: rotateZ(90deg) scaleY(2.5);
+		    font-family: 'Montserrat Thin';
+		    margin-top: 3px;
+		}
 		#menus .postulateInfo a .menu{
 			font-family: 'Montserrat Regular';
 			width: 100%;
 			border-top: 1px solid #fff;
 		}
+		
 	#dir{
 		display: flex;
 		flex-direction: column;
@@ -1050,7 +1059,7 @@ body#home{
 			width: 13px;
 			height: 15px;
 			position: relative;
-			border-radius: 50%;
+			border-radius: 44px;
 			border: 1px solid white;
 			margin-bottom: 4px;
 			
@@ -1852,7 +1861,7 @@ body#portafolio_in .mainbox.bl4 .tns-nav{
 		width: 13px;
 		height: 15px;
 		position: relative;
-		border-radius: 50%;
+		border-radius: 44px;
 		border: 1px solid white;
 		margin-bottom: 4px;
 		display: none;
@@ -1952,6 +1961,7 @@ body#servicios_in .mainbox.bl1{
     justify-content: center;
     align-items: flex-start;
     padding: 2rem;
+    position: relative;
 }
 	body#servicios_in .mainbox.bl1 .titulo{
 		padding: 0px;
@@ -1962,6 +1972,8 @@ body#servicios_in .mainbox.bl1{
 		color: white;
 		font-family: 'Montserrat ExtraBold';
 		text-align: center;
+		position: relative;
+		z-index: 777;
 	}
 	body#servicios_in .mainbox.bl1 .nombre{
 		padding: 0px;
@@ -1972,7 +1984,127 @@ body#servicios_in .mainbox.bl1{
 		color: white;
 		font-family: 'Montserrat ExtraBold';
 		text-align: center;
+		position: relative;
+		z-index: 777;
 	}
+	
+	body#servicios_in .mainbox.bl1 .slideMainT{
+		width: 100%;
+		height: 100%;
+		position: absolute;
+	    left: 0px;
+	    top: 0px;
+	}
+		body#servicios_in .mainbox.bl1 .slideMainT .slideItems{
+/* 				width: 100%; */
+			height: 100%;
+			display: flex;
+		}
+			body#servicios_in .mainbox.bl1 .slideMainT .slideItems article{
+				background-size: cover;
+/* 				    width: 100%; */
+			    height: 100%;
+			    background-position: center;
+			    display: flex;
+				flex-direction: column;
+				align-items: center;
+				padding: 0px;
+				justify-content: center;
+			}
+body#servicios_in .mainbox.bl1 .tns-nav{
+	display: flex;
+    position: absolute;
+    height: 20px;
+    justify-content: center;
+    flex-direction: row;
+    width: 80%;
+    align-items: center;
+    bottom: 28px;
+    padding: 0px;
+    margin: 0px 10%;
+    z-index: 666;
+}
+	body#servicios_in .mainbox.bl1 .tns-nav button {
+		width: 13px;
+	    height: 16px;
+	    position: relative;
+	    border-radius: 44px;
+	    border: 1px solid white;
+	    margin: 4px;
+	    display: block;
+		
+		-webkit-transition: all 0.2s ease-in-out;
+		-moz-transition: all 0.2s ease-in-out;
+		-o-transition: all 0.2s ease-in-out;
+		-ms-transition: all 0.2s ease-in-out;
+		transition: all 0.2s ease-in-out;
+	}
+	body#servicios_in .mainbox.bl1 .tns-nav button.tns-nav-active{
+		background-color: white;
+	}
+	body#servicios_in .mainbox.bl1  .tns-controls{
+		position: absolute;
+	    right: 2rem;
+	    bottom: -15px;
+	    display: block;
+	    width: auto;
+	    outline: none;
+	    display: none;
+	}
+		body#servicios_in .mainbox.bl1 .tns-controls button{
+			position: relative;
+			visibility: hidden;
+			margin: 0px;
+			padding: 0px;
+			
+			-webkit-transition: all 0.2s ease-in-out;
+			-moz-transition: all 0.2s ease-in-out;
+			-o-transition: all 0.2s ease-in-out;
+			-ms-transition: all 0.2s ease-in-out;
+			transition: all 0.2s ease-in-out;
+		}
+		body#servicios_in .mainbox.bl1 .tns-controls button[data-controls="prev"]:after {
+		    content: '';
+		    visibility: visible;
+		    display: block;
+		    position: relative;
+		    background-color: var(--colorPrincipal);
+		    padding: 17px 27px;
+		    top: 2px;
+		    background-image: url(../img/flecha_back.svg);
+		    height: 27px;
+		    width: 44px;
+		    background-repeat: no-repeat;
+		    background-position: center center;
+		    background-size: 23px 18px;
+		}
+		body#servicios_in .mainbox.bl1 .tns-controls button[data-controls="next"]:after {
+		    content: '';
+		    visibility: visible;
+		    display: block;
+		    position: relative;
+		    background-color: var(--colorPrincipal);
+		    padding: 17px 27px;
+		    top: 2px;
+		    background-image: url(../img/flecha_next.svg);
+		    height: 27px;
+		    width: 44px;
+		    background-repeat: no-repeat;
+		    background-position: center center;
+		    background-size: 23px 18px;
+		}
+		body#servicios_in .mainbox.bl1 .tns-controls button:hover[data-controls]:after{
+			-webkit-transition: all 0.2s ease-in-out;
+			-moz-transition: all 0.2s ease-in-out;
+			-o-transition: all 0.2s ease-in-out;
+			-ms-transition: all 0.2s ease-in-out;
+			transition: all 0.2s ease-in-out;
+		}
+		body#servicios_in .mainbox.bl1 .tns-controls button:hover[data-controls]:after{
+			background-color: #000;
+		}
+	
+	
 
 body#servicios_in .mainbox.bl2{
 	height: auto;
@@ -1995,6 +2127,7 @@ body#servicios_in .mainbox.bl3{
 	flex-direction: row;
 	align-items: stretch;
 }
+
 	body#servicios_in .mainbox.bl3 .galeria,
 	body#servicios_in .mainbox.bl3 .bloques{
 		flex: 0 0 50%;
@@ -2086,7 +2219,7 @@ body#servicios_in .mainbox.bl3 .tns-nav{
 		width: 13px;
 		height: 15px;
 		position: relative;
-		border-radius: 50%;
+		border-radius: 44px;
 		border: 1px solid white;
 		margin-bottom: 4px;
 		display: none;
@@ -2341,7 +2474,7 @@ body#somos .mainbox.bl3 .tns-nav{
 		width: 13px;
 		height: 15px;
 		position: relative;
-		border-radius: 50%;
+		border-radius: 44px;
 		border: 1px solid white;
 		margin-bottom: 4px;
 		display: none;

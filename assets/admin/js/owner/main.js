@@ -228,7 +228,6 @@ function activar(copia, seccion, padre,  a){
 }
 
 function btnMas(name, box, seccion, callBack){
-	console.info(name);
 	var clone = $$('.hiden.boxClones > [data-cloneinfo="'+name+'"]');
 	clone = clone[0].clone();
 	box.adopt([clone]);
@@ -706,6 +705,7 @@ function portafolios_inicio(){
 			});
 			reconteo('#portafolios .registro', []);
 						
+						
 			
 			//remplazar los input por imagenes cargadas en Clientes
 			var secciones = $$('#galeria .registro');
@@ -815,11 +815,13 @@ function servicios_inicio(){
 			
 			var contenedor = $$('#servicios .contenedor');
 			//remplazar los input por imagenes cargadas el fondo de los registros
+/*
 			if(j.valores.base.titulo_fondo[0] !== 'nop' && j.valores.base.titulo_fondo[0] !== ''){
 				removeInputIMG(contenedor[0], '.titulo_fondo.cleanBox', 'imgBlock', j.valores.base.titulo_fondo[0],  'titulo_fondo', 'servicios', 'base', 'servicios/registros');
 				var hiden = $$('.titulo_fondo.cleanBox input[type="hidden"]');
 				hiden[0].name = hiden[0].getProperty('data-conteovalin') + '0' + hiden[0].getProperty('data-conteovalfin');
 			}
+*/
 			
 /*
 			var contenedor = $$('#servicios .contenedor');
@@ -840,9 +842,9 @@ function servicios_inicio(){
 					removeInputIMG(s, '.bloque_imagen .cleanBox', 'imgBlock', j.valores.bloque.imagen[i],  'imagen', 'servicios', 'bloque', 'servicios/registros');
 				}
 			});
-*/
+
 			reconteo('#servicios .registro', []);
-			
+*/			
 			
 			//remplazar los input por imagenes cargadas en Galeria
 			var secciones = $$('#galeria .registro');
@@ -852,6 +854,16 @@ function servicios_inicio(){
 				}
 			});
 			reconteo('#galeria .registro', []);
+			
+			
+			//remplazar los input por imagenes cargadas en Galeria Titulo
+			var secciones = $$('#galeriaT .registro');
+			secciones.each(function(s, i){
+				if(j.valores.galeriaT.fotoT[i] !== 'nop' && j.valores.galeriaT.fotoT[i] !== ''){
+					removeInputIMG(s, '.galeriaT_fotoT.cleanBox', 'imgBlock', j.valores.galeriaT.fotoT[i],  'fotoT', 'servicios', 'galeriaT', 'servicios/registros');
+				}
+			});
+			reconteo('#galeriaT .registro', []);
 			
 		}
 		
@@ -886,6 +898,24 @@ function servicios_inicio(){
 		var btn_menos = b.getElement(".menos");
 		btn_menos.addEvent('click', function(){
 			btnMenos.call(b, 'servicios');
+		});
+	});
+	
+	
+	
+	
+	
+// 	Codigo para iniciar la seccion Galeria Titulo
+	activeImgBbox('galeriaT');
+	document.id('galeriaT_clonemas').addEvent('click', function(){
+		btnMas('fotoT', document.id('galeriaT').getElement('.boxRepeat'), 'galeriaT', {});
+	});
+	
+	var allBTNDel = $$('#galeriaT .registro');
+	allBTNDel.each(function(b){
+		var btn_menos = b.getElement(".menos");
+		btn_menos.addEvent('click', function(){
+			btnMenos.call(b, 'galeriaT');
 		});
 	});
 	
