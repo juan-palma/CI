@@ -4335,7 +4335,10 @@ footer #certificaciones,  footer #premios{
 	body#servicios_in .mainbox.bl3 .galeria, body#servicios_in .mainbox.bl3 .bloques {
 	    flex: 0 0 100%;
 	    max-width: 100%;
-	    height: 66vw;
+	    height: auto;
+	}
+	body#servicios_in .mainbox.bl3 .galeria{
+		height: 66vw;
 	}
 	body#servicios_in .mainbox.bl3 .tns-controls {
 	    right: 0rem;
