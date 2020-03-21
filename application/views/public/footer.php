@@ -200,7 +200,7 @@ $data_servicio_mensaje  =  array (
 				</div>
 				<div class="footer_terminos">
 					<span class="copyright">© Copyright 2019 </span>
-					<a href="<?php echo(base_url('terminos_condiciones') ); ?>" target="_self"><span class="terminos">Términos y condiciones</span></a>
+					<a href="<?php echo(base_url('terminos_condiciones') ); ?>" target="_self"><span class="terminos">Términos y Condiciones</span></a>
 				</div>
 			</div>
 		</footer>

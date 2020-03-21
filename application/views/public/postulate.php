@@ -30,39 +30,39 @@
 			<input type="hidden" id="fotosTotal" name="fotosTotal" value=""></input>
 			
 			<div class="boxInput">
-				<label>Nombre (s)*</label>
+				<label>NOMBRES(s)*</label>
 				<input type="text" name="nombre" value="" class="validaciones vc form-control input-lg" autocomplete="off" placeholder="" data-validar="texto" required>
 			</div>
 			<div class="boxInput">
-				<label>Apellidos*</label>
+				<label>APELLIDOS*</label>
 				<input type="text" name="apellido" value="" class="validaciones vc form-control input-lg" autocomplete="off" placeholder="" data-validar="texto" required>
 			</div>
 			<div class="boxInput">
-				<label>E-mail*</label>
+				<label>E-MAIL*</label>
 				<input type="email" name="correo" value="" class="validaciones vc form-control input-lg" autocomplete="off" placeholder="" data-validar="correo" required>
 			</div>
 			<div class="boxInput">
-				<label>Teléfono*</label>
+				<label>TELÉFONO*</label>
 				<input type="tel" name="telefono" value="" class="validaciones vc form-control input-lg" autocomplete="off" placeholder="" data-validar="telefono" required>
 			</div>
 			<div class="boxInput">
-				<label>Enlace para compartir red social*</label>
+				<label>ENLACE PARA COMPARTIR REDES SOCIALES*</label>
 				<input type="url" name="compartir" value="" class="validaciones vc form-control input-lg" autocomplete="off" placeholder="" data-validar="texto" required>
 			</div>
 			<div class="boxInput ida_boxInputContent unArchivo">
 				<div class="ida_boxInput ida_boxInputLoadFile">
-					<label>Identificación (Pasaporte, FM3)</label>
+					<label>IDENTIFICACIÓN (Pasaporte, FM3)</label>
 					<input type="file" class="ida_inputUpload" name="credencial" accept="image/*" style="display:none" onchange="handleFiles.call(this, this.files)" required>
 					<div class="idaUnArchivoInfo"></div>
-					<a href="javascript:void(0)" class="idaInputLoadFileA">Subir Archivo</a>
+					<a href="javascript:void(0)" class="idaInputLoadFileA">Subir archivo</a>
 				</div>
 			</div>
 			<!-- Carga de archvios -->	
 			<div class="boxInput span6 ida_boxInputContent DropSistem">
 				<div class="ida_boxInput ida_boxInputLoadFile">
-					<label>Compártenos tus fotos (mínimo 10 fotos)* </label>
+					<label>COMPÁRTENOS TUS FOTOS (mínimo 10 fotos)* </label>
 					<input type="file" class="ida_inputUpload" multiple accept="image/*" style="display:none" onchange="handleFiles.call(this, this.files)" required>
-					<a href="javascript:void(0)" class="idaInputLoadFileA">Subir Archivo</a>
+					<a href="javascript:void(0)" class="idaInputLoadFileA">Subir archivo</a>
 				</div>
 				<div class="ida_boxInput ida_boxInputLoadFileDrop">
 					<div class="ida_areaDropUpload"></div>
@@ -75,7 +75,7 @@
 			</div>
 			
 			<div class="boxInput span6 terminosCheck">
-				<input type="checkbox" name="terminos" class="" id="terminosChek"> He leído y acepto los <a href="<?php echo(base_url('terminos-condiciones')); ?>" target="_blank" class="terminos" id="linkTerminos">términos y condiciones</a></input>
+				<input type="checkbox" name="terminos" class="" id="terminosChek"> He leído y acepto los <a href="<?php echo(base_url('terminos-condiciones')); ?>" target="_blank" class="terminos" id="linkTerminos">Términos y Condiciones</a></input>
 			</div>
 			
 			<div class="boxInput span6">
@@ -91,27 +91,27 @@
 			<input type="hidden" id="pagina" name="pagina" value="<?php echo($area); ?>"></input>
 			
 			<div class="boxInput">
-				<label>Nombre de la empresa* </label>
+				<label>NOMBRE DE LA EMPRESA* </label>
 				<input type="text" name="empresa" value="" class="validaciones vc form-control input-lg" autocomplete="off" placeholder="" data-validar="texto" required>
 			</div>
 			<div class="boxInput">
-				<label>E-mail* </label>
+				<label>E-MAIL* </label>
 				<input type="email" name="correo" value="" class="validaciones vc form-control input-lg" autocomplete="off" placeholder="" data-validar="correo" required>
 			</div>
 			<div class="boxInput">
-				<label>Teléfono* </label>
+				<label>TELÉFONO* </label>
 				<input type="tel" name="telefono" value="" class="validaciones vc form-control input-lg" autocomplete="off" placeholder="" data-validar="telefono" required>
 			</div>
 			<div class="boxInput">
-				<label>Dirección* </label>
+				<label>DIRECCIÓN* </label>
 				<input type="text" name="direccion" value="" class="validaciones vc form-control input-lg" autocomplete="off" placeholder="" data-validar="texto" required>
 			</div>
 			<div class="boxInput">
-				<label>Razón social* </label>
+				<label>RAZÓN SOCIAL* </label>
 				<input type="text" name="razon" value="" class="validaciones vc form-control input-lg" autocomplete="off" placeholder="" data-validar="texto" required>
 			</div>
 			<div class="boxInput serviciosChek span6">
-				<label>Selecciona el tipo de servicio:* </label>
+				<label>SELECCIONA EL TIPO DE SERVICIO:* </label>
 				<?php
 					foreach (explode(",", @$generalDB->servicios) as &$valor) {
 					    ?>
@@ -127,7 +127,7 @@
 			</div>
 			
 			<div class="boxInput span6 terminosCheck">
-				<input type="checkbox" name="terminos" class="" id="terminosChek"> He leído y acepto los <a href="<?php echo(base_url('terminos-condiciones')); ?>" target="_blank" class="terminos" id="linkTerminos">términos y condiciones</a></input>
+				<input type="checkbox" name="terminos" class="" id="terminosChek"> He leído y acepto los <a href="<?php echo(base_url('terminos-condiciones')); ?>" target="_blank" class="terminos" id="linkTerminos">Términos y Condiciones</a></input>
 			</div>
 			
 			<div class="boxInput span6">
