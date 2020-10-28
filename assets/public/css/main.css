@@ -917,8 +917,14 @@ body#home{
 		body#home .mainbox .homeTitulo {
 			font-family: 'Montserrat ExtraBold';
 			letter-spacing: 3px;
-			font-size: 6vw;
+			font-size: 5.5vw;
 			color: white;
+			text-align: center;
+			line-height: 1;
+		}
+		body#home .mainbox .homeSubtext{
+			font-size: 120%;
+			padding: 1rem;
 		}
 		
 		
