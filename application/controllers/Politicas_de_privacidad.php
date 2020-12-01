@@ -51,7 +51,7 @@ class Politicas_de_privacidad extends CI_Controller {
 		
 		$this->load->view('public/head', $data);
 		$this->load->view('public/politicas_privacidad', $data);
-		$this->load->view('public/footer', $data);
+		$this->load->view('public/footer2', $data);
 	}
 	
 	
