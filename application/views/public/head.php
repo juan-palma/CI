@@ -247,11 +247,13 @@ if(property_exists($generalDB, "youtube") && $generalDB->youtube !== ''){
 			<div id="logo"><a href="<?php echo(base_url()); ?>"><img src="<?php echo(base_url('assets/public/img/logo_ci_fondo.svg')); ?>"></img></a></div>
 			<div id="menus">
 				<a id="btnMenuHome" href="<?php echo(base_url()); ?>"><div class="menu">Home</div></a>
+<!--
 				<a href="<?php echo(base_url('servicios')); ?>"><div class="menu">servicios</div></a>
 				<a href="<?php echo(base_url('portafolio')); ?>"><div class="menu">portafolio</div></a>
 				<a id="btnMenuCliente" href="javascript:void(0);"><div class="menu">clientes</div></a>
 				<a href="<?php echo(base_url('quienes_somos')); ?>"><div class="menu">quiénes somos</div></a>
 				<a href="<?php echo(base_url('postulate')); ?>"><div class="menu">postúlate</div></a>
+-->
 			</div>
 			<div id="dir">
 				<div class="tel"><a href="tel:<?php echo($generalDB->telefono); ?>">Tel:<?php echo($generalDB->telefono); ?></a></div>
@@ -283,17 +285,21 @@ if(property_exists($generalDB, "youtube") && $generalDB->youtube !== ''){
 		
 		<nav id="navExtend" class="onlyMobile extendNav">
 			<div id="menus">
+<!--
 				<a id="btnMenuHome" href="<?php echo(base_url()); ?>"><div class="menu">Home</div></a>
 				<a href="<?php echo(base_url('servicios')); ?>"><div class="menu">servicios</div></a>
 				<a href="<?php echo(base_url('portafolio')); ?>"><div class="menu">portafolio</div></a>
-<!-- 				<a id="btnMenuCliente" href="javascript:void(0);"><div class="menu">clientes</div></a> -->
+				<a id="btnMenuCliente" href="javascript:void(0);"><div class="menu">clientes</div></a>
 				<a href="<?php echo(base_url('quienes_somos')); ?>"><div class="menu">quienes somos</div></a>
+-->
 <!-- 				<a href="<?php echo(base_url('postulate')); ?>"><div class="menu">postulate</div></a> -->
+<!--
 				<div class="menu postulateAcordeon">postulate</div>
 				<div class="postulateInfo">
 					<a href="<?php echo(base_url('postulate')); ?>"><div class="menu">modelo</div></a>
 					<a href="<?php echo(base_url('postulate/alianza')); ?>"><div class="menu">alianza</div></a>
 				</div>
+-->
 				
 				<div id="dir">
 					<div class="tel"><a href="tel:<?php echo($generalDB->telefono); ?>">Tel:<?php echo($generalDB->telefono); ?></a></div>
