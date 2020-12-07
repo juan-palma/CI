@@ -145,9 +145,10 @@ $data_servicio_mensaje  =  array (
 				</form>
 			</div>
 			
+<!--
 			<div id="postulate">
 				<div class="titulo">
-<!-- 					<h3><?php echo(@$generalDB->titulo_postulate); ?></h3> -->
+<!-- 					<h3><?php echo(@$generalDB->titulo_postulate); ?></h3> --
 					<h3>POSTÚLATE</h3>
 				</div>
 				<div class="postulate_content">
@@ -165,6 +166,7 @@ $data_servicio_mensaje  =  array (
 					</div>
 				</div>
 			</div>
+-->
 			
 			
 			<!-- sección HOME ALIANZAS -->
@@ -194,18 +196,16 @@ $data_servicio_mensaje  =  array (
 			
 			
 			<!-- sección HOME ALIANZAS -->
-<!--
 			<div id="footer_box_terminos" class="mainbox">
 				<div class="logoFooter">
 					<img src="<?php echo( base_url('assets/public/img/logo_ci_transparente@2x.png') ); ?>" />
 				</div>
 				<div class="footer_terminos">
 					<span class="copyright">© Copyright 2019 </span>
-<!-- 					<a href="<?php echo(base_url('terminos_condiciones') ); ?>" target="_self"><span class="terminos">Términos y Condiciones</span></a> --
+<!-- 					<a href="<?php echo(base_url('terminos_condiciones') ); ?>" target="_self"><span class="terminos">Términos y Condiciones</span></a> -->
 					<a href="<?php echo(base_url('politicas_de_privacidad') ); ?>" target="_self"><span class="terminos">Políticas de Privacidad</span></a>
 				</div>
 			</div>
--->
 		</footer>
 
 		
